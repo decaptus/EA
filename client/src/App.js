@@ -17,7 +17,7 @@ const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(getPosts());
+      dispatch(getPosts());                           //aqui llamamos a la acción, y inmediatamente va al reducer y hace match, con lo q modifica el estado del 'store'
     }, [currentId, dispatch]);
 
     return(

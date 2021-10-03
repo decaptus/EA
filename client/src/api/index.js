@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-
+import axios from 'axios';                               //we're going to use it to do API calls
 
 const url = 'http://localhost:4000/posts';              //direccion del backend
 
@@ -12,3 +10,4 @@ export const updatePost = (id, updatedPost) => axios.patch(`${url}/${id}`, updat
 export const deletePost = (id) => axios.delete(`${url}/${id}`);
 
 
+ 

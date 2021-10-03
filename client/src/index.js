@@ -6,11 +6,8 @@ import thunk from 'redux-thunk';
 import { reducers } from './reducers';
 
 
-
-
-
 import App from './App';
-//import './index.css';
+
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));      //A store holds the whole state tree of your application. The only way to change the state inside it is to dispatch an action on it.
 
