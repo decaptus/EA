@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 import bulletinRoutes from './routes/bulletin.js';
+import userroutes from './routes/user.js';
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }))            //limi
 app.use(cors());
 
 app.use('/posts', bulletinRoutes);
+app.use('/user', userroutes);
 
 const CONNECTION_URL = 'mongodb+srv://titu:titu1234@cluster0.qghtm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 4000;

@@ -28,7 +28,7 @@ export const getBulletin = async (req, res) => {
 }
 
 export const createBulletin = async (req, res) => {
-
+    console.log("He llegado");
     const { title, description, creator, picture, availability, price  } = req.body;
 
     const newPostBulletin = new Bulletin({ title, description, creator, picture, availability, price })

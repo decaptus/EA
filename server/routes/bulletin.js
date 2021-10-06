@@ -1,6 +1,11 @@
 import express from 'express';
 
-import { getBulletins, getBulletin, createBulletin, deleteBulletin } from '../controllers/bulletin.js';
+import { 
+    getBulletins, 
+    getBulletin, 
+    createBulletin, 
+    deleteBulletin 
+} from '../controllers/bulletin.js';
 
 const router = express.Router();
 
