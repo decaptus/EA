@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 const saltRounds = 10;
 
@@ -37,4 +37,6 @@ UserSchema.methods.isCorrectPassword = function(password, callback){
     })
 }
 
-module.exports = mongoose.model('User', UserSchema); 
+var User = mongoose.model('User', UserSchema);
+
+export default User;

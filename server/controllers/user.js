@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
-import user from '../models/user.js';
+import User from '../models/user.js';
 
 const router = express.Router();
 
@@ -9,7 +9,7 @@ export const Register = async (req, res) => {
     console.log("He llegado");
     const { name, password } = req.body;
 
-    const newUser = new user({ name, password })
+    const newUser = new User({ name, password })
 
     try {
         await newUser.save();
@@ -19,7 +19,6 @@ export const Register = async (req, res) => {
         res.status(409).json({ message: err.message });
     }
 }
-
 
 
 export default router;
