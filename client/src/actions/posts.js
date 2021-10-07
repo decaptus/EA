@@ -19,6 +19,7 @@ export const getPosts = () => async (dispatch) => {
 };
 
 export const createPost = (post) => async (dispatch) => {
+
   try {
     const { data } = await api.createPost(post);
 
@@ -57,4 +58,15 @@ export const deletePost = (id) => async (dispatch) => {
     console.log(error.message);
   }
   
+};
+
+export const Register = (post) => async (dispatch) => {
+
+  try {
+    const { data } = await api.Register(post);
+
+    dispatch({ type: CREATE, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
 };

@@ -18,7 +18,7 @@ const LogIn_Form = ({ currentId, setCurrentId }) => {
 
   const clear = () => {
     setCurrentId(0);
-    setPostData({ creator: '', title: '', description: '', price: '', picture: '' });
+    setPostData({ email: '', password: ''});
   };
 
   const handleSubmit = async (e) => {
@@ -37,8 +37,8 @@ const LogIn_Form = ({ currentId, setCurrentId }) => {
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant="h6">{currentId ? `Editing "${post.title}"` : 'LogIn'}</Typography>
-        <TextField name="Email" variant="outlined" label="Email" fullWidth value={postData.creator} onChange={(e) => setPostData({ ...postData, creator: e.target.value })} />
-        <TextField name="Password" variant="outlined" label="Password" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
+        <TextField name="Email" variant="outlined" label="Email" fullWidth value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} />
+        <TextField name="Password" variant="outlined" label="Password" fullWidth value={postData.password} onChange={(e) => setPostData({ ...postData, password: e.target.value })} />
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
         <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button> 
       </form>

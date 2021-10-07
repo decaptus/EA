@@ -6,17 +6,18 @@ import User from '../models/user.js';
 const router = express.Router();
 
 export const Register = async (req, res) => {
-    console.log("He llegado");
-    const { name, password } = req.body;
-
-    const newUser = new User({ name, password })
-
+    console.log("He pasado por el Register");
+    console.log(req.body);
+    const { name, email, password, age, subjects } = req.body;
+    const newUser = new User({ name, email, password, age, subjects })
+    console.log(newUser);
     try {
         await newUser.save();
-
+        console.log("he pasado por el try");
         res.status(201).json(newUser);
-    } catch (err) {
-        res.status(409).json({ message: err.message });
+    } catch (error) {
+        console.log("he pasado por el catch");
+        res.status(409).json({ message: error.message });
     }
 }
 

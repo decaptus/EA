@@ -4,8 +4,11 @@ import bcrypt from 'bcrypt';
 const saltRounds = 10;
 
 const UserSchema = new mongoose.Schema({
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true}
+    name: { type: String, required: true, unique: true },
+    email: { type: String, required: true},
+    password: { type: String, required: true},
+    age: { type: String, required: true},
+    subjects: { type: String, required: true}
 });
 
 UserSchema.pre('save', function(next){
