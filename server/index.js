@@ -6,6 +6,8 @@ import cors from 'cors';
 import bulletinRoutes from './routes/bulletin.js';
 import userroutes from './routes/user.js';
 
+import config from './config.js'
+
 const app = express();
 
 app.use(express.json({ limit: '30mb', extended: true }))                 //bodyparser esta en desuso, voy a probar con express
