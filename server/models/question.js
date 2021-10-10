@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 const questionSchema = mongoose.Schema({
     
     creator: String,
-    picture: String,
     question: String,
     solved: Boolean,
     
