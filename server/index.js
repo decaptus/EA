@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import bulletinRoutes from './routes/bulletin.js';
 import userroutes from './routes/user.js';
+import questionRoutes from './routes/question.js';
 
 import config from './config.js'
 
@@ -16,6 +17,7 @@ app.use(cors());
 
 app.use('/posts', bulletinRoutes);
 app.use('/user', userroutes);
+app.use('/questions',questionRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://titu:titu1234@cluster0.qghtm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT|| 4000;
