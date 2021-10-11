@@ -1,22 +1,21 @@
 import Question from './Question/Question';
-import {Container, AppBar, Typography, Grow, Grid, CircularProgress} from '@material-ui/core';
+import {Container, AppBar, Typography, Grow, Grid, CircularProgress,Box} from '@material-ui/core';
 import {useSelector} from 'react-redux';
 import React from 'react';
-import useStyles from './styles';
 
 const Questions = ({ setCurrentId }) => {
     const questions = useSelector((state) => state.questions); 
     return(
-        <Container> 
-            <h1>QUESTIONS</h1>
-            {questions.map((question) => ( 
-            <Grid key={question._id} item xs={12} sm={6} md={6}>
-            <Question question={question} setCurrentId={setCurrentId} />
-            </Grid>
-            ))};
+        <Container > 
+        <div style={{ width: '120%'}}>
+            <Box sx={{ display: 'grid' , gridGap: '30px'}}>
+                {questions.map((question) => ( 
+                <Question question={question} setCurrentId={setCurrentId} />
+                ))}
+            </Box>
+        </div>
         </Container>
     );
 }   
-
  
 export default Questions;
