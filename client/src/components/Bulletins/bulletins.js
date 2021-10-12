@@ -10,9 +10,9 @@ const Bulletins = ({ setCurrentId }) => {
   const classes = useStyles();
 
   return (
-    !posts.length ? <CircularProgress /> : (
+    !posts.length ? <CircularProgress /> : (                                                  //loading spinner
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
-        {posts.map((post) => (                                                                //abrimos corchetes para indicar q es javascript y hacemos un for y en cada anuncio
+        {posts.map((post) => (                                                                //abrimos corchetes para indicar q es javascript y hacemos un loop para cada anuncio
           <Grid key={post._id} item xs={12} sm={6} md={6}>
             <Bulletin post={post} setCurrentId={setCurrentId} />
           </Grid>

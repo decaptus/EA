@@ -4,6 +4,8 @@ import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionType
 //El reducer es una función pura que toma el estado anterior y una acción, y devuelve en nuevo estado.
 
 
+// reducer(state,action) => new State
+
 export default (posts = [], action) => {
   switch (action.type) {
     case FETCH_ALL:
@@ -11,7 +13,7 @@ export default (posts = [], action) => {
     case LIKE:
       return posts.map((post) => (post._id === action.payload._id ? action.payload : post));
     case CREATE:
-      return [...posts, action.payload];
+      return [...posts, action.payload];  //we have to spread all the posts and add a new post that is store in the action payload
     case UPDATE:
       return posts.map((post) => (post._id === action.payload._id ? action.payload : post));
     case DELETE:

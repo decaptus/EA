@@ -23,18 +23,18 @@ const Lessons = () => {
     return(
         <Container maxWidth="lg">
         <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography className={classes.heading} variant="h2" align="center">Bulletin board</Typography>
+          <Typography className={classes.heading} variant="h2" align="center">Clases particulares</Typography>
           <img  className={classes.heading} src={classIm} alt="classIm" height="60"  />
         </AppBar>
         <Grow in>
         <Container>
-          <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+          <Grid container justify="space-between" alignItems="stretch" spacing={30}>
             <Grid item xs={12} sm={7}>
               <Bulletins setCurrentId={setCurrentId} />
             </Grid>
             <Grid item xs={12} sm={4}>
               <Form currentId={currentId} setCurrentId={setCurrentId} />
-            </Grid>
+            </Grid>           
           </Grid>
         </Container>
       </Grow>
@@ -49,3 +49,11 @@ const Lessons = () => {
 }
 
 export default Lessons;
+
+
+/*
+<Grid item xs={12} sm={4}>
+              <Form currentId={currentId} setCurrentId={setCurrentId} />
+            </Grid>
+
+*/
