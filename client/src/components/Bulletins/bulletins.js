@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, CircularProgress } from '@material-ui/core';
+import { Grid, CircularProgress, Button } from '@material-ui/core';
 import { useSelector } from 'react-redux';                                  //Allows you to extract data from the Redux store state, using a selector function.                  
 
 import Bulletin from './Bulletin/bulletin';
@@ -11,12 +11,15 @@ const Bulletins = ({ setCurrentId }) => {
 
   return (
     !posts.length ? <CircularProgress /> : (                                                  //loading spinner
-      <Grid className={classes.container} container alignItems="stretch" spacing={3}>
+      <Grid className={classes.container} container  alignItems="stretch" spacing={6} >
         {posts.map((post) => (                                                                //abrimos corchetes para indicar q es javascript y hacemos un loop para cada anuncio
-          <Grid key={post._id} item xs={12} sm={6} md={6}>
+          <Grid key={post._id} item xs={3} sm={4} md={4}>
             <Bulletin post={post} setCurrentId={setCurrentId} />
+            
           </Grid>
+          
         ))}
+        
       </Grid>
     )
   );

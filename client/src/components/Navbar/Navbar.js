@@ -6,19 +6,52 @@ import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
 
-function Navbar() {
+const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
 
+  const user = null;
+
+
+
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
+        <div className='navbar' >
           <Link to='#' className='menu-bars'>
-            <FaIcons.FaBars onClick={showSidebar} />
+            <FaIcons.FaBars onClick={showSidebar} />   
           </Link>
+
+          <div>
+            {user ? (
+              <div>
+                <button>Si hay usuario</button>
+                
+
+
+              </div>
+
+            ): (
+              <Link to='/'>
+              <button >no hay usuario</button>
+              </Link>
+              
+              
+            )}
+          
+             
+
+            
+
+          </div>
+
+          
         </div>
+
+        
+
+
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>

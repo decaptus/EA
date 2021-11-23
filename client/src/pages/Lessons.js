@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react";                                           //useeffect going to come the component will update
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';                                        //allows us tu dispatch an action
 
 
@@ -23,27 +24,27 @@ const Lessons = () => {
     return(
         <Container maxWidth="lg">
         <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography className={classes.heading} variant="h2" align="center">Clases particulares</Typography>
+          <Typography className={classes.heading} variant="h2" align="center">Private classes of students</Typography>
           <img  className={classes.heading} src={classIm} alt="classIm" height="60"  />
         </AppBar>
         <Grow in>
         <Container>
-          <Grid container justify="space-between" alignItems="stretch" spacing={30}>
-            <Grid item xs={12} sm={7}>
+          <Grid container justify="space-between" alignItems="stretch" spacing={1}>
+            <Grid item xs={4} sm={9}>
               <Bulletins setCurrentId={setCurrentId} />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form currentId={currentId} setCurrentId={setCurrentId} />
-            </Grid>           
+            </Grid >
+            <Grid item sm={2}>
+            <Button variant="contained" color="secondary" type="submit" fullWidth>Post class</Button>
+            </Grid>         
           </Grid>
+         
         </Container>
       </Grow>
-
-
-
-
+     
+      
 
       </Container>
+     
     );
 
 }
