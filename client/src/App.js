@@ -1,17 +1,18 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Lessons from './pages/Lessons';
 import Forum from './pages/Forum';
 import LogIn from './pages/LogIn';
 import Support from './pages/Support';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <>
-      <Router>
+      <BrowserRouter>
         <Navbar />
         <Switch>
           <Route path='/' exact component={LogIn} />
@@ -20,7 +21,7 @@ function App() {
           <Route path='/forum' component={Forum} />
           <Route path='/support' component={Support} />
         </Switch>
-      </Router>
+      </BrowserRouter>
     </>
   );
 }

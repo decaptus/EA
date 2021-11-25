@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
 
 import useStyles from './styles';
 import { createPost, updatePost } from '../../actions/posts';
+
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Card from 'react-bootstrap/Card'
 
 const LogIn_Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({ creator: '', title: '', description: '', price: '', picture: '' });
@@ -34,15 +39,40 @@ const LogIn_Form = ({ currentId, setCurrentId }) => {
   };
 
   return (
-    <Paper className={classes.paper}>
-      <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing "${post.title}"` : 'LogIn'}</Typography>
-        <TextField name="Email" variant="outlined" label="Email" fullWidth value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} />
-        <TextField name="Password" variant="outlined" label="Password" fullWidth value={postData.password} onChange={(e) => setPostData({ ...postData, password: e.target.value })} />
-        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button> 
-      </form>
-    </Paper>
+  <>
+    <div className="row d-flex justify-content-center">
+      <div className="col-md-4">
+       <Card className="mt-4">      
+           <Form className="rounded p-4 p-s-3 ">
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control type="email" placeholder="Enter email" />
+                  <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                  </Form.Text>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control type="password" placeholder="Password" />
+              </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                  <Form.Check type="checkbox" label="Check me out" />
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+            </Form>
+
+            </Card>
+
+
+      </div>
+
+    </div>
+
+  </>
+   
   );
 };
 
