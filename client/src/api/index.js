@@ -14,12 +14,14 @@ export const deletePost = (id) => axios.delete(`${url_bulltin}/${id}`);
 
 //user
 export const Register = (newPost) => axios.post(url_logIn, newPost);
-
 export const fetchQuest = () => axios.get(url_quest);
 export const createQuest = (newPost) => axios.post(url_quest, newPost);
 export const likeQuest = (id) => axios.patch(`${url_quest}/${id}/likePost`);
 export const updateQuest = (id, updatedPost) => axios.patch(`${url_quest}/${id}`, updatedPost);
 export const deleteQuest = (id) => axios.delete(`${url_quest}/${id}`);
+
+export const signIn = (formData) => axios.post('/user/signin', formData);
+export const signUp = (formData) => axios.post('/user/signup', formData);
 
 
  
