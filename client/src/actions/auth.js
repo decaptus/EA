@@ -9,7 +9,7 @@ export const signin = (formData, router) => async (dispatch) => {
 
     router.push('/');
   } catch (error) {
-    console.log(error);
+    console.log(error); 
   }
 };
 
@@ -23,4 +23,11 @@ export const signup = (formData, router) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
+
 };
+
+
+
+
+
+//adding some random text to be able to do a commit in new branch
