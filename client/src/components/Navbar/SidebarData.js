@@ -21,6 +21,13 @@ export const SidebarData = [
     icon: <FcIcons.FcQuestions />,
     cName: 'nav-text'
   },
+
+  {
+    title: 'Flats',
+    path: '/flats',
+    icon: <FcIcons.FcHome />,
+    cName: 'nav-text'
+  },
   
   {
     title: 'Support',
