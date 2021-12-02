@@ -1,7 +1,7 @@
 import axios from 'axios';                               //we're going to use it to do API calls
 
 const url_bulltin = 'http://localhost:4000/tutor';              //direccion del backend para bulletins
-const url_logIn = 'http://localhost:4000/user';
+const url_logIn = 'http://localhost:4000/users';
 const url_quest = 'http://localhost:4000/user';              //direccion del backend para Register y LogIn
 
 
@@ -20,8 +20,8 @@ export const likeQuest = (id) => axios.patch(`${url_quest}/${id}/likePost`);
 export const updateQuest = (id, updatedPost) => axios.patch(`${url_quest}/${id}`, updatedPost);
 export const deleteQuest = (id) => axios.delete(`${url_quest}/${id}`);
 
-export const signIn = (formData) => axios.post('/user/signin', formData);
-export const signUp = (formData) => axios.post('/user/signup', formData);
+export const signIn = (formData) => axios.post(`${url_logIn}/signin`, formData);
+export const signUp = (formData) => axios.post(`${url_logIn}/signup`, formData);
 
 
  

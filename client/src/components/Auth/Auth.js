@@ -11,9 +11,9 @@ import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
 
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+const initialState = { name: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
-const SignUp = () => {
+const Auth = () => {
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
@@ -34,6 +34,7 @@ const SignUp = () => {
 
     if (isSignup) {
       dispatch(signup(form, history));
+      console.log(form);
     } else {
       dispatch(signin(form, history));
     }
@@ -67,7 +68,7 @@ const SignUp = () => {
           <Grid container spacing={2}>
             { isSignup && (
             <>
-              <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
+              <Input name="name" label="First Name" handleChange={handleChange} autoFocus half />
               <Input name="lastName" label="Last Name" handleChange={handleChange} half />
             </>
             )}
@@ -102,4 +103,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Auth;

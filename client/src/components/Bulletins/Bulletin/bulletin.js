@@ -11,7 +11,7 @@ import useStyles from './styles';
 import './price.css';
 
 const Bulletin = ({ post: bulletin, setCurrentId }) => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const classes = useStyles();
   
 
