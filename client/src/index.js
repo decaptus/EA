@@ -8,7 +8,7 @@ import { reducers } from './reducers';
 
 import App from './App';
 
-
+//borrar este texto
 const store = createStore(reducers, compose(applyMiddleware(thunk)));      //A store holds the whole state tree of your application. The only way to change the state inside it is to dispatch an action on it.
 
 ReactDOM.render(
