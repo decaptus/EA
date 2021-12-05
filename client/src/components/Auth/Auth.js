@@ -5,6 +5,7 @@ import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui
 import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 
 import Icon from './icon';
 import { signin, signup } from '../../actions/auth';
@@ -12,12 +13,12 @@ import { AUTH } from '../../constants/actionTypes';
 import useStyles from './styles';
 import Input from './Input';
 
-const initialState = { name: '', lastName: '', email: '', password: '', confirmPassword: '' };
+const initialState = { name: '', lastName: '', email: '', password: '', confirmPassword: '', picture: '' };
 
 const Auth = () => {
   const [form, setForm] = useState(initialState);
   const [isSignup, setIsSignup] = useState(false);
-  const [imageSelected, setImageSelected] = useState();
+  const [imageSelected, setImageSelected] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
@@ -35,6 +36,7 @@ const Auth = () => {
     e.preventDefault();
 
     if (isSignup) {
+      form.picture=imageSelected;
       dispatch(signup(form, history));
       console.log(form);
     } else {
@@ -59,15 +61,26 @@ const Auth = () => {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  
+
   const uploadImage = (files) => {
     const formData = new FormData()
     formData.append("file", files[0])
-    formData.append("upload_preset", " ")
+    formData.append("upload_preset","pfnjslol")   //this name is given to me by cloudinary
+
+    Axios.post("https://api.cloudinary.com/v1_1/sergiogras/image/upload",
+    formData
+    ).then((response) => {
+      console.log(response.data);
+      setImageSelected(response.data.secure_url);
+      
+     
+    });
     
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="sm">
       <Paper className={classes.paper} elevation={3}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -84,25 +97,25 @@ const Auth = () => {
             <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
             <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
             { isSignup && (
-              <>
-            <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" />
-            <Grid item >
-            <Typography className={classes.margin}> Select a picture  </Typography> 
-            </Grid>
             
+            <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" />
+            
+
+            )}
+
+            { isSignup && (
+            <>
+            <Grid item xs={1}>
+               <InsertPhotoIcon fontSize="large" color="primary"  />
+               
+            </Grid>
+            <Grid item xs={10}>
             <input type="file" className={classes.margin} onChange={(event) => {
               uploadImage(event.target.files)
             }}></input >
-
+            </Grid>
+              
             </>
-            
-
-
-
-            
-
-        
-
             )}
           </Grid>
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>

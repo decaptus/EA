@@ -1,17 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
+import { Avatar, Typography, Button} from '@material-ui/core';
+import { Link, useLocation, useHistory } from 'react-router-dom';
+import decode from 'jwt-decode';
+import {Image} from 'cloudinary-react';
+import { ClassNames } from '@emotion/react';
+import useStyles from './styles';
+import { useDispatch } from 'react-redux';
+import * as actionType from '../../constants/actionTypes';
+
+
+
+
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
+  const [user,setUser] = useState(JSON.parse(window.localStorage.getItem('profile')));
+  const location = useLocation();
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  
+  console.log(user);
 
   const showSidebar = () => setSidebar(!sidebar);
 
-  const user = null;
+  const logout = () => {
+    dispatch({ type: actionType.LOGOUT });
+
+    history.push('/');
+
+    setUser(null);
+  };
+
+
+  useEffect(() => {
+    const token = user?.token;
+
+    if (token) {
+      const decodedToken = decode(token);
+
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+
+    setUser(JSON.parse(window.localStorage.getItem('profile')));
+  }, [location]);
+
+  
+
+ 
 
 
 
@@ -25,32 +67,24 @@ const Navbar = () => {
 
           <div>
             {user ? (
-              <div>
-                <button>Si hay usuario</button>
-                
-
+              <div className={classes.profile}>
+              
+                <Avatar alt={user.result.name} src={user.result.picture}></Avatar>
+                <Typography  className={classes.userName} variant="h6">{user?.result.name} {user?.result.lastName}</Typography>
+                <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
 
               </div>
 
             ): (
               <Link to='/'>
-              <button >no hay usuario</button>
+              <button> {user?.result.name} </button>
               </Link>
-              
-              
-            )}
-          
-             
-
             
+            )}
 
           </div>
-
-          
+  
         </div>
-
-        
-
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>

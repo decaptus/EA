@@ -5,15 +5,18 @@ import { useDispatch } from 'react-redux';                                      
 
 
 import Bulletins from '../components/Bulletins/bulletins';
-import Form from '../components/Form/form';
+import Form from '../components/lessonForm/form';
 import { getPosts } from '../actions/posts';
 
 import classIm from '../images/class.png';
 import useStyles from '../styles';
 
+
+
 const Lessons = () => {
 
     const [currentId, setCurrentId] = useState(0);
+    const [showForm, setShowForm] = useState(false);
     const classes = useStyles();
     const dispatch = useDispatch();
 
@@ -34,7 +37,14 @@ const Lessons = () => {
               <Bulletins setCurrentId={setCurrentId} />
             </Grid >
             <Grid item sm={2}>
-            <Button variant="contained" color="secondary" type="submit" fullWidth>Post class</Button>
+              {showForm && (
+                <Form currentId={currentId} setCurrentId={setCurrentId} />
+              )}
+               {!showForm && (
+               <Button variant="contained" color="secondary" type="submit" fullWidth onClick={() => setShowForm(true)}>Post class</Button>
+
+              )}
+           
             </Grid>         
           </Grid>
          
