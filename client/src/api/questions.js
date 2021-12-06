@@ -7,3 +7,4 @@ export const createQuest = (newPost) => axios.post(url_quest, newPost);
 export const likeQuest = (id) => axios.patch(`${url_quest}/${id}/likePost`);
 export const updateQuest = (id, updatedPost) => axios.patch(`${url_quest}/${id}`, updatedPost);
 export const deleteQuest = (id) => axios.delete(`${url_quest}/${id}`);
+//commithj 
