@@ -12,8 +12,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <>
+    
       <BrowserRouter>
-        <Navbar />
         <Switch>
           <Route path='/' exact component={LogIn} />
           <Route path='/home' component={Home} />

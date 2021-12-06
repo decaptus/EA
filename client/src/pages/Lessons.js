@@ -10,6 +10,7 @@ import { getPosts } from '../actions/posts';
 
 import classIm from '../images/class.png';
 import useStyles from '../styles';
+import Navbar from '../components/Navbar/Navbar'
 
 
 
@@ -25,9 +26,12 @@ const Lessons = () => {
     }, [currentId, dispatch]);
 
     return(
+      <>
+      <Navbar/>
+
         <Container maxWidth="lg">
         <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography className={classes.heading} variant="h2" align="center">Private classes of students</Typography>
+          <Typography className={classes.heading} variant="h2" align="center">Classes for-by students</Typography>
           <img  className={classes.heading} src={classIm} alt="classIm" height="60"  />
         </AppBar>
         <Grow in>
@@ -41,7 +45,7 @@ const Lessons = () => {
                 <Form currentId={currentId} setCurrentId={setCurrentId} />
               )}
                {!showForm && (
-               <Button variant="contained" color="secondary" type="submit" fullWidth onClick={() => setShowForm(true)}>Post class</Button>
+               <Button variant="contained"  type="submit" fullWidth onClick={() => setShowForm(true)}>Publish your class</Button>
 
               )}
            
@@ -54,6 +58,7 @@ const Lessons = () => {
       
 
       </Container>
+      </>
      
     );
 
@@ -66,5 +71,6 @@ export default Lessons;
 <Grid item xs={12} sm={4}>
               <Form currentId={currentId} setCurrentId={setCurrentId} />
             </Grid>
+            delete
 
 */

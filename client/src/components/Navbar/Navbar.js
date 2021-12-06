@@ -13,6 +13,7 @@ import { ClassNames } from '@emotion/react';
 import useStyles from './styles';
 import { useDispatch } from 'react-redux';
 import * as actionType from '../../constants/actionTypes';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 
 
@@ -71,7 +72,10 @@ const Navbar = () => {
               
                 <Avatar alt={user.result.name} src={user.result.picture}></Avatar>
                 <Typography  className={classes.userName} variant="h6">{user?.result.name} {user?.result.lastName}</Typography>
-                <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
+                <Button  onClick={logout}>
+                <SettingsIcon fontSize="large" style={{color : 'white'}}/>
+
+                </Button>
 
               </div>
 

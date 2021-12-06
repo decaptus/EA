@@ -34,15 +34,25 @@ const Auth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
 
-    if (isSignup) {
+
+    if (isSignup ) {
+      if ( imageSelected!=""){
       form.picture=imageSelected;
       dispatch(signup(form, history));
-      console.log(form);
-    } else {
-      dispatch(signin(form, history));
+      
+      }else {
+        window.alert("Waiting for photo uploading");
     }
+
+    }else {
+      dispatch(signin(form, history));
+      
+  }
+
   };
+
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
@@ -118,9 +128,20 @@ const Auth = () => {
             </>
             )}
           </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
-            { isSignup ? 'Sign Up' : 'Sign In' }
+          { isSignup && imageSelected.length==0 && (
+          <Button type="submit" fullWidth variant="contained" color="info" className={classes.submit}>
+            Sign Up
           </Button>
+          )}
+          { isSignup && imageSelected.length!=0 && (
+          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+            Sign Up
+          </Button>
+          )}
+          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+            Sign in
+          </Button>
+
           <GoogleLogin
             clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
             render={(renderProps) => (
