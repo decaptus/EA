@@ -19,15 +19,13 @@ const Teacher = ({ post: lesson, setCurrentId }) => {
     <Card className={classes.card}>
 
       <CardMedia className={classes.media} image={lesson.picture || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} title={lesson.title} />
-      <div className={classes.overlay}>
-        <Typography variant="h6">{lesson.creatorName}</Typography> 
-      </div>
-         
-      <Typography className={classes.title} gutterBottom variant="h5" component="h2">{lesson.subject}</Typography>
+
+      <Typography className={classes.title} gutterBottom variant="h5" component="h2">{lesson.name}</Typography>
 
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">Departamento: {lesson.description}</Typography>
-        <Typography variant="body2" color="textSecondary" component="p">Asignatura: {lesson.description}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">Email: {lesson.email}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">Departamento: {lesson.departamento}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">Office: {lesson.office}</Typography>
       </CardContent>
 
     </Card>

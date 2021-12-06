@@ -3,6 +3,7 @@ import axios from 'axios';                               //we're going to use it
 const url_bulltin = 'http://localhost:4000/tutor';              //direccion del backend para bulletins
 const url_logIn = 'http://localhost:4000/users';
 const url_quest = 'http://localhost:4000/user';              //direccion del backend para Register y LogIn
+const url_teachers = 'http://localhost:4000/teachers';              //direccion del backend para Register y LogIn
 
 
 //posts
@@ -24,4 +25,5 @@ export const signIn = (formData) => axios.post(`${url_logIn}/signin`, formData);
 export const signUp = (formData) => axios.post(`${url_logIn}/signup`, formData);
 
 
- 
+ //teachers
+ export const fetchTeachers = () => axios.get(url_teachers);
