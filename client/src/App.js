@@ -7,6 +7,7 @@ import Lessons from './pages/Lessons';
 import Forum from './pages/Forum';
 import LogIn from './pages/LogIn';
 import Support from './pages/Support';
+import Teachers from './pages/Teachers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/lessons' component={Lessons} />
           <Route path='/forum' component={Forum} />
           <Route path='/support' component={Support} />
+          <Route path='/teachers' component={Teachers} />
         </Switch>
       </BrowserRouter>
     </>
