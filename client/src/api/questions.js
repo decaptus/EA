@@ -1,6 +1,6 @@
 import axios from 'axios';  
 
-const url_quest = 'http://localhost:4000/questions';        //direccion de las preguntas del foro
+const url_quest = 'http://147.83.7.158:4000/questions';        //direccion de las preguntas del foro
 
 export const fetchQuest = () => axios.get(url_quest);
 export const createQuest = (newPost) => axios.post(url_quest, newPost);

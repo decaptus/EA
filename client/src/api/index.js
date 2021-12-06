@@ -1,9 +1,9 @@
 import axios from 'axios';                               //we're going to use it to do API calls
 
-const url_bulltin = 'http://localhost:4000/tutor';              //direccion del backend para bulletins
-const url_logIn = 'http://localhost:4000/users';
-const url_quest = 'http://localhost:4000/user';              //direccion del backend para Register y LogIn
-const API = axios.create({ baseURL: 'http://localhost:4000' });
+const url_bulltin = 'http://147.83.7.158:4000/tutor';              //direccion del backend para bulletins
+const url_logIn = 'http://147.83.7.158:4000/users';
+const url_quest = 'http://147.83.7.158:4000/user';              //direccion del backend para Register y LogIn
+const API = axios.create({ baseURL: 'http://147.83.7.158:4000' });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem('profile')) {
