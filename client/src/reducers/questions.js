@@ -1,11 +1,9 @@
-import { FETCH_ALL,FETCH, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
+import { FETCH_ALL, FETCH,CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
 
 export default (questions = [], action) => {
     switch (action.type) {
       case FETCH_ALL:
         return action.payload;
-      case FETCH:
-          return questions.map((question) => (question._id === action.payload._id ? action.payload : question));
       case LIKE:
         return questions.map((question) => (question._id === action.payload._id ? action.payload : question));
       case CREATE:
@@ -18,5 +16,7 @@ export default (questions = [], action) => {
         return questions;
     }
   };
+  
+  
   
   

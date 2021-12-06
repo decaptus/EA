@@ -71,4 +71,3 @@ export const Register = (post) => async (dispatch) => {
   }
 };
 
-

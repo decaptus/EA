@@ -7,7 +7,7 @@ import useStyles from './styles';
 import { createQuest, updateQuest } from '../../actions/questions';
 
 const NewQuestion = ({ currentId, setCurrentId }) => {
-  const [questData, setQuestData] = useState({ creator: '', question: '', date: '',solved: false, answerCountNumber: 0});
+  const [questData, setQuestData] = useState({ creator: '', question: '', createdAt:new Date().now, solved:false});
   const question = useSelector((state) => (currentId ? state.questions.find((question) => question._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -18,7 +18,7 @@ const NewQuestion = ({ currentId, setCurrentId }) => {
 
   const clear = () => {
     setCurrentId(0);
-    setQuestData({ creator: '', question: '', date: '',solved: false, answerCountNumber: 0});
+    setQuestData({ creator: '', question: '', createdAt:new Date().now, solved:false});
   };
 
   const handleSubmit = async (e) => {
