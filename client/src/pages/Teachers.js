@@ -39,7 +39,6 @@ const Teachers_Page = () => {
                                 <Teachers setCurrentId={setCurrentId} />
                             </Grid >   
                     </Grid>
-                
                 </Container>
             </Grow>
      
