@@ -3,18 +3,15 @@ import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE,FETCH } from '../constants/acti
 export default (users = [], action) => {
     switch (action.type) {
       case FETCH_ALL:
-        return action.payload;/*
-        case FETCH:
-        return users.map((user) => (user._id === action.payload._id ? action.payload : user));*/
-        
-      case LIKE:
-        return users.map((user) => (user._id === action.payload._id ? action.payload : user));
+        return action.payload;
+      case FETCH:
+        return users.map((user) => (user._id === action._id ? action : user));
       case CREATE:
         return [...users, action.payload];
       case UPDATE:
-        return users.map((user) => (user._id === action.payload._id ? action.payload : user));
+        return users.map((user) => (user._id === action._id ? action : user));
       case DELETE:
-        return users.filter((user) => user._id !== action.payload);
+        return users.filter((user) => user._id !== action._id);
       default:
         return users;
     }

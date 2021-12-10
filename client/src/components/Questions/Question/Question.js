@@ -9,30 +9,42 @@ import { deleteQuest} from '../../../actions/questions';
 import {getUser } from '../../../actions/auth';
 import { Link} from 'react-router-dom';
 import { connect } from 'react-redux'
-
+import { render } from 'react-dom';
 
 
 function Question ({question} ){
     const classes = useStyles();
     const dispatch = useDispatch();
     const [userData, setUserData]=useState(null);
-   
+    let start = true;
 
  
     useEffect(() => {
+      
+
       if (!userData) {
-      dispatch(getUser(question.creator)).then(val=>setUserData(val));
+        dispatch(getUser(question.creator)).then(val=>{
+          if(start){
+        setUserData(val)}});
       }
-    },[userData]);
+
+      return()=>{
+        start=false
+      }
+      
+      
+    },[userData]); //si aixo cambia tornara a fer el useeffect, sino no.
 
 
- 
+
+
     if(!userData){
-    return <>Loading...</>
+      return (<> Loading...</>);
     }
+    else{
     return (
     <Link to= {'questions/'+question._id} style={{ textDecoration: 'none' }}>
-    <Card style={{ width: '100%' }} className={classes.card}>
+    <Card style={{ width: '100%' }} className={classes.card} >
       <CardHeader
         avatar={
           <Avatar  aria-label="avatar">
@@ -49,9 +61,9 @@ function Question ({question} ){
       </CardContent>
     </Card>
     </Link>
-
-   
     );
+      }
+ 
     
-  }
-    export default Question
+
+ } export default Question

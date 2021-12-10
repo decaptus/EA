@@ -3,7 +3,7 @@ import {Container, AppBar, Typography, Grow, Grid, CircularProgress,Box} from '@
 import {useSelector} from 'react-redux';
 import React from 'react';
 
-const Questions = ({ setCurrentId }) => {
+const Questions = () => {
     const questions = useSelector((state) => state.questions); 
     return(
         <Container > 

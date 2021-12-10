@@ -9,6 +9,11 @@ export default makeStyles({
     borderRadius: '15px',
     height: '100%',
     position: 'relative',
+    inner: {
+      overflow: 'hidden',
+      transition: 'max-height 0.2s ease',
+    },
+
   },
   question:{
     padding: '0 16px 8px 16px',
@@ -20,4 +25,6 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
+
+
 });
