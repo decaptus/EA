@@ -8,6 +8,7 @@ import useStyles from '../styles';
 import forumImage from '../images/forum.png';
 import { BrowserRouter, Switch,Link ,Route} from 'react-router-dom';
 import Preview from '../components/Questions/Preview/Preview.js'
+import Navbar from '../components/Navbar/Navbar'
 
 function Forum() {
   const [currentId, setCurrentId] = useState(0);
@@ -18,7 +19,9 @@ function Forum() {
     dispatch(getQuests()); //dispatch the action 'getQuests'
   },[currentId]);
 
-  return (
+  return(
+    <>
+    <Navbar/>
     <BrowserRouter>
     <Switch>
     <Route path='/forum'>
@@ -52,6 +55,7 @@ function Forum() {
     </Route>
     </Switch>
     </BrowserRouter>
+    </>
   );
 }
 

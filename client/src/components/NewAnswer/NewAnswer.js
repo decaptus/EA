@@ -8,12 +8,14 @@ import { updateQuest,getQuest, getQuests } from '../../actions/questions';
 import { useHistory } from "react-router-dom";
 
 function NewAnswer ({questData, setQuestData}) {
+  const [user,setUser] = useState(JSON.parse(window.localStorage.getItem('profile')));
   const classes = useStyles();
-  const [ansData, setAnsData] = useState({ creator: '', answer: '', createdAt:new Date()});
+  const [ansData, setAnsData] = useState({ creator: user.result._id, answer: '', createdAt:new Date()});
   const dispatch = useDispatch();
   const [idAns, setId]=useState(null);
   const answer = useSelector((state) => (idAns ? state.answers.find((ans) => ans._id === idAns) : null));
   const [quest, setQData]=useState({creator:questData.creator,question:questData.question,createdAt:questData.createdAt,answers:questData.answers});
+  
 
   useEffect(() => {
     if (answer) setAnsData(answer);
@@ -26,7 +28,7 @@ function NewAnswer ({questData, setQuestData}) {
   }, [answer,quest]);
 
   const clear = () => {
-    setAnsData({ creator: '', answer: '', createdAt:new Date()});
+    setAnsData({ creator: user.result._id, answer: '', createdAt:new Date()});
   };
 
   const handleSubmit = async (e) => {
@@ -44,7 +46,6 @@ function NewAnswer ({questData, setQuestData}) {
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <TextField name="creator" variant="outlined" label="Creator" fullWidth value={ansData.creator} onChange={(e) => setAnsData({ ...ansData, creator: e.target.value })} />
         <TextField name="answer" variant="outlined" label="Answer" fullWidth value={ansData.answer} onChange={(e) => setAnsData({ ...ansData, answer: e.target.value })} />
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
         <Button variant="contained" color="grey" size="small" onClick={clear} fullWidth>Clear</Button>
