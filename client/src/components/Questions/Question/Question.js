@@ -27,12 +27,9 @@ function Question ({question} ){
           if(start){
         setUserData(val)}});
       }
-
       return()=>{
         start=false
       }
-      
-      
     },[userData]); //si aixo cambia tornara a fer el useeffect, sino no.
 
 

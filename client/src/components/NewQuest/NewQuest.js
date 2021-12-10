@@ -21,7 +21,7 @@ const NewQuestion = ({ currentId, setCurrentId }) => {
     if(updated){
       dispatch(getQuests());
     }
-  }, [question]);
+  }, [question,updated]);
 
   const clear = () => {
     setCurrentId(0);
@@ -36,7 +36,7 @@ const NewQuestion = ({ currentId, setCurrentId }) => {
       clear();
     } else {
       dispatch(updateQuest(currentId, questData));
-      setUpdated(true);
+      setUpdated(true)
       clear();
     }
   };
