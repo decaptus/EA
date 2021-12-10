@@ -27,7 +27,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   
-  console.log(user);
+  //console.log(user);
 
   const showSidebar = () => setSidebar(!sidebar);
 

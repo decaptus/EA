@@ -27,5 +27,11 @@ export const SidebarData = [
     path: '/support',
     icon: <FcIcons.FcAssistant />,
     cName: 'nav-text'
+  },
+  {
+    title: 'Chat',
+    path: '/chat',
+    icon: <FcIcons.FcCollaboration />,
+    cName: 'nav-text'
   }
 ];
