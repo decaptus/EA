@@ -3,8 +3,8 @@ import Conversation from "../../components/Conversations/Conversation";
 import Message from "../../components/Message/Message";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
-
 import "./chat.css";
+import {io} from "socket.io-client";
 
 export default function Chat() {
     const url_conv = 'http://localhost:4000/conversation'; 
@@ -18,7 +18,29 @@ export default function Chat() {
     const [newMessage, setNewMessage] = useState("");
     const [arrivalMessage, setArrivalMessage] = useState(null);
     const scrollRef = useRef();
-    
+    const socket = useRef();
+
+    useEffect(() => {
+        socket.current = io("ws://localhost:8900");
+        socket.current.on("getMessage", data => {
+            setArrivalMessage({
+                sender:data.senderId,
+                text:data.text,
+            });
+        });
+    }, [])
+
+    useEffect(() => {
+        arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) && 
+        setMessages((prev)=>[...prev, arrivalMessage])
+    },[arrivalMessage, currentChat]);
+
+    useEffect(() => {
+        socket.current.emit("addUser", user.result._id);
+        socket.current.on("getUsers", users =>{
+            console.log(users);
+        })
+      }, [user]);
 
     useEffect(() => {
         const getConversations = async () => {
@@ -33,15 +55,18 @@ export default function Chat() {
     }, [user.result._id]);
 
     useEffect(()=>{
-        const getMessages = async() => {
-            try {
-                const res = await axios.get(url_mess + "/" + currentChat?._id);
-                setMessages(res.data);
-            } catch(err){
-                console.log(err);
-            }
-        };
-        getMessages();
+        if(currentChat)
+        {
+            const getMessages = async() => {
+                try {
+                    const res = await axios.get(url_mess + "/" + currentChat?._id);
+                    setMessages(res.data);
+                } catch(err){
+                    console.log(err);
+                }
+            };
+            getMessages();
+        }
 
         if(messagesUpdate){
             const getMessages = async() => {
@@ -66,6 +91,12 @@ export default function Chat() {
             sender: user.result._id,
             text:newMessage            
         }
+        const receiverId = currentChat.members.find(member => member !== user._id)
+        socket.current.emit("sendMessage", {
+            senderId: user.result._id,
+            receiverId,
+            text: newMessage
+        });
         try{
             const res = await axios.post(url_mess, message);
             setMessages([...messages,res.data]);
