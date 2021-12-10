@@ -4,21 +4,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
 
 import useStyles from './styles';
-import { createQuest, updateQuest } from '../../actions/questions';
+import { createQuest, getQuests, updateQuest } from '../../actions/questions';
 
 const NewQuestion = ({ currentId, setCurrentId }) => {
-  const [questData, setQuestData] = useState({ creator: '', question: ''});
+  const [questData, setQuestData] = useState({ creator: '', question: '', createdAt:new Date()});
   const question = useSelector((state) => (currentId ? state.questions.find((question) => question._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
+  const [updated, setUpdated] = useState(false);
+
 
   useEffect(() => {
-    if (question) setQuestData(question);
-  }, [question]);
+    if (question) {
+      setQuestData(question);
+    }
+    if(updated){
+      dispatch(getQuests());
+    }
+  }, [question,updated]);
 
   const clear = () => {
     setCurrentId(0);
-    setQuestData({ creator: '', question: ''});
+    setQuestData({ creator: '', question: '', createdAt:new Date()});
   };
 
   const handleSubmit = async (e) => {
@@ -29,6 +36,7 @@ const NewQuestion = ({ currentId, setCurrentId }) => {
       clear();
     } else {
       dispatch(updateQuest(currentId, questData));
+      setUpdated(true)
       clear();
     }
   };
