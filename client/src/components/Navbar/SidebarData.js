@@ -10,6 +10,12 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
+    title: 'Log In',
+    path: '/login',
+    icon: <FcIcons.FcManager />,
+    cName: 'nav-text'
+  },
+  {
     title: 'Lessons',
     path: '/lessons',
     icon: <FcIcons.FcReading />,

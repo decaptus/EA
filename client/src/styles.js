@@ -9,6 +9,15 @@ export default makeStyles(() => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  appBarHome: {
+    background: 'black',
+    borderRadius: 15,
+    margin: '30px 0',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   appBarCards: {
     borderRadius: 15,
     margin: '30px 0',
@@ -23,4 +32,11 @@ export default makeStyles(() => ({
   image: {
     marginLeft: '15px',
   },
+  banner:{
+    height: '100%', 
+    background: "https://eetac.upc.edu/es/shared/eetac.png",
+  },
+
+
+  
 }));

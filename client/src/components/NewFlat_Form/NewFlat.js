@@ -54,7 +54,8 @@ const NewFlat = ({ currentId, setCurrentId }) => {
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing "${flat.name}"` : 'Write the name of the flat'}</Typography>
+        {/* <Typography variant="h6">{currentId ? `Editing "${flat.name}"` : 'Write the info of the flat'}</Typography> */}
+        <TextField name="name" variant="outlined" label="Name" fullWidth value={flatData.name} onChange={(e) => setFlatData({ ...flatData, name: e.target.value })} />
         <TextField name="creator" variant="outlined" label="Creator" fullWidth value={flatData.creator} onChange={(e) => setFlatData({ ...flatData, creator: e.target.value })} />
         <TextField name="address" variant="outlined" label="Address" fullWidth value={flatData.address} onChange={(e) => setFlatData({ ...flatData, address: e.target.value })} />
         <TextField name="description" variant="outlined" label="Description" fullWidth value={flatData.description} onChange={(e) => setFlatData({ ...flatData, description: e.target.value })} />

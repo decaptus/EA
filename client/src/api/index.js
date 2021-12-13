@@ -14,6 +14,7 @@ export const deletePost = (id) => axios.delete(`${url_bulltin}/${id}`);
 
 //flats
 export const fetchFlats = () => axios.get(url_flats);
+export const getFlat = (id) => axios.get(`${url_flats}/${id}`);
 export const createFlat = (newFlat) => axios.post(url_flats, newFlat);
 export const updateFlat = (id, updatedFlat) => axios.patch(`${url_flats}/${id}`, updatedFlat);
 export const deleteFlat = (id) => axios.delete(`${url_flats}/${id}`);
