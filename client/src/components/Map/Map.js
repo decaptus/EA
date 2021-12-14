@@ -1,34 +1,64 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import GoogleMapReact from 'google-map-react';
-/*import { Paper, Typography, useMediaQuery } from '@material-ui/core';*/
-/*import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import Rating from '@material-ui/lab';*/
-
+import { Container, Box, CircularProgress, Grid } from '@material-ui/core';
+import Marker from './Markers/marker'
+import { useDispatch,useSelector } from 'react-redux';
 import useStyles from './styles';
+import {getMarkers} from '../../actions/markers';
 
-const Map = () => {
+const Map = ({ setCurrentId }) => {
+    
+    const postmarkers = useSelector((state) => state.postmarkers);
+    const dispatch = useDispatch();
     const classes = useStyles();
-    /*const isMobile = useMediaQuery('(min-width:600px');*/
-    // const coordinates = {lat: 41.288046125642715, lng: 1.998793944622163};
-    const coordinates = {lat: 41.27518727573582, lng: 1.9879425228270187};
-    return(
-        <div className= {classes.mapContainer}>
+    const coordinates = { lat: 41.27518727573582, lng: 1.9879425228270187 };
+ 
+    useEffect(()=>{
+        dispatch(getMarkers()); 
+      },[dispatch]);
+
+    if(!postmarkers){
+        return (
+        <h1>loading...</h1>
+        )
+    }
+    return (
+        // !postmarkers.length ? <CircularProgress /> : (                                                  //loading spinner
+        //     <Grid container alignItems="stretch" spacing={3} >
+        //         {postmarkers.map((marker) => (                                                                
+        //             <Grid key={marker._id} item xs={12}>
+        //                 <Marker marker={marker} setCurrentId={setCurrentId} />
+
+        //             </Grid>
+
+        //         ))}
+
+        //     </Grid>
+        //  )
+
+        <div className={classes.mapContainer}>
             <GoogleMapReact
-            bootstrapURLKeys = {{key:'AIzaSyAt-akegvRfN5zpOklVMt-fYS6L6LnZo4Y'}}
-            defaultCenter = {coordinates}
-            center = {coordinates}
-            defaultZoom = {16}
-            margin = {[50,50,50,50]}
-            options = {''}
-            // onChange = {(e) => {
-            //     setCoordinates({lat:e.center.lat, lng:e.center.lng});
-            //     setBounds({ne:e.marginBounds.ne, sw:e.marginBounds.sw});
-            // }}
-            //onChildClick = {''}
+                bootstrapURLKeys={{ key: 'AIzaSyAt-akegvRfN5zpOklVMt-fYS6L6LnZo4Y' }}
+                defaultCenter={coordinates}
+                center={coordinates}
+                defaultZoom={16}
+                margin={[50, 50, 50, 50]}
+
             >
+                
+        
+                {/* <Container >
+                    <div style={{ width: '120%' }}>
+                        <Box sx={{ display: 'grid', gridGap: '30px' }}>
+                            <h1>marker</h1>  
+                        </Box>
+                    </div>
+                </Container> */}
+
 
             </GoogleMapReact>
         </div>
+
     );
 }
 

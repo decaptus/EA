@@ -4,6 +4,7 @@ const url_bulltin = 'http://localhost:4000/tutor';              //direccion del 
 const url_logIn = 'http://localhost:4000/user';
 const url_quest = 'http://localhost:4000/user';              //direccion del backend para Register y LogIn
 const url_flats = 'http://localhost:4000/flats';
+const url_markers = 'http://localhost:4000/markers';
 
 //posts
 export const fetchPosts = () => axios.get(url_bulltin);
@@ -11,6 +12,9 @@ export const createPost = (newPost) => axios.post(url_bulltin, newPost);
 export const likePost = (id) => axios.patch(`${url_bulltin}/${id}/likePost`);
 export const updatePost = (id, updatedPost) => axios.patch(`${url_bulltin}/${id}`, updatedPost);
 export const deletePost = (id) => axios.delete(`${url_bulltin}/${id}`);
+
+//markers 
+export const fetchMarkers = () => axios.get(url_markers);
 
 //flats
 export const fetchFlats = () => axios.get(url_flats);

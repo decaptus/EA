@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../Card/Card'
 import Map from '../Map/Map'
-import './Home.css'
+import { fetchMarkers } from '../../api';
+
+import { Link } from 'react-router-dom';
 
 import imageEETAC from '../../images/eetac.png'
 import wherearewe from '../../images/wherearewe.png'
-import support from '../../images/support.png'
-import teachers from '../../images/teachers.png'
-import chat from '../../images/chat.png'
-import forum from '../../images/quest.png'
-import apartment from '../../images/home.png'
 
 import { useDispatch } from "react-redux";
 import useStyles from '../../styles';
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { Button, Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import Marker from '../Map/Markers/marker';
 
 function Home() {
     const [currentId, setCurrentId] = useState(0);
@@ -24,13 +22,15 @@ function Home() {
 
         //  Banner
         <Container maxwidth="lg">
-            <AppBar className={classes.appBarHome} position="static" color="inherit">
+            <AppBar className={classes.appBar} position="static" color="inherit">
                 <img className={classes.banner} src={imageEETAC} alt="EETAC School" />
-                <Typography className={classes.heading} variant="h2" align="center">Welcome to our University! </Typography>
-                <Typography className={classes.heading} variant="h3" align="center">Explore our website </Typography>
+
                 <div><h1></h1>
                 </div>
             </AppBar>
+
+            <Typography className={classes.heading} variant="h2" align="center">Welcome to our University! </Typography>
+            <Typography className={classes.heading} variant="h3" align="center">Explore our website </Typography>
             <Grow in>
                 <Container>
                     <Grid container justify="space-between" alignItems="stretch" spacing={3}>
@@ -39,53 +39,70 @@ function Home() {
                 </Container>
             </Grow>
 
+
             {/* Buttons * */}
             <div className="home__section">
                 <Grid container align="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     <Grid item xs={2} sm={4} md={4}>
-                        <Card
-                            src=""
-                            text="Chat"
-                            /></Grid>
+                        <Link to="/flats" style={{ textDecoration: 'none' }}>
+                            <Card
+                                src=""
+                                text="Chat"
+                            />
+                        </Link></Grid>
+
                     <Grid item xs={2} sm={4} md={4}>
-                        <Card
-                            src=""
-                            text="Forum"
-                            /></Grid>
+                        <Link to="/forum" style={{ textDecoration: 'none' }}>
+                            <Card
+                                src=""
+                                text="Forum"
+                            />
+                        </Link></Grid>
                     <Grid item xs={2} sm={4} md={4}>
-                        <Card
-                            src=""
-                            text="Apartments" 
-                            /></Grid>
+                        <Link to="/flats" style={{ textDecoration: 'none' }}>
+                            <Card
+                                src=""
+                                text="Apartments"
+                            />
+                        </Link></Grid>
                 </Grid>
             </div>
 
             <div className="home__section">
                 <Grid container align="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     <Grid item xs={2} sm={4} md={4}>
-                        <Card
-                            src=""
-                            text="Map" 
-                            /></Grid>
+                        <Link to="/lessons" style={{ textDecoration: 'none' }}>
+                            <Card
+                                src=""
+                                text="Lessons"
+                            />
+                        </Link></Grid>
                     <Grid item xs={2} sm={4} md={4}>
-                        <Card
-                            src=""
-                            text="Teachers" 
-                            /></Grid>
+                        <Link to="/lessons" style={{ textDecoration: 'none' }}>
+                            <Card
+                                src=""
+                                text="Teachers"
+                            />
+                        </Link></Grid>
                     <Grid item xs={2} sm={4} md={4}>
-                        <Card
-                            src=""
-                            text="Support" 
-                            /></Grid>
+                        <Link to="/support" style={{ textDecoration: 'none' }}>
+                            <Card
+                                src=""
+                                text="Support"
+                            />
+                        </Link></Grid>
                 </Grid>
 
             </div>
 
+            {/* <Button onClick={() => { fetchMarkers()}}> CLICK ME </Button>
+            <Button > {<Marker></Marker>} </Button> */}
+
             {/* Location */}
-            <AppBar className={classes.appBarHome} position="static" color="inherit">
+            <AppBar className={classes.appBar} position="static" color="inherit">
                 <h1></h1>
                 <img className={classes.heading} src={wherearewe} alt="forumImage" height="80" />
-                <Typography variant="h6"  > We are here!</Typography>
+                <Typography variant="h6"> We are here!</Typography>
                 <div><h1></h1>
                 </div>
             </AppBar>
@@ -101,7 +118,6 @@ function Home() {
                 </Container>
             </Grow>
         </Container>
-
 
 
     )
