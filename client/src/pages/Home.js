@@ -1,9 +1,10 @@
 import React from 'react';
 import Navbar from '../components/Navbar/Navbar'
 
-import imageResi from '../images/resi.jpeg';
+import HomeMain from '../components/HomeMain/HomeMain';
 function Home() {
   return (
+<<<<<<< HEAD
     <>
     <Navbar/>
     <div>
@@ -12,6 +13,10 @@ function Home() {
     </div>
 
     </>
+=======
+
+    <HomeMain></HomeMain>
+>>>>>>> feature_flats
     
     
    
