@@ -4,12 +4,12 @@ import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';                                        //allows us tu dispatch an action
 
 import FlatsComp from '../components/Flats/flats';
-import Form from '../components/Form/form';
 import { getFlats } from '../actions/flats';
 
 import homeIm from '../images/home.png';
 import useStyles from '../styles';
 import NewFlat from "../components/NewFlat_Form/NewFlat";
+import Navbar from '../components/Navbar/Navbar';
 
 const Flats = () => {
 
@@ -24,6 +24,8 @@ const Flats = () => {
     }, [currentId, dispatch]);
 
     return(
+      <>
+    <Navbar/>
         <Container maxWidth="lg">
         <AppBar className={classes.appBar} position="static" color="inherit">
           <Typography className={classes.heading} variant="h2" align="center">Flats, houses and rooms</Typography>
@@ -72,7 +74,8 @@ const Flats = () => {
       </Grow>     
 
       </Container>
-     
+      
+    </>
     );
 
 }

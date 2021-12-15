@@ -6,7 +6,6 @@ import questions from './questions';
 
 import auth from './auth';
 import answers from './answers'
-import users from './users';
 
 import postflats from './postflats';
 import postmarkers from './markers';
