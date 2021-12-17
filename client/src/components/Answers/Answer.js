@@ -90,9 +90,8 @@ return (
             <Card style={{ width: '100%'}} className={classes.card} style={{backgroundColor: "#f3f3f3"}}>
                 <CardHeader
                 avatar={
-                    <Avatar  aria-label="avatar">             
-                    {userData.name.charAt(0)}
-                    </Avatar>
+                    <Avatar  aria-label="avatar" src={userData.picture}/>             
+
                 }
                 action={
                     <Button style={{color:'grey'}} size="small" onClick={edit}>
