@@ -20,4 +20,7 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  hover:{
+    opacity:0.8
+  }
 });

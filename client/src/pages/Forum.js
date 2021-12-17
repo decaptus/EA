@@ -1,22 +1,30 @@
 import React, {useEffect,useState} from 'react';
-import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
+import {Container, AppBar, Typography, Grow, Grid, Box} from '@material-ui/core';
 import Questions from '../components/Questions/Questions';
 import NewQuestion from '../components/NewQuest/NewQuest';
-import { useDispatch } from "react-redux";
-import {getPosts, getQuest} from '../actions/posts.js';
+import { useDispatch,useSelector   } from "react-redux";
+import {getQuests} from '../actions/questions';
 import useStyles from '../styles';
 import forumImage from '../images/forum.png';
-
+import { BrowserRouter, Switch,Link ,Route} from 'react-router-dom';
+import Preview from '../components/Questions/Preview/Preview.js'
+import Navbar from '../components/Navbar/Navbar'
 
 function Forum() {
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
   const classes = useStyles();
+  
   useEffect(()=>{
-    dispatch(getQuest()); //dispatch the action 'getPosts'
-  },[dispatch]);
+    dispatch(getQuests()); //dispatch the action 'getQuests'
+  },[currentId]);
 
-  return (
+  return(
+    <>
+    <Navbar/>
+    <BrowserRouter>
+    <Switch>
+    <Route path='/forum'>
     <Container maxwidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
           <Typography className={classes.heading} variant="h2" align="center">Forum </Typography>
@@ -24,7 +32,7 @@ function Forum() {
         </AppBar>
       <Grow in>
         <Container>
-        <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+        <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
           <Grid item xs={12} sm={7}>
             <Questions setCurrentId={setCurrentId}/>
           </Grid>
@@ -35,6 +43,19 @@ function Forum() {
       </Container>
       </Grow>
     </Container>
+    </Route>
+    <Route path={'/questions/:id'}>
+
+      <Container >
+        <div style={{ marginTop: `30px`}}> 
+        <Preview key={currentId} setCurrentId={setCurrentId}/>
+        </div>
+      </Container>
+  
+    </Route>
+    </Switch>
+    </BrowserRouter>
+    </>
   );
 }
 
