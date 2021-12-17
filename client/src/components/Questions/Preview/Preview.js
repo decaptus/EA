@@ -84,10 +84,7 @@ function Preview({ setCurrentId}) {
         <Card style={{ width: '100%' }} className={classes.card}>
             <CardHeader
               avatar={
-                <Avatar  aria-label="avatar">
-             
-                  {userData.name.charAt(0)}
-                </Avatar>
+                <Avatar  aria-label="avatar" src={userData.picture}/>
               }
               action={
                 <Button style={{color:'grey'}} size="small" onClick={edit}>
