@@ -1,25 +1,27 @@
-import React, {useEffect,useState} from 'react';
-import GoogleMapReact from 'google-map-react';
-import { Container, Box, CircularProgress, Grid } from '@material-ui/core';
-import Marker from './Markers/marker'
-import { useDispatch,useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import GoogleMapReact from 'google-map-react'; 
+import Marker from 'google-map-react';
+import { Container, Button, CircularProgress, Grid } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
 import useStyles from './styles';
-import {getMarkers} from '../../actions/markers';
+import { getMarkers } from '../../actions/markers';
 
 const Map = ({ setCurrentId }) => {
-    
+
     const postmarkers = useSelector((state) => state.postmarkers);
     const dispatch = useDispatch();
     const classes = useStyles();
     const coordinates = { lat: 41.27518727573582, lng: 1.9879425228270187 };
- 
-    useEffect(()=>{
-        dispatch(getMarkers()); 
-      },[dispatch]);
 
-    if(!postmarkers){
+    useEffect(() => {
+        dispatch(getMarkers());
+    }, [dispatch]);
+
+
+
+    if (!postmarkers) {
         return (
-        <h1>loading...</h1>
+            <CircularProgress />
         )
     }
     return (
@@ -43,17 +45,38 @@ const Map = ({ setCurrentId }) => {
                 center={coordinates}
                 defaultZoom={16}
                 margin={[50, 50, 50, 50]}
-
             >
+
+                <Marker
+                    title={'The marker`s title.'}
+                    name={'The markers name.'}
+                    position={{lat: 41.27518727573582, lng: 1.9879425228270187}}
+                />
+                {/* {postmarkers.map((marker) => (
+            <Marker 
+                title={'The marker`s title will appear as a tooltip.'}
+                name={marker.name}
+                position={{
+                    lat: marker.lat,
+                    lng: marker.lng
+                }}  
                 
-        
-                {/* <Container >
-                    <div style={{ width: '120%' }}>
-                        <Box sx={{ display: 'grid', gridGap: '30px' }}>
-                            <h1>marker</h1>  
-                        </Box>
-                    </div>
-                </Container> */}
+            />
+            ))} */}
+
+                {/* 
+                {postmarkers.map((marker,i) => {
+                    return (
+                        <Marker
+                            key={i}
+                            name={"Current location"}
+                            position={{
+                                lat: marker.lat,
+                                lng: marker.lng
+                            }}
+                      /> 
+                      ); 
+                    })} */}
 
 
             </GoogleMapReact>
