@@ -44,9 +44,7 @@ function Question ({question} ){
     <Card style={{ width: '100%' }} className={classes.card} >
       <CardHeader
         avatar={
-          <Avatar  aria-label="avatar">
-            {userData.name.charAt(0)}
-          </Avatar>
+          <Avatar  aria-label="avatar" src={userData.picture}/>
         }
         title={userData.name+' '+userData.lastName}
         subheader={

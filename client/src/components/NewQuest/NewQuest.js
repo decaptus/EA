@@ -48,7 +48,7 @@ const NewQuestion = ({ currentId, setCurrentId }) => {
         <Typography variant="h6">{currentId ? `Editing "${question.title}"` : 'Ask something'}</Typography>
         <TextField name="question" variant="outlined" label="Question" fullWidth value={questData.question} onChange={(e) => setQuestData({ ...questData, question: e.target.value })} />
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+        <Button variant="contained" color="grey" size="small" onClick={clear} fullWidth>Clear</Button>
       </form>
     </Paper>
   );
