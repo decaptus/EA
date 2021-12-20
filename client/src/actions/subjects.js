@@ -7,6 +7,7 @@ export const getSubject = (id) => async (dispatch) => {
       const { data } = await api.fetchSubjects(id);
   
       dispatch({ type: LIKE, payload: data });
+      return data;
     } catch (error) {
       console.log(error.message);
     }

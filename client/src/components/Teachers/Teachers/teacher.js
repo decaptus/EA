@@ -24,11 +24,15 @@ const Teacher = ({ post: teacher, setCurrentId }) => {
     const classes = useStyles();
     const dispatch = useDispatch();
 
+    const [subject, setSubject] = useState(null);
+
     useEffect(() => {
-      dispatch(getSubject("618d117bb9ad3c771fb619aa"));                           //aqui llamamos a la acción, y inmediatamente va al reducer y hace match, con lo q modifica el estado del 'store'
+      dispatch(getSubject("618d117bb9ad3c771fb619aa")).then(val=>{
+        setSubject(val)
+      });                           //aqui llamamos a la acción, y inmediatamente va al reducer y hace match, con lo q modifica el estado del 'store'
     }, [currentId, dispatch]);
 
-  
+    console.log(subject);
 
   return (
     <Card className={classes.card}>
