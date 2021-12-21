@@ -1,0 +1,1 @@
+Examen mínimo 2 
