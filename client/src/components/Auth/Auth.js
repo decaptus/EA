@@ -7,6 +7,7 @@ import { GoogleLogin } from 'react-google-login';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 
+
 import Icon from './icon';
 import { signin, signup } from '../../actions/auth';
 import { AUTH } from '../../constants/actionTypes';
@@ -57,19 +58,40 @@ const Auth = () => {
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
+    console.log(res);
+
+    form.name = result.givenName;
+    form.lastName = result.familyName;
+    form.email = result.email;
+    form.password = "google";
+    
+    form.picture = result.imageUrl;
+    
+    dispatch(signup(form, history));
+
+    console.log(form);
+
+
 
     try {
       dispatch({ type: AUTH, data: { result, token } });
 
-      history.push('/');
+      history.push('/home');
     } catch (error) {
       console.log(error);
     }
   };
 
-  const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
+  const googleError = (error) => {
+    console.log(error)
+    
+  
+  alert('Google Sign In was unsuccessful. Try again later');
+
+  }
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  
 
   
 
@@ -143,9 +165,17 @@ const Auth = () => {
           </Button>
 
           <GoogleLogin
-            clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
+            clientId="252798282285-9ffl8q069ifkh4qodca6f237ideifln2.apps.googleusercontent.com"
+            
             render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
+              <Button 
+                className={classes.googleButton} 
+                color="primary" fullWidth 
+                onClick={renderProps.onClick} 
+                disabled={renderProps.disabled} 
+                startIcon={<Icon />} 
+                variant="contained"
+                >
                 Google Sign In
               </Button>
             )}
