@@ -6,18 +6,19 @@ import useStyles from './styles';
 import './price.css';
 import FlatInfo from '../../FlatInfo/FlatInfo';
 import { Grid, Box } from '@material-ui/core';
-import { deleteFlat, getFlat } from '../../../api';
+import { deleteFlat } from '../../../api'; 
+import { Link } from 'react-router-dom'; 
 
 
 const Flat = ({ flat, setCurrentId }) => {
   const dispatch = useDispatch();
   const flats = useStyles();
-  const [pulsadoInfo, setPulsadoInfo] = useState(false);
-
+  const [pulsadoInfo, setPulsadoInfo] = useState(false); 
+ 
   return (
     <Card className={flats.card}>
       {pulsadoInfo ? (
-        <FlatInfo/>
+        <FlatInfo />
       ) : (
         <Card className={flats.card}>
           <CardMedia className={flats.media} image={flat.picture || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} title={flat.name} />
@@ -26,12 +27,18 @@ const Flat = ({ flat, setCurrentId }) => {
           </div>
 
           <Grid container spacing={2}>
-            
+
             <Grid item xs={3}>
-              <Button size="small" variant="contained" color="secondary" onClick={() => { deleteFlat(flat._id)}}>
+              <Button size="small" variant="contained" color="secondary" onClick={() => { 
+                deleteFlat(flat._id)}}>
                 <DeleteIcon fontSize="small" />
                 Delete
               </Button>
+              <Link to="/chat" style={{ textDecoration: 'none' }}>
+                <Button size="small" variant="contained" color="secondary" >
+                  Go to chat with {flat.creator}
+                </Button>
+              </Link>
             </Grid>
           </Grid>
 

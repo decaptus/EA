@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Box, CircularProgress, Grid, requirePropFactory } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import useStyles from './styles'; 
-import { getMarkers } from '../../actions/markers';
+import { getFlats } from '../../actions/flats';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';   
 
@@ -15,43 +15,45 @@ L.Icon.Default.mergeOptions({
     iconUrl: require('leaflet/dist/images/marker-icon.png').default,
     shadowUrl: require('leaflet/dist/images/marker-shadow.png').default
 });
-const MapView = ({ setCurrentId }) => {
+const MapFlats = ({ setCurrentId }) => {
 
-    const postmarkers = useSelector((state) => state.postmarkers);
+    const postflats = useSelector((state) => state.postflats);
     const dispatch = useDispatch();
     const classes = useStyles();
-    const coordinates = { lat: 41.27518727573582, lng: 1.9879425228270187 };
+    const coordinates = { lat: 41.321145081334556, lng: 2.0380449306553925};
 
     useEffect(() => {
-        dispatch(getMarkers());
+        dispatch(getFlats());
     }, [dispatch]);
 
-    if (!postmarkers) {
+    if (!postflats) {
         return (
             <h1>loading...</h1>
         )
     }
     return (
-        !postmarkers.length ? <CircularProgress /> : (    
+        
+        !postflats.length ? <CircularProgress /> : (    
                                                         
-            <MapContainer center={coordinates} zoom={15} scrollWheelZoom={false}>
+            <MapContainer center={coordinates} zoom={12} display= "flex" scrollWheelZoom={false}>
 
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 
-                {postmarkers.map((marker) => (                                                                
+                {postflats.map((flat) => (                                                                
                     <Marker    
-                    key={marker.name}
+                    key={flat.name}
                     position={[
-                      marker.lat,
-                      marker.lng
+                        flat.lat,
+                      flat.lng
                     ]}>
 
                     <Popup> 
-                        <div>{marker.name}</div>
-                        <div>{marker.address}</div>
+                        <div>{flat.name}</div>
+                        <div>{flat.address}</div>
+                        <div>{flat.price}  {" €"}</div>
                     </Popup>
 
                 </Marker> 
@@ -64,4 +66,4 @@ const MapView = ({ setCurrentId }) => {
     );
 }
 
-export default MapView;
+export default MapFlats;

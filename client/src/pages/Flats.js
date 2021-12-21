@@ -10,6 +10,7 @@ import homeIm from '../images/home.png';
 import useStyles from '../styles';
 import NewFlat from "../components/NewFlat_Form/NewFlat";
 import Navbar from '../components/Navbar/Navbar';
+import MapFlats from "../components/Flats/MapFlats";
 
 const Flats = () => {
 
@@ -49,8 +50,15 @@ const Flats = () => {
               </Grid>
               </Container>
             ) : (
+
+              
               <Container>
               <Grid container justify="space-between" alignItems="stretch" spacing={2}>
+
+              <Container>
+                <MapFlats></MapFlats>
+                <span></span>
+              </Container>
 
               <Grid>
               <Grid item sm={2}>

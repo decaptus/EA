@@ -3,7 +3,7 @@ import { Typography,  Card, CardContent } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
  
 
-const Marker = ({marker: marker, setCurrentId }) => {
+const Markermap = ({marker: marker, setCurrentId }) => {
     const dispatch = useDispatch(); 
 
     return(
@@ -20,4 +20,4 @@ const Marker = ({marker: marker, setCurrentId }) => {
    
     );
 }   
-export default Marker;
+export default Markermap;

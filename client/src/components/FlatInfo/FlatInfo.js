@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
+import { Card } from '@material-ui/core/';
 import { useDispatch } from 'react-redux';
-import { getFlat } from '../../api';
-import dataflat from '../../components/Flats/Flat/flat'
-
-import { likeFlat, deleteFlat } from '../../actions/flats';
+import { getFlat } from '../../api'; 
 import useStyles from './styles';
 import './price.css'
 

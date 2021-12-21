@@ -13,4 +13,9 @@ export default makeStyles(() => ({
   pointer: {
     cursor: 'pointer',
   },
+  leaflet_container: {
+    width: "70%",
+    height: "100vh",
+    zIndex: 1
+  }
 }));
