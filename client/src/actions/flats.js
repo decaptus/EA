@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, GET_ONE } from '../constants/actionTypes';
+import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, FETCH } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -54,7 +54,7 @@ export const getFlat = (id) => async (dispatch) => {
   try {
     await api.getFlat(id);
 
-    dispatch({ type: GET_ONE, payload: id });
+    dispatch({ type: FETCH, payload: id });
   } catch (error) {
     console.log(error.message);
   }

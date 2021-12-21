@@ -12,9 +12,10 @@ const FlatInfo = ({flat}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getFlat(flat._id));                           //aqui llamamos a la acción, y inmediatamente va al reducer y hace match, con lo q modifica el estado del 'store'
+    dispatch(getFlat(flat._id));                           
   }, [currentId, dispatch]);
 
+  console.log(flat)
   return (
 
     <Card className={classes.card}>

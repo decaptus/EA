@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Box, CircularProgress, Grid, requirePropFactory } from '@material-ui/core';
+import { Container, Box, CircularProgress, Grid, requirePropFactory, Button } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import useStyles from './styles'; 
-import { getFlats } from '../../actions/flats';
+import { getFlats, getFlat } from '../../actions/flats';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';   
 
 import L from 'leaflet';
+import Flat from './Flat/flat';
+import FlatInfo from '../FlatInfo/FlatInfo';
 
 delete L.Icon.Default.prototype._getIconUrl;
  
@@ -15,6 +17,8 @@ L.Icon.Default.mergeOptions({
     iconUrl: require('leaflet/dist/images/marker-icon.png').default,
     shadowUrl: require('leaflet/dist/images/marker-shadow.png').default
 });
+
+
 const MapFlats = ({ setCurrentId }) => {
 
     const postflats = useSelector((state) => state.postflats);
@@ -31,6 +35,7 @@ const MapFlats = ({ setCurrentId }) => {
             <h1>loading...</h1>
         )
     }
+ 
     return (
         
         !postflats.length ? <CircularProgress /> : (    
@@ -51,19 +56,26 @@ const MapFlats = ({ setCurrentId }) => {
                     ]}>
 
                     <Popup> 
-                        <div>{flat.name}</div>
+                        <div>{flat.creator}'s {flat.name}</div>
                         <div>{flat.address}</div>
                         <div>{flat.price}  {" €"}</div>
+                         
+                        <Button key={flat._id} onClick={getFlat(flat._id)}>More info</Button>
                     </Popup>
 
                 </Marker> 
-                    
+                
                 ))}
+
+
             </MapContainer >
+
               
          )
  
-    );
+         
+        );
+
 }
 
 export default MapFlats;

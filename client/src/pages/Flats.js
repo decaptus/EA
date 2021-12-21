@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";                                           //useeffect going to come the component will update
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { Container, AppBar, Typography, Grow, Card,Grid } from '@material-ui/core';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';                                        //allows us tu dispatch an action
 
@@ -58,6 +58,7 @@ const Flats = () => {
               <Container>
                 <MapFlats></MapFlats>
                 <span></span>
+                
               </Container>
 
               <Grid>
