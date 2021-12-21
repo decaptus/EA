@@ -74,8 +74,6 @@ function Preview({ setCurrentId}) {
         e.preventDefault();
         setUpdate(true)
     }
-
-
     if(!userData||!questData){
         return <>Loading...</>
         }
@@ -121,9 +119,6 @@ function Preview({ setCurrentId}) {
                 <Answer id={ans} question={questData} setQuestData={setQuestData} key={ans}/>))}
             </Box>
         </Card>
-
-
-
         </Container>
 
    

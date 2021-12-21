@@ -48,7 +48,6 @@ function NewAnswer ({questData, setQuestData}) {
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <TextField name="answer" variant="outlined" label="Answer" fullWidth value={ansData.answer} onChange={(e) => setAnsData({ ...ansData, answer: e.target.value })} />
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-        <Button variant="contained" color="grey" size="small" onClick={clear} fullWidth>Clear</Button>
       </form>
     </Paper>
   );

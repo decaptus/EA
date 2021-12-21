@@ -9,6 +9,7 @@ import forumImage from '../images/forum.png';
 import { BrowserRouter, Switch,Link ,Route} from 'react-router-dom';
 import Preview from '../components/Questions/Preview/Preview.js'
 import Navbar from '../components/Navbar/Navbar'
+import {getSubjects} from '../actions/subjects'
 
 function Forum() {
   const [currentId, setCurrentId] = useState(0);
@@ -17,6 +18,7 @@ function Forum() {
   
   useEffect(()=>{
     dispatch(getQuests()); //dispatch the action 'getQuests'
+    dispatch(getSubjects());
   },[currentId]);
 
   return(

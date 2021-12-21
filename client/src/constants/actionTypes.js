@@ -10,3 +10,5 @@ export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
 
 export const FETCH_CONV = 'FETCH_CONV';
+
+export const FETCH_SUBJ ='FETCH_SUBJ'
