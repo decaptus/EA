@@ -8,13 +8,14 @@ import useStyles from './styles';
 const Bulletins = ({ setCurrentId }) => {
   const posts = useSelector((state) => state.posts);                          //posts son los reducers combinados
   const classes = useStyles();
+  console.log(posts);
 
   return (
     !posts.length ? <CircularProgress /> : (                                                  //loading spinner
       <Grid className={classes.container} container  alignItems="stretch" spacing={6} >
         {posts.map((post) => (                                                                //abrimos corchetes para indicar q es javascript y hacemos un loop para cada anuncio
           <Grid key={post._id} item xs={3} sm={4} md={4}>
-            <Bulletin post={post} setCurrentId={setCurrentId} />
+            <Bulletin post={post} />
             
           </Grid>
           

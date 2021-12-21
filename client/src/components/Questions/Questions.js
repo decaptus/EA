@@ -10,7 +10,7 @@ const Questions = ({ setCurrentId }) => {
         <div style={{ width: '120%'}}>
             <Box sx={{ display: 'grid' , gridGap: '30px'}}>
                 {questions.map((question) => ( 
-                <Question question={question} key={question._id} />
+                <Question question={question} setCurrentId={setCurrentId} />
                 ))}
             </Box>
         </div>

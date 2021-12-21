@@ -1,64 +1,50 @@
 
-import React ,{ useState, useEffect } from 'react';
+import React from 'react';
 import useStyles from './styles';
-import { Typography, Grow, Grid, CircularProgress,CardHeader,Card,Avatar,CardContent,Button, CardActions} from '@material-ui/core';
-import { useDispatch,useSelector  } from 'react-redux';
+import {Container, AppBar, Typography, Grow, Grid, CircularProgress,CardHeader,Card,Avatar,CardContent,Button, CardActions} from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import DeleteIcon from '@material-ui/icons/Delete';
 import moment from 'moment';
-import { deleteQuest} from '../../../actions/questions';
-import {getUser } from '../../../actions/auth';
-import { Link} from 'react-router-dom';
-import { connect } from 'react-redux'
-import { render } from 'react-dom';
 
-
-function Question ({question} ){
-    const classes = useStyles();
+const Question = ({question: question, setCurrentId }) => {
     const dispatch = useDispatch();
-    const [userData, setUserData]=useState(null);
-    let start = true;
+    const classes = useStyles();
 
- 
-    useEffect(() => {
-      
+    return(
 
-      if (!userData) {
-        dispatch(getUser(question.creator)).then(val=>{
-          if(start){
-        setUserData(val)}});
-      }
-      return()=>{
-        start=false
-      }
-    },[userData]); //si aixo cambia tornara a fer el useeffect, sino no.
-
-
-
-
-    if(!userData){
-      return (<> Loading...</>);
-    }
-    else{
-    return (
-    <Link to= {'questions/'+question._id} style={{ textDecoration: 'none' }}>
-    <Card style={{ width: '100%' }} className={classes.card} >
+    <Card style={{ width: '100%' }} className={classes.card}>
       <CardHeader
         avatar={
-          <Avatar  aria-label="avatar" src={userData.picture}/>
+          <Avatar  aria-label="avatar">
+            {question.creator.charAt(0)}
+          </Avatar>
         }
-        title={userData.name+' '+userData.lastName}
+        action={
+          <Button style={{color:'grey'}} size="small" onClick={()=>{}}>
+            <MoreHorizIcon fontSize="medium"/>
+          </Button>
+        }
+        title={question.creator}
         subheader={
           moment(question.createdAt).fromNow()
         }
       />
       <CardContent>
-        <Typography variant="body2" className={classes.question} >{question.question}  </Typography>
+        <Typography variant="body2" className={classes.question}>{question.question} </Typography>
       </CardContent>
+      <CardActions className={classes.cardActions}>
+        <Button size="small" color="primary" onClick={()=> {}}>
+            Answer
+        </Button>
+        <Button size="small" color="primary" onClick={()=> {}}>
+            <DeleteIcon fontSize="small" />
+            Delete
+        </Button>
+      </CardActions>
     </Card>
-    </Link>
-    );
-      }
- 
-    
 
- } export default Question
+   
+    );
+}   
+export default Question;

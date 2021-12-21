@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, {useState,useEffect} from "react";       
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -9,11 +10,20 @@ import { useDispatch } from 'react-redux';
 import { likePost, deletePost } from '../../../actions/posts';
 import useStyles from './styles';
 import './price.css';
+import { updatePost } from '../../../actions/posts';
 
-const Bulletin = ({ post: lesson, setCurrentId }) => {
+const Bulletin = ({ post: lesson }) => {
   //const dispatch = useDispatch();
+
+  const [currentId, setCurrentId] = useState(0);
+  const [showForm, setShowForm] = useState(false);
   const classes = useStyles();
-  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(likePost(lesson._id, lesson));                           //aqui llamamos a la acción, y inmediatamente va al reducer y hace match, con lo q modifica el estado del 'store'
+  }, [currentId, dispatch]);
+
 
   return (
     <Card className={classes.card}>
@@ -31,6 +41,9 @@ const Bulletin = ({ post: lesson, setCurrentId }) => {
         <Typography className={classes.price} component="p">{lesson.price} €</Typography>
       </div>
       </CardActions>
+      <Typography className={classes.price} component="p">Likes: {lesson.like}</Typography>
+      <Button variant="contained"  type="submit" fullWidth onClick={() => setShowForm(true)}>Like</Button>
+      
     </Card>
   );
 };
