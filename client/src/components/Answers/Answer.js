@@ -22,7 +22,7 @@ function Answer({id, question, setQuestData}) {
     const [colorData, setColor] = useState("grey");
     const [editBool, setEdit] = useState(true);
     const [deleted, setDelete] = useState(false);
-
+//canvi primer commit
 
 useEffect(() => {
     if(!ansData){
