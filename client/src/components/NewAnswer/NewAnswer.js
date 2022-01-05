@@ -14,14 +14,13 @@ function NewAnswer ({questData, setQuestData}) {
   const dispatch = useDispatch();
   const [idAns, setId]=useState(null);
   const answer = useSelector((state) => (idAns ? state.answers.find((ans) => ans._id === idAns) : null));
-  const [quest, setQData]=useState({creator:questData.creator,question:questData.question,createdAt:questData.createdAt,answers:questData.answers});
+  const [quest, setQData]=useState({_id:questData._id,creator:questData.creator,question:questData.question,createdAt:questData.createdAt,answers:questData.answers});
   
 
   useEffect(() => {
     if (answer) setAnsData(answer);
     if(quest.answers.indexOf(idAns)!=-1){
-        dispatch(updateQuest(questData._id,quest))
-        setQuestData(quest)
+        dispatch(updateQuest(questData._id,quest)).then(data=>setQuestData(data))
         clear();
     }
 

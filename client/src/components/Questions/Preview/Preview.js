@@ -73,6 +73,7 @@ function Preview({ setCurrentId}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setUpdate(true)
+        setEdit(true)
     }
     if(!userData||!questData){
         return <>Loading...</>
@@ -100,7 +101,7 @@ function Preview({ setCurrentId}) {
                     <Paper className={classes.paper}>
                     <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                     <TextField name="question" variant="outlined" label="Question" fullWidth value={questData.question} onChange={(e) => setQuestData({ ...questData, question: e.target.value })} />
-                    <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth onClick={edit }>Update</Button>
+                    <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Update</Button>
                     </form>
                     </Paper>}
             </CardContent>
