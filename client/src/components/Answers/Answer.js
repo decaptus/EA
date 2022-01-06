@@ -42,7 +42,7 @@ useEffect(() => {
 
     if(ansData){
         if(!ansData.likes.find(ids=>ids===user.result._id))
-        setColor("grey")
+        setColor("default")
     
         else{
             setColor("primary")
@@ -66,7 +66,8 @@ const likeDislike = async (e) => {
         setUpdate(true)
     }
     else{
-        setAns({...ansData, likes:ansData.likes.filter(item=>!item===user.result._id)});
+        console.log(user.result._id)
+        setAns({...ansData, likes:ansData.likes.filter(item=>item!==user.result._id)});
         setUpdate(true)
     }
     };
