@@ -78,7 +78,7 @@ function Home() {
                             />
                         </Link></Grid>
                     <Grid item xs={2} sm={4} md={4}>
-                        <Link to="/lessons" style={{ textDecoration: 'none' }}>
+                        <Link to="/teachers" style={{ textDecoration: 'none' }}>
                             <Card
                                 src=""
                                 text="Teachers"
