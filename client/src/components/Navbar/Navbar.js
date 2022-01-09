@@ -67,6 +67,16 @@ const Navbar = () => {
           </Link>
 
           <div>
+
+          <Typography  className={classes.tittle} variant="h6">NewStudent</Typography>
+
+
+
+          </div>
+
+
+
+          <div>
             {user ? (
               <div className={classes.profile}>
               

@@ -13,7 +13,7 @@ export default makeStyles((theme) => ({
         alignItems: 'center',
         [theme.breakpoints.down('sm')]: {
           width: 'auto',
-          marginTop: 20,
+          marginTop: 5,
           justifyContent: 'center',
         },
     },
@@ -21,7 +21,14 @@ export default makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         textAlign: 'center',
-        color: "#FFFFFF"
+        color: "#FFFFFF",
+        marginLeft:'13px'
+    },
+    tittle: {
+        display: 'flex',
+        fontSize:'40px',
+        marginRight:'200px',
+        color: "#FFFFFF",
     },
       
 
