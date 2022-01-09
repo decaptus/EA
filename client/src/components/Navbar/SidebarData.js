@@ -5,7 +5,7 @@ import * as FcIcons from "react-icons/fc";
 export const SidebarData = [
   {
     title: 'Home',
-    path: '/',
+    path: '/home',
     icon: <FcIcons.FcExternal />,
     cName: 'nav-text'
   },
