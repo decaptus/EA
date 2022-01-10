@@ -8,7 +8,11 @@ import useStyles from './styles';
 import Subject from './subject/subject';
 
 const Subjects_form = ({ profesores: profesores }) => {
+  const classes = useStyles();
   const [subjects, setSubjects] = useState([])
+  const misubject = []  //Subjects de este profesor
+
+  
   useEffect(() => {
     Axios.get('http://localhost:4000/subjects')
       .then(response => {
@@ -16,8 +20,15 @@ const Subjects_form = ({ profesores: profesores }) => {
       })
   })
 
-  const classes = useStyles();
-  
+
+  for ( var i=0; i<subjects.length; i++) {  //Recorremos todos los puestos de subjects en general
+    for ( var a=0; a<profesores.subjects.length; a++) {  //Recorremos todos los puestos de subjects en profesores
+      /*if (subjects[i]._id == profesores.subjects[a]._id) {
+        misubject[a] = subjects[i];
+      }*/
+    }
+  }
+
   return (
     !subjects.length ? <CircularProgress /> : ( 
 

@@ -17,11 +17,11 @@ const Teacher = ({ subjects: subjects }) => {
 
   return (
 
-    <Card className={classes.card}>
+    <Card>
 
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">Department: {subjects.name}</Typography>
-        <Typography variant="body2" color="textSecondary" component="p">Email: {subjects.credits}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">Name: {subjects.name}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">Credits: {subjects.credits}</Typography>
       </CardContent>
 
     </Card>
