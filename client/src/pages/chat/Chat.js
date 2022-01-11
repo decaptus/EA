@@ -2,10 +2,11 @@ import Navbar from "../../components/Navbar/Navbar";
 import Conversation from "../../components/Conversations/Conversation";
 import Message from "../../components/Message/Message";
 import ChatUsers from "../../components/ChatUsers/ChatUsers";
+import { useDispatch,useSelector   } from "react-redux";
 import { useEffect, useState, useRef } from "react";
+import {getUsers} from '../../actions/users';
 import axios from "axios";
 import {io} from "socket.io-client";
-
 import "./chat.css";
 
 export default function Chat() {
@@ -18,22 +19,34 @@ export default function Chat() {
     const [currentChat, setCurrentChat] = useState(null);
     const [messages, setMessages] = useState([]);
     const [messagesUpdate, setMessagesUpdate] = useState(false);
+    const [updateList, setUpdateList] = useState(false);
+    const [conversationUpdate, setConversationUpdate] = useState(false);
     const [newMessage, setNewMessage] = useState("");
     const [arrivalMessage, setArrivalMessage] = useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
-    const [usersReg, setUsersReg] = useState([]);
     const scrollRef = useRef();
-    const socket = useRef();
-    
+    //const socket = useRef();
+    const dispatch = useDispatch();
+    const users = useSelector((state) => state.users);
+    /*
     useEffect(() => {
-        socket.current = io("ws://localhost:8900");
         socket.current.on("getMessage", data => {
             setArrivalMessage({
                 sender:data.senderId,
                 text:data.text,
             });
         });
-    }, []);
+    }, []);*/
+
+    useEffect(() => {
+        //socket.current = io("ws://localhost:8900");
+        dispatch(getUsers());
+        /*socket.current.on("getUsers", (usersSocket) => {
+            console.log(usersSocket);
+            setOnlineUsers(usersSocket);
+        });
+        console.log(onlineUsers);*/
+      }, [user]);
 
     useEffect(() => {
         arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) && 
@@ -41,38 +54,35 @@ export default function Chat() {
     },[arrivalMessage, currentChat]);
 
     useEffect(() => {
-        const getUsers = async () => {
-            try {
-              const res = await axios.get(url_usr);
-              setUsersReg(res.data);
-            } catch (err) {
-              console.log(err);
-            }
-          };
-          getUsers();
-    },[user.result._id]);
-    useEffect(() => {
-        socket.current.emit("addUser", user.result._id);
-        socket.current.on("getUsers", (users) => {
-            setOnlineUsers(
-                usersReg.filter((f) => users.some((u) => u.userId === f._id))
-              );
-        });
-      }, [user]);
+        if (user)
+        {
+            //socket.current.emit("addUser", user.result._id);
+            const getConversations = async () => {
+                try {
+                    const res = await axios.get(url_conv + "/" + user.result._id);
+                    setConversations(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            getConversations();
+        }
 
-    console.log(onlineUsers);
-
-    useEffect(() => {
-        const getConversations = async () => {
-          try {
-            const res = await axios.get(url_conv + "/" + user.result._id);
-            setConversations(res.data);
-          } catch (err) {
-            console.log(err);
-          }
-        };
-        getConversations();
-    }, [user.result._id]);
+        if (conversationUpdate)
+        {
+            const getConversations = async () => {
+                try {
+                    const res = await axios.get(url_conv + "/" + user.result._id);
+                    setConversations(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            getConversations();
+        }
+        setConversationUpdate(false);
+        
+    }, [user,conversationUpdate]);
 
     useEffect(()=>{
         if (currentChat){
@@ -86,7 +96,6 @@ export default function Chat() {
             };
             getMessages();
         }
-            
 
         if(messagesUpdate){
             const getMessages = async() => {
@@ -97,12 +106,16 @@ export default function Chat() {
                     console.log(err);
                 }
             };
-            getMessages();
+            getMessages();/*
+            socket.current.on("getMessage", data => {
+                setArrivalMessage({
+                    sender:data.senderId,
+                    text:data.text,
+                });
+            });*/
             setMessagesUpdate(false);
         }
-
     }, [currentChat,messagesUpdate]);
-
     
     const handleSubmit = async(e)=>{
         e.preventDefault(); 
@@ -112,11 +125,11 @@ export default function Chat() {
             text:newMessage            
         }
         const receiverId = currentChat.members.find(member => member !== user.result._id)
-        socket.current.emit("sendMessage", {
+        /*socket.current.emit("sendMessage", {
             senderId: user.result._id,
             receiverId,
             text: newMessage
-        });
+        });*/
         try{
             const res = await axios.post(url_mess, message);
             setMessages([...messages,res.data]);
@@ -126,10 +139,10 @@ export default function Chat() {
             console.log(err);
         }
     }
-    
+ /*   
     useEffect(() => {
         scrollRef?.current?.scrollIntoView({behavior:"smooth"});
-    }, [messages]);
+    }, [messages]);*/
 
     return (
         <>
@@ -137,10 +150,10 @@ export default function Chat() {
         <div className="messenger">
             <div className="chatMenu">
                 <div className="chatMenuWrapper">
-                <input placeholder="Search for friends" className="chatMenuInput" />
+                <input placeholder="Conversations" className="chatMenuInput" />
                     {conversations.map((c) => (
                         <div onClick={()=>setCurrentChat(c)}>
-                            <Conversation conversation={c} currentUser={user} />
+                            <Conversation conversation={c} currentUser={user} key={c._id}  />
                         </div>
                     ))}
                 </div>
@@ -152,7 +165,7 @@ export default function Chat() {
                             <div className="chatBoxTop">
                                 {messages.map((m) => (
                                     <div ref={scrollRef}>
-                                        <Message message={m} own={m.sender === user.result._id} />
+                                        <Message message={m} own={m.sender === user.result._id} key={m._id} />
                                     </div>
                                 ))}
                             </div>
@@ -176,9 +189,12 @@ export default function Chat() {
             <div className="chatUsers">
                 <div className="chatUsersWrapper">
                     <ChatUsers 
-                    usersBBDD={usersReg}
+                    usersBBDD={users}
                     onlineUsers={onlineUsers}
                     currentId={user.result._id}
+                    key={user.result._id} 
+                    setCurrentChat = {setCurrentChat}
+                    setConversationUpdate = {setConversationUpdate}
                     />
                 </div>
             </div>
