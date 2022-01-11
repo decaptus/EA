@@ -16,9 +16,8 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-const url_quest = 'http://localhost:4000/user';              //direccion del backend para Register y LogIn
-const url_flats = 'http://localhost:4000/flats';
-const url_markers = 'http://localhost:4000/markers';
+const url_flats = 'http://147.83.7.158:4000/flats';
+const url_markers = 'http://147.83.7.158:4000/markers';
 
 
 //posts
