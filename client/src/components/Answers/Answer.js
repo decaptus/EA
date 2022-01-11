@@ -22,6 +22,7 @@ function Answer({id, question, setQuestData}) {
     const [colorData, setColor] = useState("grey");
     const [editBool, setEdit] = useState(true);
     const [deleted, setDelete] = useState(false);
+    const [sameUser, setSame] = useState(true);
 //canvi primer commit
 
 useEffect(() => {
@@ -29,7 +30,14 @@ useEffect(() => {
         dispatch(getAnswer(id)).then(val=>{setAns(val)});
     }
     if(ansData&&!userData){
-        dispatch(getUser(ansData.creator)).then(val=>{setUserData(val)});}
+        dispatch(getUser(ansData.creator)).then(val=>{setUserData(val)
+        if(val._id===user.result._id){
+            setSame(true);
+            }
+            else{
+            setSame(false);
+            }
+        });}
     if(deleted){
         dispatch(updateQuest(question._id,questData)).then(val=>setQuestData(val))
         setDelete(false)
@@ -96,20 +104,31 @@ return (
 
     <Container  className={classes.container}>
             <Card style={{ width: '100%'}} className={classes.card} style={{backgroundColor: "#f3f3f3"}}>
-                <CardHeader
-                avatar={
-                    <Avatar  aria-label="avatar" src={userData.picture}/>             
+                {sameUser?
+                    <CardHeader
+                        avatar={
+                            <Avatar  aria-label="avatar" src={userData.picture}/>             
+                        }
+                        action={
+                            <Button style={{color:'grey'}} size="small" onClick={edit}>
+                            <ModeEditIcon/>
+                            </Button>
+                        }
+                        title={userData.name+' '+userData.lastName}
+                        subheader={
+                            moment(ansData.createdAt).fromNow()
+                        }
+                    />:
+                    <CardHeader
+                        avatar={
+                            <Avatar  aria-label="avatar" src={userData.picture}/>             
+                        }
+                        title={userData.name+' '+userData.lastName}
+                        subheader={
+                            moment(ansData.createdAt).fromNow()
+                        }
+                    />
                 }
-                action={
-                    <Button style={{color:'grey'}} size="small" onClick={edit}>
-                    <ModeEditIcon/>
-                    </Button>
-                }
-                title={userData.name+' '+userData.lastName}
-                subheader={
-                    moment(ansData.createdAt).fromNow()
-                }
-                />
                 <CardContent>
                 {editBool? 
                 <Typography variant="body2" className={classes.question} >{ansData.answer}  </Typography> :
@@ -124,10 +143,13 @@ return (
                     <Button size="small" color={colorData} onClick={likeDislike}>
                     {ansData.likes.length} <span> </span> <FaThumbsUp/>
                 </Button>
-                <Button size="small" color="primary" onClick={deleteAns }>
-                    <DeleteIcon fontSize="small" />
-                    Delete
-                </Button>
+                {sameUser?
+                    <Button size="small" color="primary" onClick={deleteAns }>
+                        <DeleteIcon fontSize="small" />
+                        Delete
+                    </Button>
+                    :<></>
+                }
                 </CardActions>
         
             </Card>
