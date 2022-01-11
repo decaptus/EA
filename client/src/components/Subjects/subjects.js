@@ -11,14 +11,15 @@ const Subjects_form = ({ profesores: profesores }) => {
   const classes = useStyles();
   const [subjects, setSubjects] = useState([])
   const misubject = []  //Subjects de este profesor
+  var bool = 0;
 
-  
   useEffect(() => {
     Axios.get('http://localhost:4000/subjects')
       .then(response => {
         setSubjects(response.data)
       })
-  })
+    bool = 1
+  },[bool])
 
 
   for ( var i=0; i<subjects.length; i++) {  //Recorremos todos los puestos de subjects en general
