@@ -3,22 +3,23 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 export default function ChatOnline({usersBBDD, onlineUsers, currentId, setCurrentChat, setConversationUpdate}) {
-    const [users, setUsers] = useState([]);
-    const [usersSocket, setUsersSocket] = useState([]);
-    const [usersDesconected, setUsersDesconected] = useState([]);
-    const [usersOnline, setUsersOnline] = useState([]);
+    const [users, setUsers] = useState([]); //Lista de usuarios de la BBDD sin el usuario que ha iniciado sesion
+    const [usersSocket, setUsersSocket] = useState([]); //Lista de id usuarios con id de sockets
+    const [usersDesconected, setUsersDesconected] = useState([]); //Lista de usuarios desconectados
+    const [usersOnline, setUsersOnline] = useState([]); //Lista de usuarios conectados sin el que ha iniciado sesion
     const url_conv = 'http://localhost:4000/conversation'; 
 
     useEffect(() => {
-        setUsersSocket(usersBBDD.filter((f) => onlineUsers.some((u) => u.userId === f._id)));
-        setUsers(usersBBDD.filter((u) => u._id !== currentId) );
-        setUsersOnline(usersSocket.filter((u) => u._id !== currentId) );
-        setUsersDesconected(users.filter((f) => users.some((u) => u._id !== f._id)));
-        console.log(usersSocket);
-        console.log(onlineUsers);
-        console.log(usersOnline);
-        console.log(usersDesconected);
-    }, [usersBBDD,onlineUsers]);
+        console.log("onlineUsers", onlineUsers);
+        setUsers(usersBBDD.filter((u) => u._id !== currentId));
+        console.log("users",users);
+        setUsersSocket(users.filter((f) => onlineUsers.some((u) => u.userId === f._id)));       
+        console.log("usersSocket",usersSocket);
+        setUsersOnline(usersSocket.filter((u) => u._id !== currentId));
+        console.log("usersOnline",usersOnline);
+        setUsersDesconected(users.filter((f) => usersSocket.some((u) => u._id !== f._id)));
+        console.log("usersDesconected", usersDesconected);
+    }, [usersBBDD,onlineUsers, currentId, setCurrentChat, setConversationUpdate]);
 
 
     const handleClick = async (user) =>{

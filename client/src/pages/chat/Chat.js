@@ -12,41 +12,36 @@ import "./chat.css";
 export default function Chat() {
     const url_conv = 'http://localhost:4000/conversation'; 
     const url_mess = 'http://localhost:4000/message';
-    const url_usr = 'http://localhost:4000/users';
-
     const [user] = useState(JSON.parse(window.localStorage.getItem('profile')));
     const [conversations, setConversations] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
     const [messages, setMessages] = useState([]);
     const [messagesUpdate, setMessagesUpdate] = useState(false);
-    const [updateList, setUpdateList] = useState(false);
     const [conversationUpdate, setConversationUpdate] = useState(false);
     const [newMessage, setNewMessage] = useState("");
     const [arrivalMessage, setArrivalMessage] = useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
     const scrollRef = useRef();
-    //const socket = useRef();
+    const socket = useRef();
     const dispatch = useDispatch();
     const users = useSelector((state) => state.users);
-    /*
-    useEffect(() => {
-        socket.current.on("getMessage", data => {
-            setArrivalMessage({
-                sender:data.senderId,
-                text:data.text,
-            });
+    
+   useEffect(() => {
+    socket.current = io("ws://localhost:8900");
+    socket.current.on("getMessage", data => {
+        setArrivalMessage({
+            sender:data.senderId,
+            text:data.text,
         });
-    }, []);*/
+    });  
+    }, [user]);
 
     useEffect(() => {
-        //socket.current = io("ws://localhost:8900");
-        dispatch(getUsers());
-        /*socket.current.on("getUsers", (usersSocket) => {
-            console.log(usersSocket);
+        socket.current.on("getUsers", (usersSocket) => {
             setOnlineUsers(usersSocket);
         });
-        console.log(onlineUsers);*/
-      }, [user]);
+        console.log(onlineUsers);
+    }, [user]);
 
     useEffect(() => {
         arrivalMessage && currentChat?.members.includes(arrivalMessage.sender) && 
@@ -56,7 +51,8 @@ export default function Chat() {
     useEffect(() => {
         if (user)
         {
-            //socket.current.emit("addUser", user.result._id);
+            dispatch(getUsers());
+            socket.current.emit("addUser", user.result._id);
             const getConversations = async () => {
                 try {
                     const res = await axios.get(url_conv + "/" + user.result._id);
@@ -106,13 +102,7 @@ export default function Chat() {
                     console.log(err);
                 }
             };
-            getMessages();/*
-            socket.current.on("getMessage", data => {
-                setArrivalMessage({
-                    sender:data.senderId,
-                    text:data.text,
-                });
-            });*/
+            getMessages();
             setMessagesUpdate(false);
         }
     }, [currentChat,messagesUpdate]);
@@ -124,12 +114,12 @@ export default function Chat() {
             sender: user.result._id,
             text:newMessage            
         }
-        const receiverId = currentChat.members.find(member => member !== user.result._id)
-        /*socket.current.emit("sendMessage", {
+        const receiverId = currentChat.members.find(member => member !== user.result._id);
+        socket.current.emit("sendMessage", {
             senderId: user.result._id,
             receiverId,
             text: newMessage
-        });*/
+        });
         try{
             const res = await axios.post(url_mess, message);
             setMessages([...messages,res.data]);
@@ -139,10 +129,10 @@ export default function Chat() {
             console.log(err);
         }
     }
- /*   
+  
     useEffect(() => {
         scrollRef?.current?.scrollIntoView({behavior:"smooth"});
-    }, [messages]);*/
+    }, [messages]);
 
     return (
         <>
@@ -151,11 +141,14 @@ export default function Chat() {
             <div className="chatMenu">
                 <div className="chatMenuWrapper">
                 <input placeholder="Conversations" className="chatMenuInput" />
+                <div className="conversationsScroll">
                     {conversations.map((c) => (
                         <div onClick={()=>setCurrentChat(c)}>
                             <Conversation conversation={c} currentUser={user} key={c._id}  />
                         </div>
                     ))}
+                </div>
+                    
                 </div>
             </div>
             <div className="chatBox">
@@ -165,7 +158,7 @@ export default function Chat() {
                             <div className="chatBoxTop">
                                 {messages.map((m) => (
                                     <div ref={scrollRef}>
-                                        <Message message={m} own={m.sender === user.result._id} key={m._id} />
+                                        <Message message={m} own={m.sender === user.result._id} currentChat={currentChat} currentUser={user} key={m._id} />
                                     </div>
                                 ))}
                             </div>
@@ -188,14 +181,16 @@ export default function Chat() {
             </div>
             <div className="chatUsers">
                 <div className="chatUsersWrapper">
-                    <ChatUsers 
-                    usersBBDD={users}
-                    onlineUsers={onlineUsers}
-                    currentId={user.result._id}
-                    key={user.result._id} 
-                    setCurrentChat = {setCurrentChat}
-                    setConversationUpdate = {setConversationUpdate}
-                    />
+                    <div className="usersScroll">
+                        <ChatUsers 
+                        usersBBDD={users}
+                        onlineUsers={onlineUsers}
+                        currentId={user.result._id}
+                        key={user.result._id} 
+                        setCurrentChat = {setCurrentChat}
+                        setConversationUpdate = {setConversationUpdate}
+                        />
+                    </div>
                 </div>
             </div>
         </div>
