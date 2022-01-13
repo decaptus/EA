@@ -1,11 +1,11 @@
 import { FETCH_ALL_ans,FETCH_ans,CREATE_ans, UPDATE_ans, DELETE_ans } from '../constants/actionTypes';
 
-import * as api from '../api/answers';
+import * as api from '../api/teachers';
 
 
-export const getAnswers = () => async (dispatch) => {
+export const getTeachers = () => async (dispatch) => {
     try {
-      const { data } = await api.fetchAnswers();        //we obtain a response of data from an api.get(url)
+      const { data } = await api.fetchTeachers();        //we obtain a response of data from an api.get(url)
   
       dispatch({ type: FETCH_ALL_ans, payload: data });   //dispatch takes an action object as parameter
     } catch (error) {
@@ -13,9 +13,9 @@ export const getAnswers = () => async (dispatch) => {
     }
   };
 
-  export const getAnswer = (id) => async (dispatch) => {
+  export const getTeacher = (id) => async (dispatch) => {
     try {
-      const { data } = await api.fetchAnswer(id);        //we obtain a response of data from an api.get(url)
+      const { data } = await api.fetchTeacher(id);        //we obtain a response of data from an api.get(url)
   
       dispatch({ type: FETCH_ans, data });   //dispatch takes an action object as parameter
       return data
@@ -24,10 +24,10 @@ export const getAnswers = () => async (dispatch) => {
     }
   };
   
-  export const createAnswer= (ans) => async (dispatch) => {
+  export const createTeacher= (ans) => async (dispatch) => {
   
     try {
-      const {data} = await api.createAnswer(ans);
+      const {data} = await api.createTeacher(ans);
   
       dispatch({ type: CREATE_ans, payload: data });
       return data
@@ -36,9 +36,9 @@ export const getAnswers = () => async (dispatch) => {
     }
   };
   
-  export const updateAnswer = (id, ans) => async (dispatch) => {
+  export const updateTeacher = (id, ans) => async (dispatch) => {
     try {
-      const {data} = await api.updateAnswer(id, ans);
+      const {data} = await api.updateTeacher(id, ans);
   
       dispatch({ type: UPDATE_ans, payload: data });
       return data;
@@ -49,9 +49,9 @@ export const getAnswers = () => async (dispatch) => {
   
   
   
-  export const deleteAnswer = (id) => async (dispatch) => {
+  export const deleteTeacher = (id) => async (dispatch) => {
     try {
-      await api.deleteAnswer(id);
+      await api.deleteTeacher(id);
   
       dispatch({ type: DELETE_ans, payload: id });
     } catch (error) {
