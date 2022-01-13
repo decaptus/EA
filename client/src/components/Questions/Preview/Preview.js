@@ -18,6 +18,7 @@ import { TextField,  Paper } from '@material-ui/core';
 
 function Preview({ setCurrentId}) {
     const classes = useStyles();
+    const [user,setUser] = useState(JSON.parse(window.localStorage.getItem('profile')));
     const dispatch = useDispatch();
     const { id} = useParams();
     const [questData, setQuestData]=useState(null);
@@ -27,14 +28,23 @@ function Preview({ setCurrentId}) {
     const [updated, setUpdate] = useState(false);
     const [deleted, setDelete] = useState(false);
     const [editBool, setEdit] = useState(true);
+    const [sameUser, setSame] = useState(true);
 
     useEffect(() => {
       if(!questData){
         dispatch(getQuest(id)).then(val=>setQuestData(val));
       }
       if(questData&&!userData){
-        dispatch(getUser(questData.creator)).then(val=>setUserData(val));
-        }
+        dispatch(getUser(questData.creator)).then(val=>{setUserData(val)
+          if(val._id===user.result._id){
+            setSame(true);
+          }
+          else{
+            setSame(false);
+          }
+        });
+      }
+
       if(updated){
         dispatch(updateQuest(id,questData))
         setUpdate(false);
@@ -43,7 +53,8 @@ function Preview({ setCurrentId}) {
         dispatch(getQuests());
         setCurrentId(0);
         history.push('/forum');
-    }
+      }
+
     },[userData,questData,updated,deleted]);
 
     const deleteQuestion = async (e) => {
@@ -73,39 +84,45 @@ function Preview({ setCurrentId}) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setUpdate(true)
+        setEdit(true)
     }
-
-
     if(!userData||!questData){
         return <>Loading...</>
         }
         return (
         <Container >
-        <Card style={{ width: '100%' }} className={classes.card}>
-            <CardHeader
+          <Card style={{ width: '100%' }} className={classes.card}>
+            {sameUser?
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="avatar" src={userData.picture}/>
+                }
+                action={
+                  <Button style={{color:'grey'}} size="small" onClick={edit}>
+                    <ModeEditIcon/>
+                  </Button>
+                }
+                title={userData.name+' '+userData.lastName}
+                subheader={
+                  moment(questData.createdAt).fromNow()
+                }
+              />:
+              <CardHeader
               avatar={
-                <Avatar  aria-label="avatar">
-             
-                  {userData.name.charAt(0)}
-                </Avatar>
-              }
-              action={
-                <Button style={{color:'grey'}} size="small" onClick={edit}>
-                  <ModeEditIcon/>
-                </Button>
+                <Avatar aria-label="avatar" src={userData.picture}/>
               }
               title={userData.name+' '+userData.lastName}
               subheader={
                 moment(questData.createdAt).fromNow()
-              }
-            />
+              }/>
+            }
             <CardContent>
             {editBool? 
                 <Typography variant="body2" className={classes.question} >{questData.question} </Typography> :
                     <Paper className={classes.paper}>
                     <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                     <TextField name="question" variant="outlined" label="Question" fullWidth value={questData.question} onChange={(e) => setQuestData({ ...questData, question: e.target.value })} />
-                    <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth onClick={edit }>Update</Button>
+                    <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Update</Button>
                     </form>
                     </Paper>}
             </CardContent>
@@ -113,20 +130,18 @@ function Preview({ setCurrentId}) {
               <Button size="small" color="primary" onClick={setTrueFalse}>
                   Answer
               </Button>
-              <Button size="small" color="primary" onClick={deleteQuestion }>
-                  <DeleteIcon fontSize="small" />
-                  Delete
-              </Button>
+              {sameUser?
+                <Button size="small" color="primary" onClick={deleteQuestion }>
+                    <DeleteIcon fontSize="small" />
+                    Delete
+                </Button>:<></>}
             </CardActions>
             <Box sx={{ display: 'grid' , gridGap: '30px'}}>
               {answerComp ? <NewAnswer questData={questData} setQuestData={setQuestData}/> :null}
                 {questData.answers.map((ans) => (
                 <Answer id={ans} question={questData} setQuestData={setQuestData} key={ans}/>))}
             </Box>
-        </Card>
-
-
-
+          </Card>
         </Container>
 
    

@@ -5,7 +5,7 @@ import * as FcIcons from "react-icons/fc";
 export const SidebarData = [
   {
     title: 'Home',
-    path: '/',
+    path: '/home',
     icon: <FcIcons.FcExternal />,
     cName: 'nav-text'
   },
@@ -34,6 +34,12 @@ export const SidebarData = [
     icon: <FcIcons.FcHome />,
     cName: 'nav-text'
   },
+  {
+    title: 'Chat',
+    path: '/chat',
+    icon: <FcIcons.FcCollaboration />,
+    cName: 'nav-text'
+  },
   
   {
     title: 'Support',
@@ -41,10 +47,5 @@ export const SidebarData = [
     icon: <FcIcons.FcAssistant />,
     cName: 'nav-text'
   },
-  {
-    title: 'Chat',
-    path: '/chat',
-    icon: <FcIcons.FcCollaboration />,
-    cName: 'nav-text'
-  }
+  
 ];

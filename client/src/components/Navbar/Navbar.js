@@ -54,8 +54,8 @@ const Navbar = () => {
 
   
 
- 
-
+ var googlepicture = "https://lh3.googleusercontent.com/a-/AOh14Gjm2Li8QycbjOF2nhLWUJGO1lbSrbTew_llLjFn=s96-c"
+//src={user.result.picture}
 
 
   return (
@@ -65,6 +65,16 @@ const Navbar = () => {
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />   
           </Link>
+
+          <div>
+
+          <Typography  className={classes.tittle} variant="h6">NewStudent</Typography>
+
+
+
+          </div>
+
+
 
           <div>
             {user ? (

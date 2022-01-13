@@ -14,14 +14,13 @@ function NewAnswer ({questData, setQuestData}) {
   const dispatch = useDispatch();
   const [idAns, setId]=useState(null);
   const answer = useSelector((state) => (idAns ? state.answers.find((ans) => ans._id === idAns) : null));
-  const [quest, setQData]=useState({creator:questData.creator,question:questData.question,createdAt:questData.createdAt,answers:questData.answers});
+  const [quest, setQData]=useState({_id:questData._id,creator:questData.creator,question:questData.question,createdAt:questData.createdAt,answers:questData.answers});
   
 
   useEffect(() => {
     if (answer) setAnsData(answer);
     if(quest.answers.indexOf(idAns)!=-1){
-        dispatch(updateQuest(questData._id,quest))
-        setQuestData(quest)
+        dispatch(updateQuest(questData._id,quest)).then(data=>setQuestData(data))
         clear();
     }
 
@@ -48,7 +47,6 @@ function NewAnswer ({questData, setQuestData}) {
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <TextField name="answer" variant="outlined" label="Answer" fullWidth value={ansData.answer} onChange={(e) => setAnsData({ ...ansData, answer: e.target.value })} />
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-        <Button variant="contained" color="grey" size="small" onClick={clear} fullWidth>Clear</Button>
       </form>
     </Paper>
   );

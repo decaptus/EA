@@ -9,6 +9,7 @@ import answers from './answers'
 
 import postflats from './postflats';
 import postmarkers from './markers';
+import subjects from './subjects';
 
-export const reducers = combineReducers({ posts, questions, postflats, postmarkers,auth, users, answers });
+export const reducers = combineReducers({ posts, questions, postflats, postmarkers,auth, users, answers ,subjects});
 
