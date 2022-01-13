@@ -26,7 +26,9 @@ export default function Chat() {
     const dispatch = useDispatch();
     const users = useSelector((state) => state.users);
     
+    
    useEffect(() => {
+    dispatch(getUsers());
     socket.current = io("ws://localhost:8900");
     socket.current.on("getMessage", data => {
         setArrivalMessage({
@@ -37,6 +39,7 @@ export default function Chat() {
     }, [user]);
 
     useEffect(() => {
+        dispatch(getUsers());
         socket.current.on("getUsers", (usersSocket) => {
             setOnlineUsers(usersSocket);
         });
@@ -51,7 +54,7 @@ export default function Chat() {
     useEffect(() => {
         if (user)
         {
-            dispatch(getUsers());
+            
             socket.current.emit("addUser", user.result._id);
             const getConversations = async () => {
                 try {

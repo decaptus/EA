@@ -6,7 +6,6 @@ export default function ChatOnline({usersBBDD, onlineUsers, currentId, setCurren
     const [users, setUsers] = useState([]); //Lista de usuarios de la BBDD sin el usuario que ha iniciado sesion
     const [usersSocket, setUsersSocket] = useState([]); //Lista de id usuarios con id de sockets
     const [usersDesconected, setUsersDesconected] = useState([]); //Lista de usuarios desconectados
-    const [usersOnline, setUsersOnline] = useState([]); //Lista de usuarios conectados sin el que ha iniciado sesion
     const url_conv = 'http://localhost:4000/conversation'; 
 
     useEffect(() => {
@@ -15,9 +14,15 @@ export default function ChatOnline({usersBBDD, onlineUsers, currentId, setCurren
         console.log("users",users);
         setUsersSocket(users.filter((f) => onlineUsers.some((u) => u.userId === f._id)));       
         console.log("usersSocket",usersSocket);
-        setUsersOnline(usersSocket.filter((u) => u._id !== currentId));
-        console.log("usersOnline",usersOnline);
-        setUsersDesconected(users.filter((f) => usersSocket.some((u) => u._id !== f._id)));
+        console.log(onlineUsers.length);
+        if (onlineUsers.length>1){
+            const aux = users.filter((f) => !usersSocket.includes(f));
+            console.log(aux);
+            setUsersDesconected(aux);
+        }
+        else{
+            setUsersDesconected(users);
+        }
         console.log("usersDesconected", usersDesconected);
     }, [usersBBDD,onlineUsers, currentId, setCurrentChat, setConversationUpdate]);
 
@@ -61,7 +66,7 @@ export default function ChatOnline({usersBBDD, onlineUsers, currentId, setCurren
     
     return (
         <div className="chatUsers">
-            {usersOnline?.map((o) => (
+            {usersSocket?.map((o) => (
             <div className="chatUser" onClick={()=>handleClick(o)} key={o._id} >
                 <div className="chatImgContainer">
                     <img className="chatOnlineImg" src={o.picture} alt="" />
