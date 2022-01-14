@@ -67,7 +67,6 @@ const Navbar = () => {
           <div>
 
           <Typography  className={classes.tittle} variant="h6">NewStudent</Typography>
-          <h1>{t("header.hello-world")}</h1>
 
           </div>
             <button onClick={() => i18n.changeLanguage("es")}>ES</button>

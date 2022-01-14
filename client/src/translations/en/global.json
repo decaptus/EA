@@ -12,5 +12,16 @@
         "teachers": "Teachers",
         "support": "Support",
         "we-are-here": "We are here!"
+    },
+    "lessons": {
+        "name": "Name",
+        "subject": "Subject",
+        "description": "Description",
+        "price": "Price",
+        "picture": "Picture",
+        "creatorId": "CreatorId",
+        "post": "Post a lesson",
+        "submit": "Submit",
+        "clear": "Clear"
     }
 }

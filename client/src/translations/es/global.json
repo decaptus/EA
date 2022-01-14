@@ -12,5 +12,16 @@
         "teachers": "Profesores",
         "support": "Soporte",
         "we-are-here": "Estamos aquí!"
+    },
+    "lessons": {
+        "name": "Nombre",
+        "subject": "Asignatura",
+        "description": "Descripcion",
+        "price": "Precio",
+        "picture": "Foto",
+        "creatorId": "Id del creador",
+        "post": "Publica una leccion",
+        "submit": "Subir",
+        "clear": "Borrar"
     }
 }
