@@ -11,7 +11,7 @@ import { getPosts } from '../actions/posts';
 import classIm from '../images/class.png';
 import useStyles from '../styles';
 import Navbar from '../components/Navbar/Navbar'
-
+import { useTranslation } from "react-i18next";
 
 
 const Lessons = () => {
@@ -20,6 +20,7 @@ const Lessons = () => {
     const [showForm, setShowForm] = useState(false);
     const classes = useStyles();
     const dispatch = useDispatch();
+    const [t, i18n] = useTranslation("global");
 
     useEffect(() => {
       dispatch(getPosts());                           //aqui llamamos a la acción, y inmediatamente va al reducer y hace match, con lo q modifica el estado del 'store'
@@ -31,7 +32,7 @@ const Lessons = () => {
 
         <Container maxWidth="lg">
         <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography className={classes.heading} variant="h2" align="center">Classes for-by students</Typography>
+          <Typography className={classes.heading} variant="h2" align="center">{t("lessons_page.title")}</Typography>
           <img  className={classes.heading} src={classIm} alt="classIm" height="60"  />
         </AppBar>
         <Grow in>
@@ -45,7 +46,7 @@ const Lessons = () => {
                 <Form currentId={currentId} setCurrentId={setCurrentId} />
               )}
                {!showForm && (
-               <Button variant="contained"  type="submit" fullWidth onClick={() => setShowForm(true)}>Publish your class</Button>
+               <Button variant="contained"  type="submit" fullWidth onClick={() => setShowForm(true)}>{t("lessons_page.button")}</Button>
 
               )}
            

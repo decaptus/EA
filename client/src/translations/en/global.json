@@ -1,6 +1,13 @@
 {
-    "header": {
-        "hello-world": "hello world"
+    "side-bar": {
+        "home": "Home",
+        "login": "LogIn/SingIn",
+        "lessons": "Lessons",
+        "forum": "Forum",
+        "flats": "Flats",
+        "chat": "Chat",
+        "teachers": "Teachers",
+        "support": "Support"
     },
     "home": {
         "welcome": "Welcome to our college",
@@ -13,7 +20,7 @@
         "support": "Support",
         "we-are-here": "We are here!"
     },
-    "lessons": {
+    "lessons_form": {
         "name": "Name",
         "subject": "Subject",
         "description": "Description",
@@ -23,5 +30,29 @@
         "post": "Post a lesson",
         "submit": "Submit",
         "clear": "Clear"
+    },
+    "lessons_page": {
+        "title": "Classes for/by students",
+        "button": "Publish your class"
+    },
+    "teacher": {
+        "department": "Department",
+        "email": "Email",
+        "office": "Office"
+    },
+    "subject": {
+        "name": "Name",
+        "credits": "Credits"
+    },
+    "questions": {
+        "loading": "loading"
+    },
+    "answer": {
+        "answer": "Answer",
+        "update": "Update",
+        "delete": "Delete"
+    },
+    "forum": {
+        "title": "Forum"
     }
 }

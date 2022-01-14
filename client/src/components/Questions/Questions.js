@@ -4,14 +4,16 @@ import {useSelector} from 'react-redux';
 import React, { useState } from 'react';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
+import { useTranslation } from "react-i18next";
 
 const Questions = ({ setCurrentId }) => {
     const questions = useSelector((state) => state.questions);
     const subjects = useSelector((state)=>state.subjects);
     const [subject,setSubject] = useState(null) 
+    const [t, i18n] = useTranslation("global");
 
     if(!subjects){
-        return <>Loading...</>
+        return <>{t("questions.loading")}...</>
         }
     return(
         <Container > 
@@ -22,8 +24,7 @@ const Questions = ({ setCurrentId }) => {
                     value={subject}
                     getOptionLabel={(option) => option.name || ""}
                     onChange={(e,value) => { setSubject(value)}}
-                    renderInput={(params) => <TextField {...params} label="Subject"/> }
-                
+                    renderInput={(params) => <TextField {...params} label={t("lessons_form.subject")}/> }
                 />
             </Stack>
             <div style={{ width: '120%', marginTop: `30px`}}>

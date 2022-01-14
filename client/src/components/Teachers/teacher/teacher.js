@@ -10,10 +10,12 @@ import { likePost, deletePost } from '../../../actions/posts';
 import Subjects from '../../Subjects/subjects'
 import useStyles from './styles';
 import './price.css';
+import { useTranslation } from "react-i18next";
 
 const Teacher = ({ profesores: profesores }) => {
 
   const classes = useStyles();
+  const [t, i18n] = useTranslation("global");
   
 
   return (
@@ -26,10 +28,9 @@ const Teacher = ({ profesores: profesores }) => {
       </div>
 
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">Department: {profesores.departamento}</Typography>
-        <Typography variant="body2" color="textSecondary" component="p">Email: {profesores.email}</Typography>
-        <Typography variant="body2" color="textSecondary" component="p">Office: {profesores.office}</Typography>
-        <Typography variant="body2" color="textSecondary" component="p">Office: {profesores._id}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">{t("teacher.department")}: {profesores.departamento}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">{t("teacher.email")}: {profesores.email}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">{t("teacher.office")}: {profesores.office}</Typography>
         <Subjects profesores={profesores}></Subjects>
       </CardContent>
 

@@ -9,19 +9,20 @@ import { useDispatch } from 'react-redux';
 import { likePost, deletePost } from '../../../actions/posts';
 import useStyles from './styles';
 import './price.css';
+import { useTranslation } from "react-i18next";
 
 const Teacher = ({ subjects: subjects }) => {
   //const dispatch = useDispatch();
   const classes = useStyles();
-  console.log(subjects);
+  const [t, i18n] = useTranslation("global");
 
   return (
 
     <Card>
 
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">Name: {subjects.name}</Typography>
-        <Typography variant="body2" color="textSecondary" component="p">Credits: {subjects.credits}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">{t("subject.name")}: {subjects.name}</Typography>
+        <Typography variant="body2" color="textSecondary" component="p">{t("subject.credits")}: {subjects.credits}</Typography>
       </CardContent>
 
     </Card>

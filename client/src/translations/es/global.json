@@ -1,6 +1,13 @@
 {
-    "header": {
-        "hello-world": "hola mundo"
+    "side-bar": {
+        "home": "Menu",
+        "login": "Registro/LogIn",
+        "lessons": "Lecciones",
+        "forum": "Foro",
+        "flats": "Pisos",
+        "chat": "Chat",
+        "teachers": "Profesores",
+        "support": "Soporte"
     },
     "home": {
         "welcome": "Bienvenido a nuestra universidad",
@@ -13,7 +20,7 @@
         "support": "Soporte",
         "we-are-here": "Estamos aquí!"
     },
-    "lessons": {
+    "lessons_form": {
         "name": "Nombre",
         "subject": "Asignatura",
         "description": "Descripcion",
@@ -23,5 +30,29 @@
         "post": "Publica una leccion",
         "submit": "Subir",
         "clear": "Borrar"
+    },
+    "lessons_page": {
+        "title": "Clases por/para estudiantes",
+        "button": "Publica tu clase"
+    },
+    "teacher": {
+        "department": "Departamento",
+        "email": "Correo electronico",
+        "office": "Oficina"
+    },
+    "subject": {
+        "name": "Nombre",
+        "credits": "Creditos"
+    },
+    "questions": {
+        "loading": "cargando"
+    },
+    "answer": {
+        "answer": "Respuesta",
+        "update": "Actualizar",
+        "delete": "Eliminar"
+    },
+    "forum": {
+        "title": "Foro"
     }
 }

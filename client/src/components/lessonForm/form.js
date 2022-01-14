@@ -34,11 +34,6 @@ const Form = ( ) => {
 
     dispatch(createPost(lessonData));          
     clear();
-
-
-    
-
-    
    
   };
 
@@ -46,12 +41,12 @@ const Form = ( ) => {
     <Paper className={classes.paper}>
       
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>  
-        <Typography variant="h6">{t("lessons.post")}</Typography>
-        <TextField name="subject" variant="outlined" label="Subject" fullWidth value={lessonData.subject} onChange={(e) => setLessonData({ ...lessonData, subject: e.target.value })} />
-        <TextField name="description" variant="outlined" label="Description" fullWidth value={lessonData.description} onChange={(e) => setLessonData({ ...lessonData, description: e.target.value })} />
-        <TextField name="price" variant="outlined" label="Price" fullWidth value={lessonData.price} onChange={(e) => setLessonData({ ...lessonData, price: e.target.value })} />
-        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>{t("lessons.submit")}</Button>
-        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>{t("lessons.clear")}</Button>
+        <Typography variant="h6">{t("lessons_form.post")}</Typography>
+        <TextField name="subject" variant="outlined" label={t("lessons_form.subject")} fullWidth value={lessonData.subject} onChange={(e) => setLessonData({ ...lessonData, subject: e.target.value })} />
+        <TextField name="description" variant="outlined" label={t("lessons_form.description")} fullWidth value={lessonData.description} onChange={(e) => setLessonData({ ...lessonData, description: e.target.value })} />
+        <TextField name="price" variant="outlined" label={t("lessons_form.price")} fullWidth value={lessonData.price} onChange={(e) => setLessonData({ ...lessonData, price: e.target.value })} />
+        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>{t("lessons_form.submit")}</Button>
+        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>{t("lessons_form.clear")}</Button>
       </form>
     </Paper>
   );

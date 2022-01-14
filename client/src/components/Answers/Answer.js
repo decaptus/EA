@@ -10,6 +10,7 @@ import { getUser } from '../../actions/auth';
 import moment from 'moment';
 import { getQuest, updateQuest } from '../../actions/questions';
 import { TextField,  Paper } from '@material-ui/core';
+import { useTranslation } from "react-i18next";
 
 function Answer({id, question, setQuestData}) {
     const [user,setUser] = useState(JSON.parse(window.localStorage.getItem('profile')));
@@ -23,6 +24,7 @@ function Answer({id, question, setQuestData}) {
     const [editBool, setEdit] = useState(true);
     const [deleted, setDelete] = useState(false);
     const [sameUser, setSame] = useState(true);
+    const [t, i18n] = useTranslation("global");
 //canvi primer commit
 
 useEffect(() => {
@@ -97,7 +99,7 @@ const likeDislike = async (e) => {
     }
 
 if(!ansData||!userData){
-    return <>Loading...</>
+    return <>{t("question.loading")}...</>
     }
     
 return (
@@ -134,8 +136,8 @@ return (
                 <Typography variant="body2" className={classes.question} >{ansData.answer}  </Typography> :
                     <Paper className={classes.paper}>
                     <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                    <TextField name="answer" variant="outlined" label="Answer" fullWidth value={ansData.answer} onChange={(e) => setAns({ ...ansData, answer: e.target.value })} />
-                    <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth >Update</Button>
+                    <TextField name="answer" variant="outlined" label={t("answer.answer")} fullWidth value={ansData.answer} onChange={(e) => setAns({ ...ansData, answer: e.target.value })} />
+                    <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth >{t("answer.title")}</Button>
                     </form>
                     </Paper>}
                 </CardContent>
@@ -146,7 +148,7 @@ return (
                 {sameUser?
                     <Button size="small" color="primary" onClick={deleteAns }>
                         <DeleteIcon fontSize="small" />
-                        Delete
+                        {t("answer.delete")}
                     </Button>
                     :<></>
                 }
