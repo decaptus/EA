@@ -24,7 +24,7 @@ export default function Message({ message, own, currentChat, currentUser }) {
       <div className="messageTop">
             <img
               className="messageImg"
-              src={own ? currentUser.result.picture : user?.picture}
+              src={own ? currentUser.result.picture ? currentUser.result.picture : "/noAvatar.png" : user?.picture? user?.picture: "/noAvatar.png"}
               alt=""
             />
                 

@@ -69,7 +69,11 @@ export default function ChatOnline({usersBBDD, onlineUsers, currentId, setCurren
             {usersSocket?.map((o) => (
             <div className="chatUser" onClick={()=>handleClick(o)} key={o._id} >
                 <div className="chatImgContainer">
-                    <img className="chatOnlineImg" src={o.picture} alt="" />
+                    <img className="chatOnlineImg" src={
+                    o?.picture
+                  ? o?.picture
+                  : "/noAvatar.png"
+            } alt="" />
                     <div className="userStatusPoint"></div>
                 </div>
                 <span className="chatUserName">
@@ -80,7 +84,11 @@ export default function ChatOnline({usersBBDD, onlineUsers, currentId, setCurren
             {usersDesconected?.map((m) => (
             <div className="chatUserDisc" onClick={()=>handleClick(m)} key={m._id}>
                 <div className="chatImgContainerDisc">
-                    <img className="chatOnlineImgDisc" src={m.picture} alt="" />
+                    <img className="chatOnlineImgDisc" src={
+                    m?.picture
+                  ? m?.picture
+                  : "/noAvatar.png"
+            } alt="" />
                     <div className="userStatusPointRed"></div>
                 </div>
                 <span className="chatUserNameDisc">
