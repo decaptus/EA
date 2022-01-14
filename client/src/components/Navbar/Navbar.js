@@ -15,8 +15,7 @@ import { useDispatch } from 'react-redux';
 import * as actionType from '../../constants/actionTypes';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-
-
+import { useTranslation } from "react-i18next";
 
 
 const Navbar = () => {
@@ -26,9 +25,8 @@ const Navbar = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-  
-  //console.log(user);
 
+  const [t, i18n] = useTranslation("global");
   const showSidebar = () => setSidebar(!sidebar);
 
   const logout = () => {
@@ -54,8 +52,8 @@ const Navbar = () => {
 
   
 
- var googlepicture = "https://lh3.googleusercontent.com/a-/AOh14Gjm2Li8QycbjOF2nhLWUJGO1lbSrbTew_llLjFn=s96-c"
-//src={user.result.picture}
+  var googlepicture = "https://lh3.googleusercontent.com/a-/AOh14Gjm2Li8QycbjOF2nhLWUJGO1lbSrbTew_llLjFn=s96-c"
+  //src={user.result.picture}
 
 
   return (
@@ -69,12 +67,14 @@ const Navbar = () => {
           <div>
 
           <Typography  className={classes.tittle} variant="h6">NewStudent</Typography>
-
-
+          <h1>{t("header.hello-world")}</h1>
 
           </div>
+            <button onClick={() => i18n.changeLanguage("es")}>ES</button>
+            <button onClick={() => i18n.changeLanguage("en")}>EN</button>
+          <div>
 
-
+          </div>
 
           <div>
             {user ? (
@@ -82,12 +82,11 @@ const Navbar = () => {
               
                 <Avatar alt={user.result.name} src={user.result.picture}></Avatar>
                 <Typography  className={classes.userName} variant="h6">{user?.result.name} {user?.result.lastName}</Typography>
+
                 <Button  onClick={logout}>
-                <SettingsIcon fontSize="large" style={{color : 'white'}}/>
-
+                  <SettingsIcon fontSize="large" style={{color : 'white'}}/>
                 </Button>
-
-              </div>
+          </div>
 
             ): (
               <Link to='/'>

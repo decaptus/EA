@@ -1,0 +1,16 @@
+{
+    "header": {
+        "hello-world": "hello world"
+    },
+    "home": {
+        "welcome": "Welcome to our college",
+        "explorer": "Check out our website",
+        "chat": "Chat",
+        "forum": "Forum",
+        "apartaments": "Apartments",
+        "lessons": "Lessons",
+        "teachers": "Teachers",
+        "support": "Support",
+        "we-are-here": "We are here!"
+    }
+}
