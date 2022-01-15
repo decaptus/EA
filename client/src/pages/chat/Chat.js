@@ -8,6 +8,7 @@ import {getUsers} from '../../actions/users';
 import axios from "axios";
 import {io} from "socket.io-client";
 import "./chat.css";
+import { useTranslation } from "react-i18next";
 
 export default function Chat() {
     const url_conv = 'http://localhost:4000/conversation'; 
@@ -25,6 +26,7 @@ export default function Chat() {
     const socket = useRef();
     const dispatch = useDispatch();
     const users = useSelector((state) => state.users);
+    const [t, i18n] = useTranslation("global");
     
     
    useEffect(() => {
@@ -143,7 +145,7 @@ export default function Chat() {
         <div className="messenger">
             <div className="chatMenu">
                 <div className="chatMenuWrapper">
-                <input placeholder="Conversations" className="chatMenuInput" />
+                <input placeholder={t("chat.chats")} className="chatMenuInput" />
                 <div className="conversationsScroll">
                     {conversations.map((c) => (
                         <div onClick={()=>setCurrentChat(c)}>
@@ -173,12 +175,12 @@ export default function Chat() {
                                     value={newMessage}
                                 ></textarea>
                                 <button className="chatSubmitButton" onClick={handleSubmit}>
-                                    Send
+                                    {t("chat.send")}
                                 </button>
                             </div>
                         </>
                         ) : (
-                        <span className="noConversationText">Open a conversation to start a chat...</span>
+                        <span className="noConversationText">{t("chat.open")}...</span>
                         )}
                 </div>
             </div>

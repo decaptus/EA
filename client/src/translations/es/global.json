@@ -73,5 +73,10 @@
         "title": "Pisos, casas y habitaciones",
         "cancel": "Cancelar",
         "post": "Sube un nuevo piso"
+    },
+    "chat": {
+        "send": "Enviar",
+        "open": "Abre una conversacion para empezar un chat",
+        "chats": "Conversaciones"
     }
 }

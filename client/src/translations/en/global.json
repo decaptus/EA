@@ -84,5 +84,10 @@
         "title": "Flats, houses and rooms",
         "cancel": "Cancel",
         "post": "Post a new flat"
+    },
+    "chat": {
+        "send": "Send",
+        "open": "Open a conversation to start a chat",
+        "chats": "Conversations"
     }
 }
