@@ -6,6 +6,7 @@ import useStyles from './styles';
 import { createAnswer, updateAnswer } from '../../actions/answers';
 import { updateQuest,getQuest, getQuests } from '../../actions/questions';
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function NewAnswer ({questData, setQuestData}) {
   const [user,setUser] = useState(JSON.parse(window.localStorage.getItem('profile')));
@@ -15,6 +16,7 @@ function NewAnswer ({questData, setQuestData}) {
   const [idAns, setId]=useState(null);
   const answer = useSelector((state) => (idAns ? state.answers.find((ans) => ans._id === idAns) : null));
   const [quest, setQData]=useState({_id:questData._id,creator:questData.creator,question:questData.question,createdAt:questData.createdAt,answers:questData.answers});
+  const [t, i18n] = useTranslation("global");
   
 
   useEffect(() => {
@@ -45,8 +47,8 @@ function NewAnswer ({questData, setQuestData}) {
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <TextField name="answer" variant="outlined" label="Answer" fullWidth value={ansData.answer} onChange={(e) => setAnsData({ ...ansData, answer: e.target.value })} />
-        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
+        <TextField name="answer" variant="outlined" label={t("new_answer.answer")} fullWidth value={ansData.answer} onChange={(e) => setAnsData({ ...ansData, answer: e.target.value })} />
+        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>{t("new_answer.submit")}</Button>
       </form>
     </Paper>
   );

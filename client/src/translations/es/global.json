@@ -47,12 +47,34 @@
     "questions": {
         "loading": "cargando"
     },
+    "new_question": {
+        "edit": "Editando",
+        "ask": "Pregunta algo",
+        "question": "Pregunta",
+        "subject": "Asignatura",
+        "submit": "Publicar"
+    },
     "answer": {
         "answer": "Respuesta",
         "update": "Actualizar",
         "delete": "Eliminar"
     },
+    "new_answer": {
+        "answer": "Respuesta",
+        "submit": "Responder"
+    },
     "forum": {
         "title": "Foro"
+    },
+    "new_flat": {
+        "name": "Nombre",
+        "creator": "Creador",
+        "address": "Direccion",
+        "description": "Descripcion",
+        "picture": "Foto",
+        "latitude": "Latitud",
+        "longitude": "Longitud",
+        "submit": "Publicar",
+        "clear": "Limpiar"
     }
 }

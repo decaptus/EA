@@ -38,7 +38,7 @@ function Question ({question} ){
 
 
     if(!userData){
-      return (<> {t("question.loading")}...</>);
+      return (<> {t("questions.loading")}...</>);
     }
     else{
     return (

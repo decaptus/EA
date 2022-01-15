@@ -47,12 +47,34 @@
     "questions": {
         "loading": "loading"
     },
+    "new_question": {
+        "edit": "Editing",
+        "ask": "Ask something",
+        "question": "Question",
+        "subject": "Subject",
+        "submit": "Submit"
+    },
     "answer": {
         "answer": "Answer",
         "update": "Update",
         "delete": "Delete"
     },
+    "new_answer": {
+        "answer": "Answer",
+        "submit": "Answer"
+    },
     "forum": {
         "title": "Forum"
+    },
+    "new_flat": {
+        "name": "Name",
+        "creator": "Creator",
+        "address": "Address",
+        "description": "Description",
+        "picture": "Picture",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "submit": "Submit",
+        "clear": "Clear"
     }
 }
