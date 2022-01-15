@@ -76,5 +76,13 @@
         "longitude": "Longitude",
         "submit": "Submit",
         "clear": "Clear"
+    },
+    "flat": {
+        "delete": "Delete"
+    },
+    "flat_page": {
+        "title": "Flats, houses and rooms",
+        "cancel": "Cancel",
+        "post": "Post a new flat"
     }
 }

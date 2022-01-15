@@ -66,15 +66,12 @@
     "forum": {
         "title": "Foro"
     },
-    "new_flat": {
-        "name": "Nombre",
-        "creator": "Creador",
-        "address": "Direccion",
-        "description": "Descripcion",
-        "picture": "Foto",
-        "latitude": "Latitud",
-        "longitude": "Longitud",
-        "submit": "Publicar",
-        "clear": "Limpiar"
+    "flat": {
+        "delete": "Eliminar"
+    },
+    "flat_page": {
+        "title": "Pisos, casas y habitaciones",
+        "cancel": "Cancelar",
+        "post": "Sube un nuevo piso"
     }
 }

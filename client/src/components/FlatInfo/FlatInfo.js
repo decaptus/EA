@@ -7,14 +7,12 @@ import dataflat from '../../components/Flats/Flat/flat'
 import { likeFlat, deleteFlat } from '../../actions/flats';
 import useStyles from './styles';
 import './price.css'
-import { useTranslation } from "react-i18next";
 
 const FlatInfo = ({flat}) => {
 
   const [currentId, setCurrentId] = useState(0);
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [t, i18n] = useTranslation("global");
 
   useEffect(() => {
     dispatch(getFlat(flat._id));                           //aqui llamamos a la acción, y inmediatamente va al reducer y hace match, con lo q modifica el estado del 'store'

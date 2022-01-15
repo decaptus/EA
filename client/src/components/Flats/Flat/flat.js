@@ -7,12 +7,14 @@ import './price.css';
 import FlatInfo from '../../FlatInfo/FlatInfo';
 import { Grid, Box } from '@material-ui/core';
 import { deleteFlat, getFlat } from '../../../api';
+import { useTranslation } from "react-i18next";
 
 
 const Flat = ({ flat, setCurrentId }) => {
   const dispatch = useDispatch();
   const flats = useStyles();
   const [pulsadoInfo, setPulsadoInfo] = useState(false);
+  const [t, i18n] = useTranslation("global");
 
   return (
     <Card className={flats.card}>
@@ -30,7 +32,7 @@ const Flat = ({ flat, setCurrentId }) => {
             <Grid item xs={3}>
               <Button size="small" variant="contained" color="secondary" onClick={() => { deleteFlat(flat._id)}}>
                 <DeleteIcon fontSize="small" />
-                Delete
+                {t("flat.delete")}
               </Button>
             </Grid>
           </Grid>
