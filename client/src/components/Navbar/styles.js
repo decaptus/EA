@@ -25,13 +25,19 @@ export default makeStyles((theme) => ({
         marginLeft:'13px'
     },
     tittle: {
+        alignItems: 'center',
         display: 'flex',
         fontSize:'40px',
         marginRight:'200px',
         color: "#FFFFFF",
     },
-      
+    dropdown: {
+        marginRight:'10px',
+        background: 'transparent',
+        border: 'transparent',
+    },
+    dropdown_text: {
+        fontSize:'20px',
+    },
 
-
-
-    }));
+}));

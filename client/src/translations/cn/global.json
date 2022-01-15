@@ -1,0 +1,93 @@
+{
+    "side-bar": {
+        "home": "家",
+        "login": "登錄/登錄",
+        "lessons": "課",
+        "forum": "論壇",
+        "flats": "平底鞋",
+        "chat": "聊天",
+        "teachers": "教師",
+        "support": "支持"
+    },
+    "home": {
+        "welcome": "歡迎來到我哋嘅學院",
+        "explorer": "查看我哋嘅網站",
+        "chat": "聊天",
+        "forum": "論壇",
+        "apartaments": "公寓",
+        "lessons": "課",
+        "teachers": "教師",
+        "support": "支持",
+        "we-are-here": "我哋喺呢度！"
+    },
+    "lessons_form": {
+        "name": "名字",
+        "subject": "主題",
+        "description": "描述",
+        "price": "價格",
+        "picture": "圖片",
+        "creatorId": "創作者識別",
+        "post": "發佈課程",
+        "submit": "提交",
+        "clear": "清楚"
+    },
+    "lessons_page": {
+        "title": "學生/由學生提供的課程",
+        "button": "發佈課程"
+    },
+    "teacher": {
+        "department": "部門",
+        "email": "電子郵件",
+        "office": "辦公室"
+    },
+    "subject": {
+        "name": "主題",
+        "credits": "學分"
+    },
+    "questions": {
+        "loading": "裝載"
+    },
+    "new_question": {
+        "edit": "編輯",
+        "ask": "問啲乜",
+        "question": "問題",
+        "subject": "主題",
+        "submit": "提交"
+    },
+    "answer": {
+        "answer": "答",
+        "update": "更新",
+        "delete": "刪除"
+    },
+    "new_answer": {
+        "answer": "答",
+        "submit": "答"
+    },
+    "forum": {
+        "title": "論壇"
+    },
+    "new_flat": {
+        "name": "名字",
+        "creator": "造物主",
+        "address": "地址",
+        "description": "描述",
+        "picture": "圖片",
+        "latitude": "緯度",
+        "longitude": "經度",
+        "submit": "提交",
+        "clear": "清楚"
+    },
+    "flat": {
+        "delete": "刪除"
+    },
+    "flat_page": {
+        "title": "公寓，房屋和房間",
+        "cancel": "取消",
+        "post": "發佈新公寓"
+    },
+    "chat": {
+        "send": "發送",
+        "open": "打開對話以開始傾偈",
+        "chats": "對話"
+    }
+}

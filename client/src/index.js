@@ -11,6 +11,8 @@ import App from './App';
 
 import global_es from './translations/es/global.json'
 import global_en from './translations/en/global.json'
+import global_cn from './translations/cn/global.json'
+import global_fr from './translations/fr/global.json'
 
 //borrar este texto
 const store = createStore(reducers, compose(applyMiddleware(thunk)));      //A store holds the whole state tree of your application. The only way to change the state inside it is to dispatch an action on it.
@@ -24,6 +26,12 @@ i18next.init({
     },
     en: {
       global: global_en,
+    },
+    cn: {
+      global: global_cn,
+    },
+    fr: {
+      global: global_fr,
     },
   },
 });
