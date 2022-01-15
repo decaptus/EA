@@ -41,7 +41,7 @@
         "office": "Oficina"
     },
     "subject": {
-        "name": "Nombre",
+        "name": "Asignatura",
         "credits": "Creditos"
     },
     "questions": {
@@ -65,6 +65,17 @@
     },
     "forum": {
         "title": "Foro"
+    },
+    "new_flat": {
+        "name": "Nombre",
+        "creator": "Creador",
+        "address": "Direccion",
+        "description": "Descripvion",
+        "picture": "Foto",
+        "latitude": "Latitud",
+        "longitude": "Longitud",
+        "submit": "Publicar",
+        "clear": "Limpiar"
     },
     "flat": {
         "delete": "Eliminar"
