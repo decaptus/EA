@@ -21,10 +21,15 @@ const Teachers = () => {
     <>
     <Navbar/>
 
+    <AppBar className={classes.appBar} position="static" color="inherit">
+      <Typography className={classes.heading} variant="h2" align="center">Teachers</Typography>
+      <img  className={classes.heading} src={classIm} alt="classIm" height="60"  />
+    </AppBar>
+
       <Container maxWidth="lg">
       <Grow in>
       <Container>
-        <Grid container justify="space-between" alignItems="stretch" spacing={1}>
+        <Grid container justify="center" alignItems="stretch" spacing={1}>
           <Grid item xs={4} sm={9}>
             <Teachers_form />
           </Grid >       

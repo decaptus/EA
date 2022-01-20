@@ -35,22 +35,6 @@ useEffect(() => {
   if(!ansData){
       dispatch(getTeacher(profesores._id)).then(val=>{setAns(val)});  //Cogemos el JSON del profesor y lo almacenamos en val
   }
-  /* if(ansData&&!userData){
-      dispatch(getUser(ansData.creator)).then(val=>{setUserData(val)
-      if(val._id===user.result._id){
-          setSame(true);
-          }
-          else{
-          setSame(false);
-          }
-      }
-    );
-  }*/
-
-  /*if(deleted){
-      dispatch(updateQuest(question._id,questData)).then(val=>setQuestData(val))
-      setDelete(false)
-  }*/
   if(updated){
       console.log(ansData)
       dispatch(updateTeacher(ansData._id,ansData))
@@ -69,12 +53,6 @@ useEffect(() => {
 
 },[profesores._id,ansData,deleted,updated]);
     
-/*const deleteAns = async (e) => {
-  e.preventDefault();
-  const newList = questData.answers.filter((item) => item !== id);
-  setQData({...questData,answers:newList});
-  dispatch(deleteTeacher(id)).then(setDelete(true));
-};*/
 
 const likeDislike = async (e) => {
   e.preventDefault();
@@ -125,7 +103,7 @@ const likeDislike = async (e) => {
         <Typography variant="body2" color="textSecondary" component="p">Office: {profesores._id}</Typography>
 
         <Button size="small" color={colorData} onClick={likeDislike}>
-            {ansData.likes.length} <span> </span> <FaThumbsUp/>
+            {profesores.likes.length} <span> </span> <FaThumbsUp/>
         </Button>
 
         <Subjects profesores={profesores}></Subjects>
