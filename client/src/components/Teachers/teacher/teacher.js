@@ -36,7 +36,6 @@ useEffect(() => {
       dispatch(getTeacher(profesores._id)).then(val=>{setAns(val)});  //Cogemos el JSON del profesor y lo almacenamos en val
   }
   if(updated){
-      console.log("he llegadooo")
       console.log(ansData)
       dispatch(updateTeacher(ansData._id,ansData))
       setUpdate(false);
@@ -60,6 +59,7 @@ const likeDislike = async (e) => {
   if(!ansData.likes.find(id=>id===user.result._id)){
     setAns({...ansData,likes:ansData.likes.concat(user.result._id)});
     setUpdate(true)
+    console.log(ansData)
   }
   else{
       console.log(user.result._id)
@@ -68,25 +68,6 @@ const likeDislike = async (e) => {
   }
   };
 
-  const edit = async (e) => {
-      e.preventDefault();
-      if(!editBool){
-          setEdit(true)    
-      }
-      else{
-          setEdit(false)
-      }
-      };
-  
-  const handleSubmit = async (e) => {
-      e.preventDefault();
-      setUpdate(true)
-      setEdit(true)
-  }
-
-/* if(!ansData||!userData){
-  return <>Loading...</>
-  }*/
 
   return (
 
@@ -102,11 +83,11 @@ const likeDislike = async (e) => {
         <Typography variant="body2" color="textSecondary" component="p">Email: {profesores.email}</Typography>
         <Typography variant="body2" color="textSecondary" component="p">Office: {profesores.office}</Typography>
 
-        <Button size="small" color={colorData} onClick={likeDislike}>
-            {profesores.likes.length} <span> </span> <FaThumbsUp/>
+        <Button size="small" color={colorData} onClick={likeDislike} >
+            {profesores.likes.length} <span> </span> <FaThumbsUp/> 
         </Button>
 
-        <Subjects profesores={profesores}></Subjects>
+        <Subjects profesores={profesores} ></Subjects>
       </CardContent>
 
     </Card>
