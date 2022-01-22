@@ -35,6 +35,12 @@
         "title": "學生/由學生提供的課程",
         "button": "發佈課程"
     },
+    "teacher_page": {
+        "title": "师也"
+    },
+    "support_page": {
+        "title": "支持"
+    },
     "teacher": {
         "department": "部門",
         "email": "電子郵件",

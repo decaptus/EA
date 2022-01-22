@@ -35,6 +35,12 @@
         "title": "Cours pour/par les étudiants",
         "button": "Publiez votre cours"
     },
+    "teacher_page": {
+        "title": "Enseignant"
+    },
+    "support_page": {
+        "title": "Soutien"
+    },
     "teacher": {
         "department": "Département",
         "email": "Messagerie électronique",

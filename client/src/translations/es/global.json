@@ -35,6 +35,12 @@
         "title": "Clases por/para estudiantes",
         "button": "Publica tu clase"
     },
+    "teacher_page": {
+        "title": "Profesores"
+    },
+    "support_page": {
+        "title": "Soporte"
+    },
     "teacher": {
         "department": "Departamento",
         "email": "Correo electronico",
