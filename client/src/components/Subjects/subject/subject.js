@@ -13,7 +13,6 @@ import './price.css';
 const Teacher = ({ subjects: subjects }) => {
   //const dispatch = useDispatch();
   const classes = useStyles();
-  console.log(subjects);
 
   return (
 

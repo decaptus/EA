@@ -100,7 +100,6 @@ const likeDislike = async (e) => {
         <Typography variant="body2" color="textSecondary" component="p">Department: {profesores.departamento}</Typography>
         <Typography variant="body2" color="textSecondary" component="p">Email: {profesores.email}</Typography>
         <Typography variant="body2" color="textSecondary" component="p">Office: {profesores.office}</Typography>
-        <Typography variant="body2" color="textSecondary" component="p">Office: {profesores._id}</Typography>
 
         <Button size="small" color={colorData} onClick={likeDislike}>
             {profesores.likes.length} <span> </span> <FaThumbsUp/>

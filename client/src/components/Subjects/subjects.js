@@ -21,22 +21,17 @@ const Subjects_form = ({ profesores: profesores }) => {
     bool = 1
   },[bool])
 
+  const asiganturas = profesores.subjects;
+  console.log(asiganturas)
 
-  for ( var i=0; i<subjects.length; i++) {  //Recorremos todos los puestos de subjects en general
-    for ( var a=0; a<profesores.subjects.length; a++) {  //Recorremos todos los puestos de subjects en profesores
-      /*if (subjects[i]._id == profesores.subjects[a]._id) {
-        misubject[a] = subjects[i];
-      }*/
-    }
-  }
 
   return (
-    !subjects.length ? <CircularProgress /> : ( 
+    !asiganturas.length ? "This professor doesn't teach right now" : ( 
 
       <Grid className={classes.container} container  alignItems="stretch" spacing={6} >
-        {subjects.map((subjects) => (                                                 //abrimos corchetes para indicar q es javascript y hacemos un loop para cada anuncio
+        {asiganturas.map((asiganturas) => (                                                 //abrimos corchetes para indicar q es javascript y hacemos un loop para cada anuncio
 
-            <Subject subjects={subjects} setSubjects={setSubjects}></Subject>
+            <Subject subjects={asiganturas} ></Subject>
 
         ))}
       </Grid>
