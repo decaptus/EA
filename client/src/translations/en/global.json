@@ -42,7 +42,8 @@
     },
     "subject": {
         "name": "Subject",
-        "credits": "Credits"
+        "credits": "Credits",
+        "nini": "This professor don't have classes right now"
     },
     "questions": {
         "loading": "loading"

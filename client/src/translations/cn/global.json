@@ -42,7 +42,8 @@
     },
     "subject": {
         "name": "主題",
-        "credits": "學分"
+        "credits": "學分",
+        "nini": "此教今无课"
     },
     "questions": {
         "loading": "裝載"

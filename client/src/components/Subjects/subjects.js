@@ -24,7 +24,7 @@ const Subjects_form = ({ profesores: profesores }) => {
   const asiganturas = profesores.subjects;
 
   return (
-    !asiganturas.length ? "This professor doesn't teach right now" : ( 
+    !asiganturas.length ? "N/A" : ( 
 
       <Grid className={classes.container} container  alignItems="stretch" spacing={6} >
         {asiganturas.map((asiganturas) => (                                                 //abrimos corchetes para indicar q es javascript y hacemos un loop para cada anuncio

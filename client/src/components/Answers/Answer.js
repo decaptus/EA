@@ -122,7 +122,7 @@ return (
                 </Button>
                 <Button size="small" color="primary" onClick={deleteAns }>
                     <DeleteIcon fontSize="small" />
-                    Delete
+                    {t("answer.delete")}
                 </Button>
                 {sameUser?
                     <Button size="small" color="primary" onClick={deleteAns }>

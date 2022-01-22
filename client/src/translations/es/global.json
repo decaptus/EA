@@ -42,7 +42,8 @@
     },
     "subject": {
         "name": "Asignatura",
-        "credits": "Creditos"
+        "credits": "Creditos",
+        "nini": "Este profesor no imparte clases por el momento"
     },
     "questions": {
         "loading": "cargando"

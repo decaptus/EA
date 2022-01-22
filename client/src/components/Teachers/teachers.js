@@ -23,7 +23,6 @@ const Teachers_form = () => {
 
   return (
     !profesores.length ? <CircularProgress /> : ( 
-      //<h1>hola</h1>
       <Grid className={classes.container} container  alignItems="stretch" spacing={6} >
         {profesores.map((profesores) => (                                                 //abrimos corchetes para indicar q es javascript y hacemos un loop para cada anuncio
           <Grid key={profesores._id} item xs={3} sm={4} md={6}>
