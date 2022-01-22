@@ -22,8 +22,6 @@ const Subjects_form = ({ profesores: profesores }) => {
   },[bool])
 
   const asiganturas = profesores.subjects;
-  console.log(asiganturas)
-
 
   return (
     !asiganturas.length ? "This professor doesn't teach right now" : ( 

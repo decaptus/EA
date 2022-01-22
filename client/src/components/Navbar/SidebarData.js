@@ -29,6 +29,13 @@ export const SidebarData = [
   },
 
   {
+    title: 'Teachers',
+    path: '/teachers',
+    icon: <FcIcons.FcGraduationCap />,
+    cName: 'nav-text'
+  },
+
+  {
     title: 'Flats',
     path: '/flats',
     icon: <FcIcons.FcHome />,
@@ -47,5 +54,5 @@ export const SidebarData = [
     icon: <FcIcons.FcAssistant />,
     cName: 'nav-text'
   },
-  
+
 ];

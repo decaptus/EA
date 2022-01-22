@@ -36,6 +36,7 @@ useEffect(() => {
       dispatch(getTeacher(profesores._id)).then(val=>{setAns(val)});  //Cogemos el JSON del profesor y lo almacenamos en val
   }
   if(updated){
+      console.log("he llegadooo")
       console.log(ansData)
       dispatch(updateTeacher(ansData._id,ansData))
       setUpdate(false);
@@ -57,8 +58,8 @@ useEffect(() => {
 const likeDislike = async (e) => {
   e.preventDefault();
   if(!ansData.likes.find(id=>id===user.result._id)){
-      setAns({...ansData,likes:ansData.likes.concat(user.result._id)});
-      setUpdate(true)
+    setAns({...ansData,likes:ansData.likes.concat(user.result._id)});
+    setUpdate(true)
   }
   else{
       console.log(user.result._id)

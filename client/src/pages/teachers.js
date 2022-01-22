@@ -9,7 +9,7 @@ import Bulletins from '../components/Bulletins/bulletins';
 import Teachers_form from '../components/Teachers/teachers';
 import { getPosts } from '../actions/posts';
 
-import classIm from '../images/class.png';
+import TeacherIm from '../images/teachers.png';
 import useStyles from '../styles';
 import Navbar from '../components/Navbar/Navbar'
 
@@ -23,7 +23,7 @@ const Teachers = () => {
 
     <AppBar className={classes.appBar} position="static" color="inherit">
       <Typography className={classes.heading} variant="h2" align="center">Teachers</Typography>
-      <img  className={classes.heading} src={classIm} alt="classIm" height="60"  />
+      <img  className={classes.heading} src={TeacherIm} alt="classIm" height="60"  />
     </AppBar>
 
       <Container maxWidth="lg">
