@@ -13,10 +13,13 @@ import { ClassNames } from '@emotion/react';
 import useStyles from './styles';
 import { useDispatch } from 'react-redux';
 import * as actionType from '../../constants/actionTypes';
-import SettingsIcon from '@material-ui/icons/Settings';
-
-
-
+import LogoutIcon from '@mui/icons-material/Logout';
+import IconButton from '@material-ui/core/IconButton';
+import { useTranslation } from "react-i18next";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
+import { IconFlagUK, IconFlagES, IconFlagCN, IconFlagFR } from 'material-ui-flags';
+import LanguageIcon from '@material-ui/icons/Language';
 
 
 const Navbar = () => {
@@ -26,9 +29,8 @@ const Navbar = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
-  
-  //console.log(user);
 
+  const [t, i18n] = useTranslation("global");
   const showSidebar = () => setSidebar(!sidebar);
 
   const logout = () => {
@@ -52,10 +54,16 @@ const Navbar = () => {
     setUser(JSON.parse(window.localStorage.getItem('profile')));
   }, [location]);
 
+
+  const [dropdown, setDropdown]=useState(false);
+  const abrirCerrarDropdown = () => {
+    setDropdown(!dropdown);
+  }
+
   
 
- var googlepicture = "https://lh3.googleusercontent.com/a-/AOh14Gjm2Li8QycbjOF2nhLWUJGO1lbSrbTew_llLjFn=s96-c"
-//src={user.result.picture}
+  var googlepicture = "https://lh3.googleusercontent.com/a-/AOh14Gjm2Li8QycbjOF2nhLWUJGO1lbSrbTew_llLjFn=s96-c"
+  //src={user.result.picture}
 
 
   return (
@@ -68,26 +76,40 @@ const Navbar = () => {
 
           <div>
 
-          <Typography  className={classes.tittle} variant="h6">NewStudent</Typography>
-
-
-
-          </div>
-
-
-
           <div>
-            {user ? (
-              <div className={classes.profile}>
+            <Typography  className={classes.tittle} variant="h6">NewStudent</Typography>
+          </div>
+        </div>
+
+ 
+
+        <div>
+          {user ? (
+            <div className={classes.profile}>
+
+<div>
+          <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown} >
+                  <DropdownToggle caret className={classes.dropdown}>
+                    <LanguageIcon></LanguageIcon>
+                  </DropdownToggle>
+
+                  <DropdownMenu>
+                    <DropdownItem onClick={() => i18n.changeLanguage("es")}><IconButton className={classes.dropdown_text}><IconFlagES /> Spanish</IconButton></DropdownItem>
+                    <DropdownItem onClick={() => i18n.changeLanguage("en")}><IconButton className={classes.dropdown_text}><IconFlagUK /> English</IconButton></DropdownItem>
+                    <DropdownItem onClick={() => i18n.changeLanguage("fr")}><IconButton className={classes.dropdown_text}><IconFlagFR /> Français</IconButton></DropdownItem>
+                    <DropdownItem onClick={() => i18n.changeLanguage("cn")}><IconButton className={classes.dropdown_text}><IconFlagCN /> Chinese</IconButton></DropdownItem>
+                  </DropdownMenu>
+          </Dropdown>
+        </div>
+
+              <Avatar alt={user.result.name} src={user.result.picture}></Avatar>
+              <Typography  className={classes.userName} variant="h6">{user?.result.name} {user?.result.lastName}</Typography>
+
+              <Button  onClick={logout}>
+                <LogoutIcon fontSize="large" style={{color : 'white'}}/>
+              </Button>
               
-                <Avatar alt={user.result.name} src={user.result.picture}></Avatar>
-                <Typography  className={classes.userName} variant="h6">{user?.result.name} {user?.result.lastName}</Typography>
-                <Button  onClick={logout}>
-                <SettingsIcon fontSize="large" style={{color : 'white'}}/>
-
-                </Button>
-
-              </div>
+        </div>
 
             ): (
               <Link to='/'>

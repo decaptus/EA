@@ -2,8 +2,10 @@ import axios from "axios";
 import "./conversation.css";
 import {useEffect, useState } from "react";
 
+
 export default function Conversation({conversation, currentUser}) {
     const [user,setUser] = useState(null);
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
     useEffect(() => {
         const friendId = conversation.members.find((m) => m !== currentUser.result._id)
@@ -23,7 +25,13 @@ export default function Conversation({conversation, currentUser}) {
 
     return (
         <div className="conversation">
-            <img className="conversationImg" src={user?.picture} alt="" />
+            <img className="conversationImg" src=
+            {
+                user?.picture
+                  ? user?.picture
+                  : "/noAvatar.png"
+            }
+            alt="" />
             <span className="conversiationName"> {user?.name} </span>
         </div>
     )

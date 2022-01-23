@@ -10,12 +10,14 @@ import {getUser } from '../../../actions/auth';
 import { Link} from 'react-router-dom';
 import { connect } from 'react-redux'
 import { render } from 'react-dom';
+import { useTranslation } from "react-i18next";
 
 
 function Question ({question} ){
     const classes = useStyles();
     const dispatch = useDispatch();
     const [userData, setUserData]=useState(null);
+    const [t, i18n] = useTranslation("global");
     let start = true;
 
  
@@ -36,7 +38,7 @@ function Question ({question} ){
 
 
     if(!userData){
-      return (<> Loading...</>);
+      return (<> {t("questions.loading")}...</>);
     }
     else{
     return (

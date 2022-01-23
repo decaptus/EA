@@ -1,0 +1,100 @@
+{
+    "side-bar": {
+        "home": "Home",
+        "login": "LogIn/SingIn",
+        "lessons": "Leçons",
+        "forum": "Forum",
+        "flats": "Appartements",
+        "chat": "Chat",
+        "teachers": "Professeurs",
+        "support": "Soutien"
+    },
+    "home": {
+        "welcome": "Bienvenue dans notre collège",
+        "explorer": "Consultez notre site Web",
+        "chat": "Chat",
+        "forum": "Forum",
+        "apartaments": "Appartements",
+        "lessons": "Leçons",
+        "teachers": "Professeurs",
+        "support": "Soutien",
+        "we-are-here": "Nous sommes là!"
+    },
+    "lessons_form": {
+        "name": "Nom",
+        "subject": "Objet",
+        "description": "Description",
+        "price": "Prix",
+        "picture": "Image",
+        "creatorId": "CréateurId",
+        "post": "Publier une leçon",
+        "submit": "Envoyer",
+        "clear": "Clair"
+    },
+    "lessons_page": {
+        "title": "Cours pour/par les étudiants",
+        "button": "Publiez votre cours"
+    },
+    "teacher_page": {
+        "title": "Enseignant"
+    },
+    "support_page": {
+        "title": "Soutien"
+    },
+    "teacher": {
+        "department": "Département",
+        "email": "Messagerie électronique",
+        "office": "Bureau"
+    },
+    "subject": {
+        "name": "Objet",
+        "credits": "Crédits",
+        "nini": "Ce professeur n’a pas de cours en ce moment"
+    },
+    "questions": {
+        "loading": "chargement"
+    },
+    "new_question": {
+        "edit": "Édition",
+        "ask": "Demandez quelque chose",
+        "question": "Question",
+        "subject": "Objet",
+        "submit": "Envoyer"
+    },
+    "answer": {
+        "answer": "Répondre",
+        "update": "Mettre à jour",
+        "delete": "Supprimer"
+    },
+    "new_answer": {
+        "answer": "Répondre",
+        "submit": "Répondre"
+    },
+    "forum": {
+        "title": "Forum"
+    },
+    "new_flat": {
+        "name": "Nom",
+        "creator": "Créateur",
+        "address": "Adresse",
+        "description": "Description",
+        "picture": "Image",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "submit": "Envoyer",
+        "clear": "Clair"
+    },
+    "flat": {
+        "delete": "Supprimer"
+    },
+    "flat_page": {
+        "title": "Appartements, maisons et chambres",
+        "cancel": "Annuler",
+        "post": "Publier un nouvel appartement"
+    },
+    "chat": {
+        "send": "Envoyer",
+        "open": "Ouvrir une conversation pour démarrer une discussion",
+        "chats": "Conversations"
+    }
+}

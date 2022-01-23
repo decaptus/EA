@@ -1,0 +1,100 @@
+{
+    "side-bar": {
+        "home": "Menu",
+        "login": "Registro/LogIn",
+        "lessons": "Lecciones",
+        "forum": "Foro",
+        "flats": "Pisos",
+        "chat": "Chat",
+        "teachers": "Profesores",
+        "support": "Soporte"
+    },
+    "home": {
+        "welcome": "Bienvenido a nuestra universidad",
+        "explorer": "Explora nuestro sitio web",
+        "chat": "Chat",
+        "forum": "Foro",
+        "apartaments": "Apartamentos",
+        "lessons": "Lecciones",
+        "teachers": "Profesores",
+        "support": "Soporte",
+        "we-are-here": "Estamos aquí!"
+    },
+    "lessons_form": {
+        "name": "Nombre",
+        "subject": "Asignatura",
+        "description": "Descripcion",
+        "price": "Precio",
+        "picture": "Foto",
+        "creatorId": "Id del creador",
+        "post": "Publica una leccion",
+        "submit": "Subir",
+        "clear": "Borrar"
+    },
+    "lessons_page": {
+        "title": "Clases por/para estudiantes",
+        "button": "Publica tu clase"
+    },
+    "teacher_page": {
+        "title": "Profesores"
+    },
+    "support_page": {
+        "title": "Soporte"
+    },
+    "teacher": {
+        "department": "Departamento",
+        "email": "Correo electronico",
+        "office": "Oficina"
+    },
+    "subject": {
+        "name": "Asignatura",
+        "credits": "Creditos",
+        "nini": "Este profesor no imparte clases por el momento"
+    },
+    "questions": {
+        "loading": "cargando"
+    },
+    "new_question": {
+        "edit": "Editando",
+        "ask": "Pregunta algo",
+        "question": "Pregunta",
+        "subject": "Asignatura",
+        "submit": "Publicar"
+    },
+    "answer": {
+        "answer": "Respuesta",
+        "update": "Actualizar",
+        "delete": "Eliminar"
+    },
+    "new_answer": {
+        "answer": "Respuesta",
+        "submit": "Responder"
+    },
+    "forum": {
+        "title": "Foro"
+    },
+    "new_flat": {
+        "name": "Nombre",
+        "creator": "Creador",
+        "address": "Direccion",
+        "description": "Descripvion",
+        "picture": "Foto",
+        "latitude": "Latitud",
+        "longitude": "Longitud",
+        "submit": "Publicar",
+        "clear": "Limpiar"
+    },
+    "flat": {
+        "delete": "Eliminar"
+    },
+    "flat_page": {
+        "title": "Pisos, casas y habitaciones",
+        "cancel": "Cancelar",
+        "post": "Sube un nuevo piso"
+    },
+    "chat": {
+        "send": "Enviar",
+        "open": "Abre una conversacion para empezar un chat",
+        "chats": "Conversaciones"
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "side-bar": {
+        "home": "Home",
+        "login": "LogIn/SingIn",
+        "lessons": "Lessons",
+        "forum": "Forum",
+        "flats": "Flats",
+        "chat": "Chat",
+        "teachers": "Teachers",
+        "support": "Support"
+    },
+    "home": {
+        "welcome": "Welcome to our college",
+        "explorer": "Check out our website",
+        "chat": "Chat",
+        "forum": "Forum",
+        "apartaments": "Apartments",
+        "lessons": "Lessons",
+        "teachers": "Teachers",
+        "support": "Support",
+        "we-are-here": "We are here!"
+    },
+    "lessons_form": {
+        "name": "Name",
+        "subject": "Subject",
+        "description": "Description",
+        "price": "Price",
+        "picture": "Picture",
+        "creatorId": "CreatorId",
+        "post": "Post a lesson",
+        "submit": "Submit",
+        "clear": "Clear"
+    },
+    "lessons_page": {
+        "title": "Classes for/by students",
+        "button": "Publish your class"
+    },
+    "teacher_page": {
+        "title": "Teachers"
+    },
+    "support_page": {
+        "title": "Support"
+    },
+    "teacher": {
+        "department": "Department",
+        "email": "Email",
+        "office": "Office"
+    },
+    "subject": {
+        "name": "Subject",
+        "credits": "Credits",
+        "nini": "This professor don't have classes right now"
+    },
+    "questions": {
+        "loading": "loading"
+    },
+    "new_question": {
+        "edit": "Editing",
+        "ask": "Ask something",
+        "question": "Question",
+        "subject": "Subject",
+        "submit": "Submit"
+    },
+    "answer": {
+        "answer": "Answer",
+        "update": "Update",
+        "delete": "Delete"
+    },
+    "new_answer": {
+        "answer": "Answer",
+        "submit": "Answer"
+    },
+    "forum": {
+        "title": "Forum"
+    },
+    "new_flat": {
+        "name": "Name",
+        "creator": "Creator",
+        "address": "Address",
+        "description": "Description",
+        "picture": "Picture",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "submit": "Submit",
+        "clear": "Clear"
+    },
+    "flat": {
+        "delete": "Delete"
+    },
+    "flat_page": {
+        "title": "Flats, houses and rooms",
+        "cancel": "Cancel",
+        "post": "Post a new flat"
+    },
+    "chat": {
+        "send": "Send",
+        "open": "Open a conversation to start a chat",
+        "chats": "Conversations"
+    }
+}

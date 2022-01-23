@@ -13,10 +13,6 @@ export default makeStyles({
   fullHeightCard: {
     height: '100%',
   },
-  delete: {
-    
-
-  },
   card: {
     display: 'flex',
     flexDirection: 'column',
@@ -37,10 +33,6 @@ export default makeStyles({
     right: '20px',
     color: 'white',
   },
-  price: {
-    desplay: 'flex',
-    marginTop: '7px'
-  },
   grid: {
     display: 'flex',
   },
@@ -51,6 +43,10 @@ export default makeStyles({
   },
   title: {
     padding: '0 16px',
+  },
+  price: {
+    desplay: 'flex',
+    marginTop: '7px'
   },
   cardActions: {
     padding: '0 16px 8px 16px',
@@ -97,4 +93,14 @@ export default makeStyles({
 
     
 },
+
+
+
+
+
+
+
+ 
+
+
 });

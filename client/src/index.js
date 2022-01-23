@@ -4,16 +4,43 @@ import { Provider } from 'react-redux';                                 //provid
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { reducers } from './reducers';
-
+import { I18nextProvider } from 'react-i18next';
+import i18next from 'i18next';
 
 import App from './App';
+
+import global_es from './translations/es/global.json'
+import global_en from './translations/en/global.json'
+import global_cn from './translations/cn/global.json'
+import global_fr from './translations/fr/global.json'
 
 //borrar este texto
 const store = createStore(reducers, compose(applyMiddleware(thunk)));      //A store holds the whole state tree of your application. The only way to change the state inside it is to dispatch an action on it.
 
+i18next.init({
+  interpolation: { escapeValue: false },
+  lng: "es",
+  resources: {
+    es: {
+      global: global_es,
+    },
+    en: {
+      global: global_en,
+    },
+    cn: {
+      global: global_cn,
+    },
+    fr: {
+      global: global_fr,
+    },
+  },
+});
+
 ReactDOM.render(
     <Provider store={store}>
-    <App />
+      <I18nextProvider i18n={i18next}>
+        <App />
+      </I18nextProvider>
   </Provider>,
   document.getElementById('root'), 
 );

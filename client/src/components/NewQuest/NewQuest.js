@@ -6,6 +6,7 @@ import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
 import useStyles from './styles';
 import { createQuest, getQuests, updateQuest } from '../../actions/questions';
+import { useTranslation } from "react-i18next";
 
 const NewQuestion = ({ currentId, setCurrentId }) => {
   const [user,setUser] = useState(JSON.parse(window.localStorage.getItem('profile')));
@@ -16,6 +17,7 @@ const NewQuestion = ({ currentId, setCurrentId }) => {
   const [updated, setUpdated] = useState(false);
   const [subject, setSubj] = useState(null);
   const subjects = useSelector((state)=>state.subjects);
+  const [t, i18n] = useTranslation("global");
 
   useEffect(() => {
     if (question) {
@@ -58,13 +60,13 @@ const NewQuestion = ({ currentId, setCurrentId }) => {
   };
 
   if(!subjects){
-    return <>Loading...</>
+    return <>{t("questions.loading")}...</>
     }
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant="h6">{currentId ? `Editing "${question.title}"` : 'Ask something'}</Typography>
-        <TextField name="question" variant="outlined" label="Question" fullWidth value={questData.question} onChange={(e) => setQuestData({ ...questData, question: e.target.value })}/>
+        <TextField name="question" variant="outlined" label={t("new_question.question")} fullWidth value={questData.question} onChange={(e) => setQuestData({ ...questData, question: e.target.value })}/>
         <Stack spacing={2} sx={{ width: 320 }}>
           <Autocomplete
             id="Subject"
@@ -72,10 +74,10 @@ const NewQuestion = ({ currentId, setCurrentId }) => {
             options={subjects}
             getOptionLabel={(option) => option.name || ""}
             onChange={(e,value) => { setSubject(value)}}
-            renderInput={(params) => <TextField {...params} label="Subject"/> }
+            renderInput={(params) => <TextField {...params} label={t("new_question.subject")}/> }
           />
         </Stack>
-        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
+        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>{t("new_question.question")}</Button>
       </form>
     </Paper>
   );
