@@ -25,10 +25,8 @@ export default makeStyles((theme) => ({
         marginLeft:'13px'
     },
     tittle: {
-        alignItems: 'center',
         display: 'flex',
         fontSize:'40px',
-        marginRight:'200px',
         color: "#FFFFFF",
     },
     dropdown: {
@@ -39,5 +37,6 @@ export default makeStyles((theme) => ({
     dropdown_text: {
         fontSize:'20px',
     },
+    
 
 }));

@@ -30,7 +30,7 @@ const Flat = ({ flat, setCurrentId }) => {
           <Grid container spacing={2}>
             
             <Grid item xs={3}>
-              <Button size="small" variant="contained" color="secondary" onClick={() => { deleteFlat(flat._id)}}>
+              <Button className={flats.delete}  size="small" variant="contained" color="secondary" onClick={() => { deleteFlat(flat._id)}}>
                 <DeleteIcon fontSize="small" />
                 {t("flat.delete")}
               </Button>
@@ -42,7 +42,9 @@ const Flat = ({ flat, setCurrentId }) => {
             <Typography variant="body2" color="textSecondary" component="p">{flat.description}</Typography>
           </CardContent>
           <CardActions className={flats.cardActions}>
-            <Typography className="card-price" component="p">{flat.price} €</Typography>
+          <div className="card-price">
+            <Typography className={flats.price} component="p">{flat.price} €</Typography>
+            </div>
           </CardActions>
 
         </Card>

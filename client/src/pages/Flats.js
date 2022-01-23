@@ -40,7 +40,7 @@ const Flats = () => {
               <Grid container justify="space-between" alignItems="stretch" spacing={2}>
 
               <Grid item sm={2}>
-              <Button variant="contained" color="secondary" type="submit" onClick = {() => setPulsadoNew(!pulsadoNew)} fullWidth>{t("flat_page.cancel")}</Button>
+              <Button variant="contained" color="primary" type="submit" onClick = {() => setPulsadoNew(!pulsadoNew)} fullWidth>{t("flat_page.cancel")}</Button>
               <h1></h1>
               </Grid> 
 
@@ -56,7 +56,7 @@ const Flats = () => {
 
               <Grid>
               <Grid item sm={2}>
-              <Button variant="contained" color="secondary" type="submit" onClick = {() => setPulsadoNew(!pulsadoNew)} fullWidth>{t("flat_page.post")}</Button>
+              <Button variant="contained" color="primary" type="submit" onClick = {() => setPulsadoNew(!pulsadoNew)} fullWidth>{t("flat_page.post")}</Button>
               <h1></h1>
               </Grid> 
               

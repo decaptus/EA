@@ -13,7 +13,7 @@ import { ClassNames } from '@emotion/react';
 import useStyles from './styles';
 import { useDispatch } from 'react-redux';
 import * as actionType from '../../constants/actionTypes';
-import SettingsIcon from '@material-ui/icons/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
 import IconButton from '@material-ui/core/IconButton';
 import { useTranslation } from "react-i18next";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -106,8 +106,9 @@ const Navbar = () => {
               <Typography  className={classes.userName} variant="h6">{user?.result.name} {user?.result.lastName}</Typography>
 
               <Button  onClick={logout}>
-                <SettingsIcon fontSize="large" style={{color : 'white'}}/>
+                <LogoutIcon fontSize="large" style={{color : 'white'}}/>
               </Button>
+              
         </div>
 
             ): (
