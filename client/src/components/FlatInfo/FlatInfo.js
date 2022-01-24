@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
+import { Card } from '@material-ui/core/';
 import { useDispatch } from 'react-redux';
-import { getFlat } from '../../api';
-import dataflat from '../../components/Flats/Flat/flat'
-
-import { likeFlat, deleteFlat } from '../../actions/flats';
+import { getFlat } from '../../api'; 
 import useStyles from './styles';
 import './price.css'
 
@@ -15,9 +12,12 @@ const FlatInfo = ({flat}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getFlat(flat._id));                           //aqui llamamos a la acción, y inmediatamente va al reducer y hace match, con lo q modifica el estado del 'store'
-  }, [currentId, dispatch]);
+    console.log("flat")
+    dispatch(getFlat(flat._id));  
+    console.log(flat)                         
+  }, [currentId]);
 
+  
   return (
 
     <Card className={classes.card}>

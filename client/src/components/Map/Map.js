@@ -1,65 +1,67 @@
-import React, {useEffect,useState} from 'react';
-import GoogleMapReact from 'google-map-react';
-import { Container, Box, CircularProgress, Grid } from '@material-ui/core';
-import Marker from './Markers/marker'
-import { useDispatch,useSelector } from 'react-redux';
-import useStyles from './styles';
-import {getMarkers} from '../../actions/markers';
+import React, { useEffect, useState } from 'react';
+import { Container, Box, CircularProgress, Grid, requirePropFactory } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import useStyles from './styles'; 
+import { getMarkers } from '../../actions/markers';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css';   
 
-const Map = ({ setCurrentId }) => {
-    
+import L from 'leaflet';
+
+delete L.Icon.Default.prototype._getIconUrl;
+ 
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default,
+    iconUrl: require('leaflet/dist/images/marker-icon.png').default,
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png').default
+});
+const MapView = ({ setCurrentId }) => {
+
     const postmarkers = useSelector((state) => state.postmarkers);
     const dispatch = useDispatch();
     const classes = useStyles();
     const coordinates = { lat: 41.27518727573582, lng: 1.9879425228270187 };
- 
-    useEffect(()=>{
-        dispatch(getMarkers()); 
-      },[dispatch]);
 
-    if(!postmarkers){
+    useEffect(() => {
+        dispatch(getMarkers());
+    }, [dispatch]);
+
+    if (!postmarkers) {
         return (
-        <h1>loading...</h1>
+            <h1>loading...</h1>
         )
     }
     return (
-        // !postmarkers.length ? <CircularProgress /> : (                                                  //loading spinner
-        //     <Grid container alignItems="stretch" spacing={3} >
-        //         {postmarkers.map((marker) => (                                                                
-        //             <Grid key={marker._id} item xs={12}>
-        //                 <Marker marker={marker} setCurrentId={setCurrentId} />
+        !postmarkers.length ? <CircularProgress /> : (    
+                                                        
+            <MapContainer center={coordinates} zoom={15} scrollWheelZoom={false}>
 
-        //             </Grid>
-
-        //         ))}
-
-        //     </Grid>
-        //  )
-
-        <div className={classes.mapContainer}>
-            <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyAt-akegvRfN5zpOklVMt-fYS6L6LnZo4Y' }}
-                defaultCenter={coordinates}
-                center={coordinates}
-                defaultZoom={16}
-                margin={[50, 50, 50, 50]}
-
-            >
+                <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
                 
-        
-                {/* <Container >
-                    <div style={{ width: '120%' }}>
-                        <Box sx={{ display: 'grid', gridGap: '30px' }}>
-                            <h1>marker</h1>  
-                        </Box>
-                    </div>
-                </Container> */}
+                {postmarkers.map((marker) => (                                                                
+                    <Marker    
+                    key={marker.name}
+                    position={[
+                      marker.lat,
+                      marker.lng
+                    ]}>
 
+                    <Popup> 
+                        <div>{marker.name}</div>
+                        <div>{marker.address}</div>
+                    </Popup>
 
-            </GoogleMapReact>
-        </div>
-
+                </Marker> 
+                    
+                ))}
+            </MapContainer >
+              
+         )
+ 
     );
 }
 
-export default Map;
+export default MapView;

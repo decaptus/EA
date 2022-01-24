@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";                                           //useeffect going to come the component will update
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { Container, AppBar, Typography, Grow, Card,Grid } from '@material-ui/core';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';                                        //allows us tu dispatch an action
 
@@ -10,8 +10,14 @@ import homeIm from '../images/home.png';
 import useStyles from '../styles';
 import NewFlat from "../components/NewFlat_Form/NewFlat";
 import Navbar from '../components/Navbar/Navbar';
+<<<<<<< HEAD
 import { useTranslation } from "react-i18next";
 
+=======
+import MapFlats from "../components/Flats/MapFlats";
+import { BrowserRouter, Switch,Link ,Route} from 'react-router-dom'; 
+import FlatInfo from "../components/FlatInfo/FlatInfo";
+>>>>>>> minimo_tatiana
 
 const Flats = () => {
 
@@ -28,6 +34,9 @@ const Flats = () => {
     return(
       <>
     <Navbar/>
+    <BrowserRouter>
+    <Switch>
+      <Route path='/flats'>
         <Container maxWidth="lg">
         <AppBar className={classes.appBar} position="static" color="inherit">
           <Typography className={classes.heading} variant="h2" align="center">{t("flat_page.title")}</Typography>
@@ -51,8 +60,16 @@ const Flats = () => {
               </Grid>
               </Container>
             ) : (
+
+              
               <Container>
               <Grid container justify="space-between" alignItems="stretch" spacing={2}>
+
+              <Container>
+                <MapFlats></MapFlats>
+                <span></span>
+                
+              </Container>
 
               <Grid>
               <Grid item sm={2}>
@@ -76,7 +93,19 @@ const Flats = () => {
       </Grow>     
 
       </Container>
-      
+      </Route>
+
+    <Route path={'/flats/:id'}>
+
+      <Container >
+        <div style={{ marginTop: `30px`}}> 
+        <FlatInfo key={currentId} setCurrentId={setCurrentId}/>
+        </div>
+      </Container>
+
+      </Route>
+    </Switch>
+    </BrowserRouter>
     </>
     );
 

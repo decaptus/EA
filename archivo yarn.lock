@@ -2199,6 +2199,11 @@
   "resolved" "https://registry.npmjs.org/@types/estree/-/estree-0.0.39.tgz"
   "version" "0.0.39"
 
+"@types/geojson@*":
+  "integrity" "sha512-1rkryxURpr6aWP7R786/UQOkJ3PcpQiWkAXBmdWc7ryFWqN6a4xfK7BtjXvFBKO9LjQ+MWQSWxYeZX1OApnArA=="
+  "resolved" "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.8.tgz"
+  "version" "7946.0.8"
+
 "@types/glob@^7.1.1":
   "integrity" "sha512-SEYeGAIQIQX8NN6LDKprLjbrd5dARM5EXsd8GI/A5l0apYI1fGMWgPHSe4ZKL4eozlAyI+doUE9XbYS4xCkQ1w=="
   "resolved" "https://registry.npmjs.org/@types/glob/-/glob-7.1.3.tgz"
@@ -2275,6 +2280,13 @@
   "version" "3.1.0"
   dependencies:
     "jwt-decode" "*"
+
+"@types/leaflet@^1.7.6":
+  "integrity" "sha512-Emkz3V08QnlelSbpT46OEAx+TBZYTOX2r1yM7W+hWg5+djHtQ1GbEXBDRLaqQDOYcDI51Ss0ayoqoKD4CtLUDA=="
+  "resolved" "https://registry.npmjs.org/@types/leaflet/-/leaflet-1.7.6.tgz"
+  "version" "1.7.6"
+  dependencies:
+    "@types/geojson" "*"
 
 "@types/minimatch@*":
   "integrity" "sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA=="
@@ -8105,7 +8117,12 @@
     "lodash" "^4.17.5"
     "webpack-sources" "^1.1.0"
 
-"leaflet@^1.7.1":
+"leaflet-extra-markers@^1.2.1":
+  "integrity" "sha512-k3mGGBJg5wr4LY89MyLHcWCol3yNC9qcK1+5os+HjBk09RlxmqsywNSBwmpP1WKnkKCIgofnOFOhdM5GeK0kHQ=="
+  "resolved" "https://registry.npmjs.org/leaflet-extra-markers/-/leaflet-extra-markers-1.2.1.tgz"
+  "version" "1.2.1"
+
+"leaflet@^1.7.1", "leaflet@>= 0.5 < 2":
   "integrity" "sha512-/xwPEBidtg69Q3HlqPdU3DnrXQOvQU/CCHA1tcDQVzOwm91YMYaILjNp7L4Eaw5Z4sOYdbBz6koWyibppd8Zqw=="
   "resolved" "https://registry.npmjs.org/leaflet/-/leaflet-1.7.1.tgz"
   "version" "1.7.1"

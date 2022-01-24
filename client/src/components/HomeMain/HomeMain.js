@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../Card/Card'
-import Map from '../Map/Map'
-import { fetchMarkers } from '../../api';
+import MapView from '../Map/Map' 
 
 import { Link } from 'react-router-dom';
 
@@ -10,10 +9,14 @@ import wherearewe from '../../images/wherearewe.png'
 
 import { useDispatch } from "react-redux";
 import useStyles from '../../styles';
+<<<<<<< HEAD
 import { Button, Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import Marker from '../Map/Markers/marker';
 import { useTranslation } from "react-i18next";
 
+=======
+import { Button, Container, AppBar, Typography, Grow, Grid } from '@material-ui/core'; 
+>>>>>>> minimo_tatiana
 
 function Home() {
     const [currentId, setCurrentId] = useState(0);
@@ -110,16 +113,8 @@ function Home() {
                 </div>
             </AppBar>
 
-
-            <Map />
-
-            <Grow in>
-                <Container>
-                    <Grid container justify="space-between" alignItems="stretch" spacing={3}>
-
-                    </Grid>
-                </Container>
-            </Grow>
+            <MapView />
+            <span>  </span> 
         </Container>
 
 

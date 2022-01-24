@@ -37,8 +37,7 @@ export const getFlat = (id) => axios.get(`${url_flats}/${id}`);
 export const createFlat = (newFlat) => axios.post(url_flats, newFlat);
 export const updateFlat = (id, updatedFlat) => axios.patch(`${url_flats}/${id}`, updatedFlat);
 export const deleteFlat = (id) => axios.delete(`${url_flats}/${id}`);
-export const likeFlat = (id) => axios.patch(`${url_flats}/${id}/likeFlat`);
-
+export const likeFlat = (id) => axios.patch(`${url_flats}/${id}/likeFlat`); 
 //user
 export const Register = (newPost) => axios.post(url_logIn, newPost);
 

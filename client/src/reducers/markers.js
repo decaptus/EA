@@ -8,10 +8,11 @@ import { FETCH_ALL} from '../constants/actionTypes';
 
 export default (postmarkers = [], action) => {
   switch (action.type) {
-    case FETCH_ALL:
+
+    case FETCH_ALL: 
       return action.payload;
     
-    default:
+    default: 
       return postmarkers;
   }
 };
