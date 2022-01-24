@@ -9,6 +9,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import Flat from './Flat/flat';
 import FlatInfo from '../FlatInfo/FlatInfo';
+import { Link, useHistory} from 'react-router-dom'; 
 
 delete L.Icon.Default.prototype._getIconUrl;
  
@@ -60,7 +61,9 @@ const MapFlats = ({ setCurrentId }) => {
                         <div>{flat.address}</div>
                         <div>{flat.price}  {" €"}</div>
                          
-                        <Button key={flat._id} onClick={getFlat(flat._id)}>More info</Button>
+                        <Link to= {'flats/'+flat._id} style={{ textDecoration: 'none' }}>
+                        <Button key={flat._id} flat={flat} onClick={getFlat(flat._id)}>More info</Button>
+                        </Link>
                     </Popup>
 
                 </Marker> 

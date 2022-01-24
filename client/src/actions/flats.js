@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, FETCH } from '../constants/actionTypes';
+import { FETCH_ALL, CREATE, UPDATE, DELETE, FETCH } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -13,6 +13,8 @@ export const getFlats = () => async (dispatch) => {
     const { data } = await api.fetchFlats();        //we obtain a response of data from an api.get(url)
 
     dispatch({ type: FETCH_ALL, payload: data });   //dispatch takes an action object as parameter
+    return data
+    
   } catch (error) {
     console.log(error.message);
   }
@@ -52,22 +54,13 @@ export const deleteFlat = (id) => async (dispatch) => {
 
 export const getFlat = (id) => async (dispatch) => {
   try {
-    await api.getFlat(id);
+    const { data } = await api.getFlat(id);
 
-    dispatch({ type: FETCH, payload: id });
+    dispatch({ type: FETCH, data });
+    return data
   } catch (error) {
     console.log(error.message);
   }
   
 };
 
-
-export const likeFlat = (id) => async (dispatch) => {
-  try {
-    const { data } = await api.likeFlat(id);
-
-    dispatch({ type: LIKE, payload: data });
-  } catch (error) {
-    console.log(error.message);
-  }
-};

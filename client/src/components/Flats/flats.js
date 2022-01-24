@@ -18,7 +18,7 @@ const Flats = ({ setCurrentId }) => {
       <Grid className={flats.container} container  alignItems="stretch" spacing={3} >
         {postflats.map((flat) => (                                                                 
           <Grid key={flat._id} item xs={12}>
-            <Flat flat={flat} setCurrentId={setCurrentId} />
+            <Flat key={flat._id} flat={flat} setCurrentId={setCurrentId} />
             
           </Grid>
           

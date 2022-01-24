@@ -12,10 +12,12 @@ const FlatInfo = ({flat}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getFlat(flat._id));                           
-  }, [currentId, dispatch]);
+    console.log("flat")
+    dispatch(getFlat(flat._id));  
+    console.log(flat)                         
+  }, [currentId]);
 
-  console.log(flat)
+  
   return (
 
     <Card className={classes.card}>
