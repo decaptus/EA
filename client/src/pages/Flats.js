@@ -10,13 +10,15 @@ import homeIm from '../images/home.png';
 import useStyles from '../styles';
 import NewFlat from "../components/NewFlat_Form/NewFlat";
 import Navbar from '../components/Navbar/Navbar';
+import { useTranslation } from "react-i18next";
+
 
 const Flats = () => {
 
     const [currentId, setCurrentId] = useState(0);
     const classes = useStyles();
     const dispatch = useDispatch();
-
+    const [t, i18n] = useTranslation("global");
     const [pulsadoNew, setPulsadoNew] = useState(false);
 
     useEffect(() => {
@@ -28,7 +30,7 @@ const Flats = () => {
     <Navbar/>
         <Container maxWidth="lg">
         <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography className={classes.heading} variant="h2" align="center">Flats, houses and rooms</Typography>
+          <Typography className={classes.heading} variant="h2" align="center">{t("flat_page.title")}</Typography>
           <img  className={classes.heading} src={homeIm} alt="homeIm" height="60"  />
         </AppBar>
         <Grow in>
@@ -38,7 +40,7 @@ const Flats = () => {
               <Grid container justify="space-between" alignItems="stretch" spacing={2}>
 
               <Grid item sm={2}>
-              <Button variant="contained" color="secondary" type="submit" onClick = {() => setPulsadoNew(!pulsadoNew)} fullWidth>Cancel</Button>
+              <Button variant="contained" color="primary" type="submit" onClick = {() => setPulsadoNew(!pulsadoNew)} fullWidth>{t("flat_page.cancel")}</Button>
               <h1></h1>
               </Grid> 
 
@@ -54,7 +56,7 @@ const Flats = () => {
 
               <Grid>
               <Grid item sm={2}>
-              <Button variant="contained" color="secondary" type="submit" onClick = {() => setPulsadoNew(!pulsadoNew)} fullWidth>Post a new flat</Button>
+              <Button variant="contained" color="primary" type="submit" onClick = {() => setPulsadoNew(!pulsadoNew)} fullWidth>{t("flat_page.post")}</Button>
               <h1></h1>
               </Grid> 
               

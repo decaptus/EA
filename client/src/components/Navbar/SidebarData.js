@@ -5,7 +5,7 @@ import * as FcIcons from "react-icons/fc";
 export const SidebarData = [
   {
     title: 'Home',
-    path: '/',
+    path: '/home',
     icon: <FcIcons.FcExternal />,
     cName: 'nav-text'
   },
@@ -29,16 +29,16 @@ export const SidebarData = [
   },
 
   {
+    title: 'Teachers',
+    path: '/teachers',
+    icon: <FcIcons.FcGraduationCap />,
+    cName: 'nav-text'
+  },
+
+  {
     title: 'Flats',
     path: '/flats',
     icon: <FcIcons.FcHome />,
-    cName: 'nav-text'
-  },
-  
-  {
-    title: 'Support',
-    path: '/support',
-    icon: <FcIcons.FcAssistant />,
     cName: 'nav-text'
   },
   {
@@ -46,5 +46,16 @@ export const SidebarData = [
     path: '/chat',
     icon: <FcIcons.FcCollaboration />,
     cName: 'nav-text'
-  }
+  },
+  
+  /*
+  Not implemented yet
+  {
+    title: 'Support',
+    path: '/support',
+    icon: <FcIcons.FcAssistant />,
+    cName: 'nav-text'
+  },
+  */
+
 ];

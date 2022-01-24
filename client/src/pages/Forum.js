@@ -9,14 +9,18 @@ import forumImage from '../images/forum.png';
 import { BrowserRouter, Switch,Link ,Route} from 'react-router-dom';
 import Preview from '../components/Questions/Preview/Preview.js'
 import Navbar from '../components/Navbar/Navbar'
+import {getSubjects} from '../actions/subjects'
+import { useTranslation } from "react-i18next";
 
 function Forum() {
   const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
   const classes = useStyles();
+  const [t, i18n] = useTranslation("global");
   
   useEffect(()=>{
     dispatch(getQuests()); //dispatch the action 'getQuests'
+    dispatch(getSubjects());
   },[currentId]);
 
   return(
@@ -27,7 +31,7 @@ function Forum() {
     <Route path='/forum'>
     <Container maxwidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
-          <Typography className={classes.heading} variant="h2" align="center">Forum </Typography>
+          <Typography className={classes.heading} variant="h2" align="center">{t("forum.title")} </Typography>
           <img  className={classes.heading} src={forumImage} alt="forumImage" height="60"  />
         </AppBar>
       <Grow in>

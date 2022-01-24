@@ -26,3 +26,6 @@ const Bulletins = ({ setCurrentId }) => {
 };
 
 export default Bulletins;
+
+
+//comment to do commit
