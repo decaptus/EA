@@ -6,23 +6,17 @@ import useStyles from './styles';
 import './price.css';
 import FlatInfo from '../../FlatInfo/FlatInfo';
 import { Grid, Box } from '@material-ui/core';
-<<<<<<< HEAD
-import { deleteFlat, getFlat } from '../../../api';
+import { deleteFlat } from '../../../api';
 import { useTranslation } from "react-i18next";
-=======
-import { deleteFlat } from '../../../api'; 
 import { Link, useHistory} from 'react-router-dom'; 
 import {getFlat } from '../../../actions/flats';
->>>>>>> minimo_tatiana
 
 const Flat = ({ flat }) => {
   const dispatch = useDispatch();
   const flats = useStyles();
-<<<<<<< HEAD
   const [pulsadoInfo, setPulsadoInfo] = useState(false);
   const [t, i18n] = useTranslation("global");
-=======
-  const [pulsadoInfo, setPulsadoInfo] = useState(false); 
+
   const history = useHistory();
   const [flatData, setFlatData]=useState(null);
   let start = true;
@@ -38,7 +32,6 @@ const Flat = ({ flat }) => {
       start=false
     }
   },[flatData]);  
->>>>>>> minimo_tatiana
 
   return (
      <Card className={flats.card}>
@@ -54,14 +47,10 @@ const Flat = ({ flat }) => {
           <Grid container spacing={2}>
 
             <Grid item xs={3}>
-<<<<<<< HEAD
-              <Button className={flats.delete}  size="small" variant="contained" color="secondary" onClick={() => { deleteFlat(flat._id)}}>
-=======
               <Button size="small" variant="contained" color="secondary" onClick={() => { 
                 //this.update()
                 deleteFlat(flat._id)}}>
->>>>>>> minimo_tatiana
-                <DeleteIcon fontSize="small" />
+                  <DeleteIcon fontSize="small" />
                 {t("flat.delete")}
               </Button>
               <Link to="/chat" style={{ textDecoration: 'none' }}>

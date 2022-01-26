@@ -9,14 +9,10 @@ import wherearewe from '../../images/wherearewe.png'
 
 import { useDispatch } from "react-redux";
 import useStyles from '../../styles';
-<<<<<<< HEAD
 import { Button, Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import Marker from '../Map/Markers/marker';
 import { useTranslation } from "react-i18next";
 
-=======
-import { Button, Container, AppBar, Typography, Grow, Grid } from '@material-ui/core'; 
->>>>>>> minimo_tatiana
 
 function Home() {
     const [currentId, setCurrentId] = useState(0);

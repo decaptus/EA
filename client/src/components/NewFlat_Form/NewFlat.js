@@ -27,12 +27,9 @@ const NewFlat = ({ currentId, setCurrentId }) => {
   const flat = useSelector((state) => (currentId ? state.flats.find((flat) => flat._id === currentId) : null));
   const dispatch = useDispatch();
   const classes = useStyles();
-<<<<<<< HEAD
   const [t, i18n] = useTranslation("global");
 
-=======
   let urlimagen = "" ;
->>>>>>> minimo_tatiana
 
   useEffect(() => {
     if (flat) { setFlatData(flat) };
@@ -49,16 +46,13 @@ const NewFlat = ({ currentId, setCurrentId }) => {
     Axios.post("https://api.cloudinary.com/v1_1/sergiogras/image/upload",
     formData
     ).then((response) => {
-      //console.log(response.data.secure_url);
       setImageSelected(response.data.secure_url);
       urlimagen = response.data.secure_url ;
-      //console.log("***********************"+urlimagen)
       setFlatData({ ...flatData, picture: urlimagen })
     });
   }
 
   const clear = () => {
-    //setCurrentId(0);
     setFlatData({
       creator: user.result.name,
       name: '',
@@ -88,19 +82,7 @@ const NewFlat = ({ currentId, setCurrentId }) => {
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-<<<<<<< HEAD
-        {/* <Typography variant="h6">{currentId ? `Editing "${flat.name}"` : 'Write the info of the flat'}</Typography> */}
-        <TextField name="name" variant="outlined" label={t("new_flat.name")} fullWidth value={flatData.name} onChange={(e) => setFlatData({ ...flatData, name: e.target.value })} />
-        <TextField name="creator" variant="outlined" label={t("new_flat.creator")} fullWidth value={flatData.creator} onChange={(e) => setFlatData({ ...flatData, creator: e.target.value })} />
-        <TextField name="address" variant="outlined" label={t("new_flat.address")} fullWidth value={flatData.address} onChange={(e) => setFlatData({ ...flatData, address: e.target.value })} />
-        <TextField name="description" variant="outlined" label={t("new_flat.description")} fullWidth value={flatData.description} onChange={(e) => setFlatData({ ...flatData, description: e.target.value })} />
-        <TextField name="picture" variant="outlined" label={t("new_flat.picture")} fullWidth value={flatData.picture} onChange={(e) => setFlatData({ ...flatData, picture: e.target.value })} />
-        <TextField name="lat" variant="outlined" label={t("new_flat.latitude")} fullWidth value={flatData.lat} onChange={(e) => setFlatData({ ...flatData, lat: e.target.value })} />
-        <TextField name="lng" variant="outlined" label={t("new_flat.longitude")} fullWidth value={flatData.lng} onChange={(e) => setFlatData({ ...flatData, lng: e.target.value })} />
-        
-        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth >{t("new_flat.submit")}</Button>
-        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>{t("new_flat.clear")}</Button>
-=======
+
         <Typography variant="h6">{currentId ? `Editing "${flat.name}"` : 'Write the info of the flat'}</Typography> 
         <TextField name="name" variant="outlined" label="Name" fullWidth value={flatData.name} onChange={(e) => setFlatData({ ...flatData, name: e.target.value })} />
         <Typography name="creator" variant="outlined" label="Creator" fullWidth value={flatData.creator} onChange={(e) => setFlatData({ ...flatData, creator: e.target.value })} />
@@ -122,7 +104,7 @@ const NewFlat = ({ currentId, setCurrentId }) => {
         <Button variant="contained" color="primary" size="large"  onClick={(event) => { uploadImage(event.target.files)  }} fullWidth >First Upload the image</Button>
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
         <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button> 
->>>>>>> minimo_tatiana
+
       </form>
     </Paper>
   );

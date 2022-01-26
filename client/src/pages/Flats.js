@@ -10,14 +10,11 @@ import homeIm from '../images/home.png';
 import useStyles from '../styles';
 import NewFlat from "../components/NewFlat_Form/NewFlat";
 import Navbar from '../components/Navbar/Navbar';
-<<<<<<< HEAD
 import { useTranslation } from "react-i18next";
 
-=======
 import MapFlats from "../components/Flats/MapFlats";
 import { BrowserRouter, Switch,Link ,Route} from 'react-router-dom'; 
 import FlatInfo from "../components/FlatInfo/FlatInfo";
->>>>>>> minimo_tatiana
 
 const Flats = () => {
 

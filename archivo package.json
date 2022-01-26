@@ -52,6 +52,9 @@
         "react-app/jest"
       ]
     },
+    "devDependencies": {
+      "@types/leaflet": "^1.7.6"
+    },
     "browserslist": {
       "production": [
         ">0.2%",
@@ -65,4 +68,3 @@
       ]
     }
   }
-  
