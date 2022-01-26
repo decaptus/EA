@@ -61,9 +61,7 @@ const MapFlats = ({ setCurrentId }) => {
                         <div>{flat.address}</div>
                         <div>{flat.price}  {" €"}</div>
                          
-                        <Link to= {'flats/'+flat._id} style={{ textDecoration: 'none' }}>
-                        <Button key={flat._id} flat={flat} onClick={getFlat(flat._id)}>More info</Button>
-                        </Link>
+                    
                     </Popup>
 
                 </Marker> 
